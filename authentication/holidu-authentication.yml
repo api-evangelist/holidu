@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/holidu-affiliate-api.json, openapi/holidu-connectivity-api.json, openapi/holidu-hapi-with-oauth20.json,
+  openapi/holidu-security-service-with-client-credentials.json, openapi/holidu-security-service-with-tokens.json
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  sources:
+  - openapi/holidu-affiliate-api.json
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)).
+    Token exchange details are agreed upon during onboarding.
+  sources:
+  - openapi/holidu-affiliate-api.json
+- name: api-key
+  type: apiKey
+  in: header
+  parameter: api-key
+  sources:
+  - openapi/holidu-connectivity-api.json
+- name: sec0
+  type: oauth2
+  flows: []
+  sources:
+  - openapi/holidu-hapi-with-oauth20.json
+  - openapi/holidu-security-service-with-tokens.json
+- name: sec0
+  type: http
+  scheme: basic
+  sources:
+  - openapi/holidu-security-service-with-client-credentials.json
