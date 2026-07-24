@@ -1,0 +1,289 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Reviews API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Reviews
+paths:
+  /v2/reviews:
+    get:
+      tags:
+      - Reviews
+      summary: Get customer reviews for apartment
+      operationId: getCustomerReviews
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successfully retrieved customer reviews for apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerReviewDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Reviews
+      summary: Post the customer reviews of an apartment
+      operationId: updateCustomerReviews
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: replaceReviews
+        in: query
+        required: false
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerReviewDto'
+        required: true
+      responses:
+        '200':
+          description: Successfully updated customer reviews for apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerReviewDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '409':
+          description: Conflicting request. Can occur when adding duplicated reviews from the same visit in parallel.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    HostResponseDto:
+      type: object
+      properties:
+        responseText:
+          type: string
+          description: Text of the host's response to the guest review.
+          example: Thank you for your stay!
+        responseLanguage:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: Language of the response, ISO 639-1 (2 chars). If unknown, providers may send the most probable one based on the review language.
+          example: en
+        responseDateTime:
+          type: string
+          description: Date and time the host posted (or last edited) the response. If unknown, providers may approximate from the record's last update timestamp.
+          example: '2017-08-15 09:00:00'
+      description: Host's response to this review (text, language, timestamp). Optional. Only set when the host has replied to the guest review.
+    CustomerReviewDto:
+      required:
+      - globalRating
+      type: object
+      properties:
+        customerName:
+          maxLength: 50
+          minLength: 0
+          type: string
+          description: Name of customer.
+          example: John
+        title:
+          type: string
+          description: Summary of the comment
+          example: Beautiful stay
+        country:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: Country code represented in standard ISO 3166-1 ALPHA-2 format
+          example: DE
+        travelDate:
+          type: string
+          description: Date of arrival of the customer to the accommodation
+          format: date
+          example: '2017-07-31'
+        reviewDateTime:
+          type: string
+          description: Date of review
+          example: '2017-08-12 22:17:31'
+        globalRating:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Overall rating of the entire stay
+          format: int32
+          example: 90
+        location:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Rating of the location of the accommodation
+          format: int32
+          example: 90
+        localService:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Rating of the local services
+          format: int32
+          example: 95
+        furnishings:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Rating of the furnishing of the accommodation
+          format: int32
+          example: 85
+        cleanliness:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Rating of the cleanliness of the accommodation
+          format: int32
+          example: 70
+        valueForMoney:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Rating of the value for money spent for the accommodation
+          format: int32
+          example: 100
+        beach:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Rating of the beaches around the accommodation
+          format: int32
+          example: 85
+        accommodation:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Rating of the accommodation.
+          format: int32
+          example: 80
+        host:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Rating of the host
+          format: int32
+          example: 100
+        language:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: Language used for review
+          example: en
+        text:
+          type: string
+          description: Review text
+          example: Great stay, very well located apartment.
+        positiveText:
+          type: string
+          description: Positive points
+          example: Wonderful accommodation with great services
+        negativeText:
+          type: string
+          description: Negative points
+          example: Location far from city center
+        hostResponse:
+          $ref: '#/components/schemas/HostResponseDto'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

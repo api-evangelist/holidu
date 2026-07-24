@@ -1,0 +1,715 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Booking Terms API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Booking Terms
+paths:
+  /v2/apartments/terms-and-conditions:
+    get:
+      tags:
+      - Booking Terms
+      summary: Get terms and conditions for apartment
+      operationId: getTermsAndConditions
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successfully retrieved terms and conditions for apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentTermsAndConditions'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Booking Terms
+      summary: Update terms and conditions for apartment
+      operationId: updateTermsAndConditions
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ApartmentTermsAndConditions'
+        required: true
+      responses:
+        '200':
+          description: Successfully updated terms and conditions for apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentTermsAndConditions'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/apartments/payment-configuration:
+    get:
+      tags:
+      - Booking Terms
+      summary: Get payment configuration for apartment
+      operationId: getPaymentConfiguration
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: rateId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved payment configuration for apartment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentPaymentConfiguration'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Booking Terms
+      summary: Update payment configuration for apartment
+      description: Replaces existing payment configurations with new ones for apartment
+      operationId: updatePaymentConfiguration
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApartmentPaymentConfiguration'
+        required: true
+      responses:
+        '200':
+          description: Successfully updated payment configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentPaymentConfiguration'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    delete:
+      tags:
+      - Booking Terms
+      summary: Delete payment configuration for apartment
+      description: Deletes existing payment configuration for apartment
+      operationId: deletePaymentConfiguration
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: rateId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully deleted payment configuration
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/apartments/cancellation-policy:
+    get:
+      tags:
+      - Booking Terms
+      summary: Get cancellation conditions for apartment
+      operationId: getCancellationPolicy
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: rateId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of cancellation conditions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentCancellationPolicy'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Booking Terms
+      summary: Update cancellation conditions for apartment
+      description: Replaces any pre-configured cancellation policies with new ones for Apartment
+      operationId: updateCancellationConditions
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ApartmentCancellationPolicy'
+        required: true
+      responses:
+        '200':
+          description: Cancellation policies updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentCancellationPolicy'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    delete:
+      tags:
+      - Booking Terms
+      summary: Delete cancellation policy for apartment
+      description: Deletes existing cancellation policy for apartment
+      operationId: deleteCancellationPolicy
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: rateId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully deleted cancellation policy
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/apartments/payment-configuration/rate-ids:
+    get:
+      tags:
+      - Booking Terms
+      summary: Get payment configuration rateIds for apartment
+      operationId: getPaymentConfigurationRateIds
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successfully retrieved payment configuration rate Ids for apartment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentPaymentConfiguration'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/apartments/cancellation-policy/rate-ids:
+    get:
+      tags:
+      - Booking Terms
+      summary: Get cancellation policy rate Ids for apartment
+      operationId: getCancellationPolicyRateIds
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful retrieval of cancellation policy rate Ids
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentCancellationPolicy'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    PaymentRatePerDate:
+      required:
+      - daysBeforeArrival
+      - rateAmountInPercentage
+      type: object
+      properties:
+        daysBeforeArrival:
+          type: integer
+          description: 'Limit of days before arrival until when the rate should be paid, for example: Until 10 days before arrival 50% should be paid'
+          format: int32
+          example: 10
+        rateAmountInPercentage:
+          maximum: 100
+          exclusiveMaximum: false
+          minimum: 0
+          exclusiveMinimum: false
+          type: number
+          description: Value in percentage of booking that should be paid (not accumulative)
+          example: 70
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    ApartmentPaymentConfiguration:
+      required:
+      - paymentMethods
+      - paymentRates
+      type: object
+      properties:
+        paymentMethods:
+          type: array
+          items:
+            type: string
+            description: List of payment methods valid for booking
+            enum:
+            - BANK_TRANSFER
+            - CREDIT_CARD
+            - PAYPAL
+            - CHEQUE_VACANCES
+            - IDEAL
+            - INVOICE
+        paymentRates:
+          $ref: '#/components/schemas/PaymentRates'
+        rateId:
+          pattern: DEFAULT|REFUNDABLE|NON_REFUNDABLE
+          type: string
+          description: Rate identifier
+          format: string
+          example: NON_REFUNDABLE
+      description: Payment configuration (payment methods and rates) applicable on booking
+    ApartmentTermsAndConditions:
+      required:
+      - url
+      type: object
+      properties:
+        countries:
+          type: array
+          description: List of country codes represented in standard ISO 3166-1 ALPHA-2 format.  If empty then applies to none.
+          items:
+            maxLength: 2
+            minLength: 2
+            type: string
+            description: List of country codes represented in standard ISO 3166-1 ALPHA-2 format.  If empty then applies to none.
+        url:
+          type: string
+          description: Url to terms and conditions
+          example: https://www.abc.org/xyz
+      description: Terms and conditions which apply on booking for the given countries
+    ApartmentCancellationPolicy:
+      required:
+      - cancellationFeeInPercent
+      - daysBeforeArrival
+      type: object
+      properties:
+        daysBeforeArrival:
+          minimum: 0
+          type: integer
+          description: Number of days before arrival for which this cancellation policy is valid
+          format: int32
+          example: 10
+        cancellationFeeInPercent:
+          maximum: 100
+          minimum: 0
+          type: number
+          description: Booking percentage which is non-refundable
+          example: 30
+        rateId:
+          pattern: DEFAULT|REFUNDABLE|NON_REFUNDABLE
+          type: string
+          description: Rate identifier
+          format: string
+          example: NON_REFUNDABLE
+    PaymentRates:
+      type: object
+      properties:
+        ratePaidOnBookingInPercentage:
+          maximum: 100
+          exclusiveMaximum: false
+          minimum: 0
+          exclusiveMinimum: false
+          type: number
+          description: Rate paid on booking in percentage
+          example: 30
+        ratesPerDate:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentRatePerDate'
+      description: Payment schedule for the booking
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

@@ -1,0 +1,171 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Descriptions API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Descriptions
+paths:
+  /v2/description:
+    get:
+      tags:
+      - Descriptions
+      summary: Get descriptions for an apartment
+      operationId: getApartmentDescriptions
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successfully retrieved descriptions for apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentDescription'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Descriptions
+      summary: Create or update descriptions for an apartment
+      operationId: upsertApartmentDescriptions
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ApartmentDescription'
+        required: true
+      responses:
+        '200':
+          description: Successfully created or updated descriptions for apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentDescription'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    ApartmentDescription:
+      required:
+      - description
+      - language
+      type: object
+      properties:
+        language:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: Language
+          example: de
+        description:
+          type: string
+          description: Description of the apartment translated into language above
+          example: Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...
+        title:
+          type: string
+          description: Title of the apartment translated into language above
+          example: La Grotta
+        locationDescription:
+          type: string
+          description: Description of the outside of apartment like location, surroundings
+          example: The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

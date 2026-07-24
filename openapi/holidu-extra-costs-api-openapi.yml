@@ -1,0 +1,284 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Extra Costs API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Extra Costs
+paths:
+  /v2/apartments/extracosts:
+    get:
+      tags:
+      - Extra Costs
+      summary: Get the extra costs of an apartment
+      operationId: getExtraCosts
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successfully retrieved extra costs for apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentExtraCost'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Extra Costs
+      summary: Update the extra costs of an apartment
+      operationId: updateExtraCosts
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ApartmentExtraCost'
+        required: true
+      responses:
+        '200':
+          description: Successful update of extra costs for apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentExtraCost'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    LengthOfStay:
+      type: object
+      properties:
+        fromStayLengthInNights:
+          type: integer
+          description: Based on the length of stay, applicable from night
+          format: int32
+          example: 1
+        toStayLengthInNights:
+          type: integer
+          description: Based on the length of stay, applicable until night
+          format: int32
+          example: 7
+      description: Extra cost only applicable if lengthOfStay shorter than
+    ExtraCostPrice:
+      required:
+      - amount
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+          example: PERCENTAGE
+          enum:
+          - PERCENTAGE
+          - FIXED
+        amount:
+          type: number
+          description: Price amount dependent on type
+          example: 90.24
+        currency:
+          type: string
+          description: Currency
+          example: EUR
+      description: Price configuration for extra cost
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    ApartmentExtraCost:
+      required:
+      - basisOfCalculation
+      - id
+      - name
+      - paymentTime
+      - price
+      - type
+      type: object
+      properties:
+        id:
+          type: string
+          description: An identifier for this extra cost
+          example: XYZ_123
+        name:
+          type: string
+          description: Name of extra cost
+          example: BEDLINEN
+          enum:
+          - FINAL_CLEANING
+          - EXTRA_CLEANING
+          - REFUNDABLE_SECURITY_DEPOSIT
+          - TOURIST_OR_CITY_TAX
+          - VAT_OF_RENTAL_PRICE
+          - BOOKING_FEE
+          - HYGIENE_SURCHARGE
+          - PET
+          - TRAVEL_INSURANCE
+          - TOWEL
+          - BEDLINEN
+          - TOWEL_BEDLINEN_PACKAGE
+          - KITCHEN_TOWELS
+          - BEDLINEN_AND_BEDMAKING
+          - BABY_BED
+          - BABY_CHAIR
+          - BABY_COT
+          - BABY_BUGGY
+          - BABY_HIGH_CHAIR
+          - EXTRA_BED
+          - HEATING
+          - AIRCONDITION
+          - FIREWOOD
+          - ELECTRICITY
+          - WATER
+          - GAS
+          - SAUNA
+          - POOL
+          - HOT_TUB
+          - WASHING_MACHINE
+          - BEACH_SERVICES
+          - CLUB_CARD
+          - INTERNET
+          - PARKING
+          - AIRPORT_SHUTTLE
+          - BREAKFAST
+          - SERVICE_COSTS
+        basisOfCalculation:
+          type: string
+          description: How is cost is calculated
+          example: PER_PERSON_PER_NIGHT
+          enum:
+          - PER_STAY
+          - PER_PERSON_PER_NIGHT
+          - PER_NIGHT
+          - PER_PERSON
+          - PER_UNIT
+          - PER_UNIT_PER_NIGHT
+        maximumCount:
+          type: integer
+          description: Maximum units that can be selected for this extra service if the service is selectable
+          format: int32
+          example: 1
+        type:
+          type: string
+          description: Type of service associated with this extra cost
+          example: MANDATORY
+          enum:
+          - MANDATORY
+          - SELECTABLE
+          - ON_USAGE
+        paymentTime:
+          type: string
+          description: Payment time of extra cost
+          example: ONSITE
+          enum:
+          - ON_BOOKING
+          - WITH_RATES
+          - ONSITE
+        price:
+          $ref: '#/components/schemas/ExtraCostPrice'
+        condition:
+          $ref: '#/components/schemas/ExtraCostCondition'
+    ExtraCostCondition:
+      type: object
+      properties:
+        seasonApplicable:
+          $ref: '#/components/schemas/SeasonApplicable'
+        numberOfNights:
+          $ref: '#/components/schemas/LengthOfStay'
+      description: Conditions applicable for extra cost
+    SeasonApplicable:
+      type: object
+      properties:
+        onlyApplicableFrom:
+          type: string
+          description: Only applicable from date
+          format: date
+          example: '2020-08-01'
+        onlyApplicableUntil:
+          type: string
+          description: Only applicable until date
+          format: date
+          example: '2021-04-30'
+      description: Season for which extra cost is applicable
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

@@ -1,0 +1,188 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Photos API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Photos
+paths:
+  /v2/photos:
+    get:
+      tags:
+      - Photos
+      summary: Get photos for an apartment
+      operationId: getPhotos
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: List of photos for the apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PhotoDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Photos
+      summary: Update photos for an apartment
+      operationId: updatePhotos
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PhotoDto'
+        required: true
+      responses:
+        '200':
+          description: Updated list of photos for the apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PhotoDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    PhotoLocalizationDto:
+      required:
+      - language
+      - title
+      type: object
+      properties:
+        language:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: ISO Language of the Photo Title
+        title:
+          type: string
+          description: Photo Title
+      description: Photo titles in different languages
+    PhotoDto:
+      required:
+      - position
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+          description: Photo URL
+          example: http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg
+        position:
+          minimum: 1
+          type: integer
+          description: Position of the photo to be shown to the customer
+          format: int32
+          example: 1
+        contentLength:
+          minimum: 1
+          type: integer
+          description: File size of the photo in bytes
+          format: int64
+        localizations:
+          type: array
+          description: Photo titles in different languages
+          items:
+            $ref: '#/components/schemas/PhotoLocalizationDto'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

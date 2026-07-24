@@ -1,0 +1,181 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment MultiUnit API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: MultiUnit
+paths:
+  /v2/multi-unit:
+    get:
+      tags:
+      - MultiUnit
+      summary: Get parent apartment in multi-unit structure
+      operationId: getMultiUnit
+      parameters:
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: providerGroupId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of a parent apartment
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MultiUnitDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Multi-unit does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - MultiUnit
+      summary: Create or update parent apartment in multi-unit structure
+      operationId: upsertMultiUnit
+      parameters:
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: providerGroupId
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiUnitDto'
+        required: true
+      responses:
+        '200':
+          description: Successful creation or update of a parent apartment
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MultiUnitDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    MultiUnitDto:
+      type: object
+      properties:
+        parentType:
+          type: string
+          description: Type of the parent property (e.g. HOTEL, CAMPING)
+          example: HOTEL
+          enum:
+          - ALLOTMENT_GARDEN
+          - APARTMENT
+          - BARN
+          - BEACH_HUT
+          - BED_AND_BREAKFAST
+          - BOAT
+          - BUNGALOW
+          - CAMPER
+          - CAMPING
+          - CARAVAN
+          - CASTLE
+          - CAVE
+          - CHACARA
+          - CHALET
+          - COTTAGE
+          - COUNTRY_HOUSE
+          - FARM
+          - FARMHOUSE
+          - FINCA
+          - FISHING_HOUSE
+          - GITE
+          - GLAMPING
+          - GUEST_HOUSE
+          - HOLIDAY_VILLAGE
+          - HOMESTAY
+          - HOSTEL
+          - HOTEL
+          - HOUSE_BOAT
+          - HUT
+          - LIGHTHOUSE
+          - LODGE
+          - LOG_CABIN
+          - LUXURY_TENT
+          - MANOR
+          - MILL
+          - MOBILE_HOME
+          - MOUNTAIN_HUT
+          - PENSION
+          - PENTHOUSE
+          - RESIDENCE
+          - RESORT
+          - RIAD
+          - TENT
+          - TIPI
+          - TOWER
+          - TREE_HOUSE
+          - TRULLO
+          - VILLA
+          - YACHT
+          - YURT
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

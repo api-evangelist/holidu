@@ -1,0 +1,141 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment MultiUnit Localization API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: MultiUnit Localization
+paths:
+  /v2/multi-unit/description:
+    get:
+      tags:
+      - MultiUnit Localization
+      summary: Get descriptions for a multi-unit
+      operationId: getMultiUnitDescriptions
+      parameters:
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: providerGroupId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of multi-unit descriptions
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MultiUnitDescriptionDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - MultiUnit Localization
+      summary: Update descriptions for a multi-unit
+      operationId: updateMultiUnitDescriptions
+      parameters:
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: providerGroupId
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MultiUnitDescriptionDto'
+        required: true
+      responses:
+        '200':
+          description: Successful update of multi-unit descriptions
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MultiUnitDescriptionDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    MultiUnitDescriptionDto:
+      required:
+      - isoLanguage
+      type: object
+      properties:
+        isoLanguage:
+          type: string
+          description: ISO language code
+          example: en
+        title:
+          type: string
+          description: Title of the multi-unit in the specified language
+          example: Beach Resort
+        description:
+          type: string
+          description: Description of the multi-unit in the specified language
+          example: A beautiful resort by the beach
+      description: Localization data for a multi-unit
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

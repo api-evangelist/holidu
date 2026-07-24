@@ -1,0 +1,316 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Discounts API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Discounts
+paths:
+  /v2/discount:
+    get:
+      tags:
+      - Discounts
+      summary: Get a single discount for an apartment by discount id
+      operationId: getDiscountById
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: discountId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful retrieval of discount by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscountDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment or discount does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Discounts
+      summary: Create or update a single discount for an apartment
+      operationId: upsertDiscount
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscountDto'
+            examples:
+              Adding new Discount:
+                summary: Adding new Discount
+                description: Adding new Discount
+                value:
+                  status: ACTIVE
+                  name: Long stay Discount
+                  discountType: LONG_STAY
+                  discountPercent: '10'
+                  conditions:
+                    minStay: '15'
+              Updating existing Discount:
+                summary: Updating existing Discount
+                description: Updating existing Discount
+                value:
+                  id: '18321'
+                  status: INACTIVE
+                  name: Early bird Discount
+                  discountType: EARLY_BIRD
+                  discountPercent: '12'
+                  conditions:
+                    daysBeforeCheckIn: '60'
+        required: true
+      responses:
+        '200':
+          description: Discount created or updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscountDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/discounts:
+    get:
+      tags:
+      - Discounts
+      summary: Get discounts for an apartment
+      operationId: getDiscounts
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful retrieval of discounts for an apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DiscountDto'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    DiscountDto:
+      required:
+      - discountPercent
+      - discountType
+      - status
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Discount id in Holidu system
+          format: int64
+        providerDiscountId:
+          type: string
+          description: Provider's own external discount ID for reconciliation
+        status:
+          type: string
+          description: Discount Status
+          example: ACTIVE
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - DELETED
+        name:
+          type: string
+          description: Name of the discount
+          example: Pre Season Discount
+        discountType:
+          type: string
+          description: Type of discount
+          example: EARLY_BIRD
+          enum:
+          - EARLY_BIRD
+          - LAST_MINUTE
+          - LONG_STAY
+          - DEVICE_SPECIFIC
+          - NEW_LISTING
+          - LOYALTY
+          - OFFER
+        discountPercent:
+          maximum: 100
+          exclusiveMaximum: false
+          minimum: 0
+          exclusiveMinimum: false
+          type: number
+          description: Percentage of discount
+          example: 12
+        conditions:
+          $ref: '#/components/schemas/DiscountConditions'
+    DiscountConditions:
+      type: object
+      properties:
+        daysBeforeCheckIn:
+          type: integer
+          description: Number of days before checkin the booking has to be made
+          format: int32
+          example: 60
+        minStay:
+          type: integer
+          description: Minimum Stay (days) if required to get the discount
+          format: int32
+          example: 5
+        bookingSeason:
+          type: array
+          description: Booking date must be in seasons for the discount to apply
+          items:
+            $ref: '#/components/schemas/SeasonApplicable'
+        travelSeason:
+          type: array
+          description: Stay must be within seasons for the discount to apply
+          items:
+            $ref: '#/components/schemas/SeasonApplicable'
+        deviceType:
+          type: string
+          description: If the discount is applicable only for specific device.
+          enum:
+          - MOBILE
+          - DESKTOP
+        userType:
+          type: string
+          description: If discount is applicable based on user type.
+          enum:
+          - USER_AUTHENTICATED
+      description: Conditions for this discount
+    SeasonApplicable:
+      type: object
+      properties:
+        onlyApplicableFrom:
+          type: string
+          description: Only applicable from date
+          format: date
+          example: '2020-08-01'
+        onlyApplicableUntil:
+          type: string
+          description: Only applicable until date
+          format: date
+          example: '2021-04-30'
+      description: Season for which extra cost is applicable
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

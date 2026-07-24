@@ -1,0 +1,361 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment LOS API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: LOS
+paths:
+  /v2/los:
+    get:
+      tags:
+      - LOS
+      summary: Get LOS for an apartment
+      operationId: getLos
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: rateId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of LOS for an apartment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LosDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - LOS
+      summary: Create or update LOS for an apartment
+      operationId: upsertLos
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LosDto'
+        required: true
+      responses:
+        '200':
+          description: Successful creation or update of LOS for an apartment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LosDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    delete:
+      tags:
+      - LOS
+      summary: Delete LOS for an apartment
+      operationId: deleteLos
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: rateId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful removal of LOS for an apartment
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/los/rate-ids:
+    get:
+      tags:
+      - LOS
+      summary: Get LOS rate Ids for an apartment
+      operationId: getLosRateIds
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful retrieval of LOS rate Ids for an apartment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    LosItemDto:
+      title: LOS Item
+      required:
+      - currency
+      - guests
+      - price
+      type: object
+      properties:
+        currency:
+          type: string
+          example: EUR
+        guests:
+          type: integer
+          description: Number of guests
+          format: int32
+          example: 2
+        price:
+          type: array
+          description: List of prices
+          example:
+          - 100
+          - 200
+          - 300
+          - 400
+          - 500
+          - 600
+          - 700
+          items:
+            type: number
+            description: List of prices
+      description: Length of Stay
+      format: date
+      example:
+        '2019-05-13':
+        - currency: EUR
+          guests: 2
+          price:
+          - 100
+          - 200
+        - currency: EUR
+          guests: 3
+          price:
+          - 150
+          - 250
+        '2019-05-14':
+          currency: EUR
+          guests: 2
+          price:
+          - 300
+    LosDto:
+      title: LOS
+      required:
+      - los
+      type: object
+      properties:
+        los:
+          type: object
+          additionalProperties:
+            type: array
+            description: Length of Stay
+            format: date
+            example:
+              '2019-05-13':
+              - currency: EUR
+                guests: 2
+                price:
+                - 100
+                - 200
+              - currency: EUR
+                guests: 3
+                price:
+                - 150
+                - 250
+              '2019-05-14':
+                currency: EUR
+                guests: 2
+                price:
+                - 300
+            items:
+              $ref: '#/components/schemas/LosItemDto'
+          description: Length of Stay
+          format: date
+          example:
+            '2019-05-13':
+            - currency: EUR
+              guests: 2
+              price:
+              - 100
+              - 200
+            - currency: EUR
+              guests: 3
+              price:
+              - 150
+              - 250
+            '2019-05-14':
+              currency: EUR
+              guests: 2
+              price:
+              - 300
+        rateId:
+          pattern: DEFAULT|REFUNDABLE|NON_REFUNDABLE
+          type: string
+          description: Rate identifier
+          format: string
+          example: NON_REFUNDABLE
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

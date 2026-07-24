@@ -1,0 +1,574 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Bookings API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Bookings
+paths:
+  /v2/bookings:
+    put:
+      tags:
+      - Bookings
+      summary: Update booking details
+      operationId: updateBooking
+      parameters:
+      - name: providerBookingId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingUpsert'
+        required: true
+      responses:
+        '200':
+          description: Booking data has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingDetails'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '418':
+          description: Requested method is not available in sandbox environment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/bookings/cancel:
+    post:
+      tags:
+      - Bookings
+      summary: Cancel a booking
+      operationId: cancelBooking
+      parameters:
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: providerBookingId
+        in: query
+        description: Provider booking id. Either this or holiduBookingId is required.
+        required: false
+        schema:
+          type: string
+      - name: holiduBookingId
+        in: query
+        description: Holidu booking id. Either this or providerBookingId is required.
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: cancellationFee
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: reason
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - PROVIDER_NO_PAYMENT
+          - PROVIDER_OVERBOOKED
+          - CUSTOMER_WRONG_PRICE
+          - CUSTOMER_WRONG_FACILITIES
+          - CUSTOMER_UNKNOWN_REASON
+          - CUSTOMER_REBOOKING
+          - CUSTOMER_PERSONAL
+          - CUSTOMER_ALTERNATIVE_HOLIDU_PRICE
+          - CUSTOMER_ALTERNATIVE_HOLIDU_LOCATION
+          - CUSTOMER_ALTERNATIVE_HOLIDU_OTHER
+          - CUSTOMER_ALTERNATIVE_ELSEWHERE_PRICE
+          - CUSTOMER_ALTERNATIVE_ELSEWHERE_LOCATION
+          - CUSTOMER_ALTERNATIVE_ELSEWHERE_OTHER
+          - CUSTOMER_TRAVEL_RESTRICTIONS_VISA
+          - CUSTOMER_TRAVEL_RESTRICTIONS_COVID
+          - CUSTOMER_TRAVEL_RESTRICTIONS_OTHER
+          - CUSTOMER_PROVIDER_REQUEST_BOOK_ELSEWHERE
+          - CUSTOMER_PROVIDER_REQUEST_AVAILABILITY
+          - CUSTOMER_PROVIDER_REQUEST_OTHER
+          - CUSTOMER_PROPERTY_QUALITY
+          - CUSTOMER_OTHER
+          - HOLIDU_TEST_BOOKING
+          - HOLIDU_NO_PAYMENT
+      responses:
+        '200':
+          description: The booking was cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingCancellationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Booking does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '418':
+          description: Requested method is not available in sandbox environment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/bookings/details:
+    get:
+      tags:
+      - Bookings
+      summary: Get booking details
+      operationId: getBookingDetails
+      parameters:
+      - name: provider
+        in: query
+        description: Only needed for subprovider identification.
+        required: false
+        schema:
+          type: string
+      - name: providerBookingId
+        in: query
+        description: Booking id. Either this or holiduBookingId is required.
+        required: false
+        schema:
+          type: string
+      - name: holiduBookingId
+        in: query
+        description: Holidu booking id. Either this or bookingId is required.
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Information for the booking
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingDetails'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Booking does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '418':
+          description: Requested method is not available in sandbox environment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    BookingExtraCost:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        basisOfCalculation:
+          type: string
+        paymentTime:
+          type: string
+        type:
+          type: string
+        pricePerUnit:
+          $ref: '#/components/schemas/PriceDto'
+        unitsSelected:
+          type: integer
+          format: int32
+        totalPrice:
+          $ref: '#/components/schemas/PriceDto'
+    BookingCancellationResponse:
+      type: object
+      properties:
+        cancellationStatus:
+          type: string
+          description: Status of the cancellation request
+          example: CANCELLATION_SUCCESSFUL
+          enum:
+          - ALREADY_CANCELLED
+          - CANCELLATION_SUCCESSFUL
+          - BOOKING_DELETED
+    CustomerDetails:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+          enum:
+          - MALE
+          - FEMALE
+        zip:
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        country:
+          type: string
+          description: Country code represented in standard ISO 3166-1 ALPHA-2 format
+          example: DE
+        phone:
+          type: string
+        language:
+          type: string
+      description: Model of the Customer.
+    Commission:
+      type: object
+      properties:
+        percentage:
+          type: number
+          description: Holidu percentage commission for this booking, if percentage deal
+        commissionToHolidu:
+          $ref: '#/components/schemas/PriceDto'
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    BookingUpsertExtraCost:
+      required:
+      - name
+      - totalPrice
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the cost
+          example: FINAL_CLEANING
+          enum:
+          - FINAL_CLEANING
+          - EXTRA_CLEANING
+          - REFUNDABLE_SECURITY_DEPOSIT
+          - TOURIST_OR_CITY_TAX
+          - VAT_OF_RENTAL_PRICE
+          - BOOKING_FEE
+          - HYGIENE_SURCHARGE
+          - PET
+          - TRAVEL_INSURANCE
+          - TOWEL
+          - BEDLINEN
+          - TOWEL_BEDLINEN_PACKAGE
+          - KITCHEN_TOWELS
+          - BEDLINEN_AND_BEDMAKING
+          - BABY_BED
+          - BABY_CHAIR
+          - BABY_COT
+          - BABY_BUGGY
+          - BABY_HIGH_CHAIR
+          - EXTRA_BED
+          - HEATING
+          - AIRCONDITION
+          - FIREWOOD
+          - ELECTRICITY
+          - WATER
+          - GAS
+          - SAUNA
+          - POOL
+          - HOT_TUB
+          - WASHING_MACHINE
+          - BEACH_SERVICES
+          - CLUB_CARD
+          - INTERNET
+          - PARKING
+          - AIRPORT_SHUTTLE
+          - BREAKFAST
+          - SERVICE_COSTS
+        paymentTime:
+          type: string
+          description: When the cost is paid. Treated as paid with the booking if omitted.
+          example: WITH_RATES
+          enum:
+          - ON_BOOKING
+          - WITH_RATES
+          - ONSITE
+        totalPrice:
+          $ref: '#/components/schemas/Price'
+      description: Breakdown of extra costs for the booking.
+    Guest:
+      type: object
+      properties:
+        age:
+          type: integer
+          description: Age of the guest, can be null if it is not required by capacity rules or provider config
+          format: int32
+    PaymentRate:
+      type: object
+      properties:
+        dueDate:
+          type: string
+          format: date-time
+        value:
+          $ref: '#/components/schemas/PriceDto'
+    Receipt:
+      type: object
+      properties:
+        costs:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingExtraCost'
+        discount:
+          $ref: '#/components/schemas/BookingDiscount'
+        bareRentalPrice:
+          $ref: '#/components/schemas/PriceDto'
+    BookingUpsert:
+      required:
+      - arrival
+      - bareRentalPrice
+      - departure
+      - providerApartmentId
+      type: object
+      properties:
+        providerApartmentId:
+          type: string
+          description: ID of the apartment in provider database
+          example: '123456'
+        arrival:
+          type: string
+          description: Date of arrival
+          format: date
+          example: '2020-10-20'
+        departure:
+          type: string
+          description: Date of departure
+          format: date
+          example: '2020-10-30'
+        bareRentalPrice:
+          $ref: '#/components/schemas/Price'
+        totalPrice:
+          $ref: '#/components/schemas/Price'
+        commissionablePrice:
+          $ref: '#/components/schemas/Price'
+        costs:
+          type: array
+          description: Breakdown of extra costs for the booking.
+          items:
+            $ref: '#/components/schemas/BookingUpsertExtraCost'
+        numberOfGuests:
+          type: integer
+          description: Number of guests
+          format: int32
+          example: 2
+        rateId:
+          type: string
+          description: Rate identifier
+          example: DEFAULT
+    Payment:
+      type: object
+      properties:
+        paymentWithBooking:
+          $ref: '#/components/schemas/PaymentWithBooking'
+        paymentOnsite:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceDto'
+    PaymentWithBooking:
+      type: object
+      properties:
+        paymentPlanUuid:
+          type: string
+        paymentHandler:
+          type: string
+        paymentMethod:
+          type: string
+        paymentTotalWithBooking:
+          $ref: '#/components/schemas/PriceDto'
+        paymentRates:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentRate'
+    BookingDetails:
+      type: object
+      properties:
+        providerApartmentId:
+          type: string
+        arrival:
+          type: string
+          format: date
+        departure:
+          type: string
+          format: date
+        guests:
+          type: array
+          items:
+            $ref: '#/components/schemas/Guest'
+        customer:
+          $ref: '#/components/schemas/CustomerDetails'
+        specialCustomerRequest:
+          type: string
+        guestReceipt:
+          $ref: '#/components/schemas/Receipt'
+        paymentProcessing:
+          $ref: '#/components/schemas/Payment'
+        cancellationFees:
+          type: array
+          items:
+            $ref: '#/components/schemas/CancellationFee'
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        rateId:
+          type: string
+    CancellationFee:
+      type: object
+      properties:
+        validUntil:
+          type: string
+          format: date-time
+        feeInPercentage:
+          type: number
+    PriceDto:
+      type: object
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+    Price:
+      required:
+      - amount
+      - currency
+      type: object
+      properties:
+        amount:
+          type: number
+          description: Price value
+          example: 100
+        currency:
+          type: string
+          description: Price currency
+          example: EUR
+      description: Price with amount and currency
+    MetaData:
+      type: object
+      properties:
+        bookedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - PENDING
+          - CONFIRMED
+          - CANCELLED
+          - DELETED
+        cancelledAt:
+          type: string
+          format: date-time
+        holiduBookingId:
+          type: integer
+          format: int64
+        commission:
+          $ref: '#/components/schemas/Commission'
+    BookingDiscount:
+      type: object
+      properties:
+        discountId:
+          type: integer
+          format: int64
+        providerDiscountId:
+          type: string
+        name:
+          type: string
+        percentage:
+          type: number
+        amount:
+          $ref: '#/components/schemas/PriceDto'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

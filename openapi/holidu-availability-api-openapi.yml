@@ -1,0 +1,166 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Availability API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Availability
+paths:
+  /v2/availability:
+    get:
+      tags:
+      - Availability
+      summary: Get apartment availability
+      operationId: getAvailability
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful retrieval of apartment availability
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentAvailability'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+      deprecated: true
+    post:
+      tags:
+      - Availability
+      summary: Update apartment availability
+      operationId: updateAvailability
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApartmentAvailability'
+        required: true
+      responses:
+        '200':
+          description: Successful update of apartment availability
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentAvailability'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '406':
+          description: Request terminated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+      deprecated: true
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    ApartmentAvailability:
+      type: object
+      properties:
+        availableDays:
+          type: array
+          items:
+            type: string
+            description: Day available for booking
+            format: date
+            example: '2023-12-29'
+        bookedDays:
+          type: array
+          items:
+            type: string
+            description: Day already booked
+            format: date
+            example: '2023-12-30'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Test API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Test
+paths:
+  /test:
+    get:
+      summary: Get an apartment with OAuth2.0
+      description: ''
+      operationId: get-an-apartment
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Test
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

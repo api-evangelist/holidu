@@ -1,0 +1,862 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Apartment
+paths:
+  /v2/apartment/deactivate:
+    put:
+      tags:
+      - Apartment
+      summary: Deactivate apartment for provider
+      operationId: deactivateApartment
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '202':
+          description: Deactivate action on apartment succeeded
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/apartment/activate:
+    put:
+      tags:
+      - Apartment
+      summary: Activate apartment for provider
+      operationId: activateApartment
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '202':
+          description: Activate action on apartment succeeded
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/apartment:
+    get:
+      tags:
+      - Apartment
+      summary: Get an apartment
+      operationId: getApartment
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful retrieval of an apartment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompleteApartmentDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Apartment
+      summary: Create or update an apartment
+      operationId: upsertApartment
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BasicApartmentDto'
+        required: true
+      responses:
+        '200':
+          description: Successful creation or update of an apartment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompleteApartmentDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/apartments/information:
+    get:
+      tags:
+      - Apartment
+      summary: Get basic information about all apartments
+      operationId: getAllApartmentInformation
+      parameters:
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageNumber
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      responses:
+        '200':
+          description: A list of basic information about all apartments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentInformationPage'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/apartment/validation:
+    get:
+      tags:
+      - Apartment
+      summary: Get validation result of apartment
+      operationId: getApartmentValidation
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful retrieval of validation result of an apartment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentValidation'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '418':
+          description: Requested method is not available in sandbox environment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    ApartmentInformationPage:
+      type: object
+      properties:
+        totalApartments:
+          type: integer
+          format: int64
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        apartments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApartmentInformation'
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    ValidationErrorMessage:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Error code for which validation failed
+        message:
+          type: string
+          description: Message for which validation failed
+      description: Validation Error Messages
+    OnRequestDetails:
+      type: object
+      properties:
+        bookableOnRequest:
+          type: boolean
+          description: is the apartment bookable on request only (not instant bookable)?
+        hostEmailAddress:
+          type: string
+          description: the email address of the host when guest sends request to the host
+      description: Used only for on request apartments
+    CompleteApartmentDto:
+      required:
+      - apartmentType
+      - guestCapacityRules
+      - lat
+      - lng
+      type: object
+      properties:
+        providerApartmentGroupId:
+          type: string
+          description: ID of the house where apartment is located. If several apartments are located in one house, they'll share the same providerApartmentGroupId
+          example: house-123
+        lat:
+          type: number
+          description: Latitude
+          example: 50.9293009
+        lng:
+          type: number
+          description: Longitude
+          example: 5.9779776
+        name:
+          type: string
+          description: Name of the apartment
+          example: Villa Munich Center
+        apartmentAddress:
+          $ref: '#/components/schemas/ApartmentAddress'
+        contactDetails:
+          $ref: '#/components/schemas/ContactDetails'
+        guestCapacityRules:
+          $ref: '#/components/schemas/GuestCapacityRules'
+        numberOfBedrooms:
+          maximum: 30
+          minimum: 1
+          type: integer
+          format: int32
+          example: 2
+        numberOfLivingrooms:
+          maximum: 30
+          minimum: 1
+          type: integer
+          format: int32
+          example: 1
+        numberOfBathrooms:
+          maximum: 30
+          minimum: 1
+          type: integer
+          format: int32
+          example: 2
+        sizeInSqm:
+          type: number
+          description: Size of apartment in square meters
+          example: 100
+        apartmentType:
+          type: string
+          description: Type of the apartment
+          example: VILLA
+          enum:
+          - ALLOTMENT_GARDEN
+          - APARTMENT
+          - APARTMENT_HOTEL
+          - BARN
+          - BEACH_HUT
+          - BED_AND_BREAKFAST
+          - BOAT
+          - BUNGALOW
+          - CAMPER
+          - CAMPING
+          - CARAVAN
+          - CASTLE
+          - CAVE
+          - CHACARA
+          - CHALET
+          - COTTAGE
+          - COUNTRY_HOUSE
+          - FARM
+          - FARMHOUSE
+          - FINCA
+          - FISHING_HOUSE
+          - GITE
+          - GLAMPING
+          - GUEST_HOUSE
+          - GUEST_ROOM
+          - HOLIDAY_VILLAGE
+          - HOMESTAY
+          - HOSTEL
+          - HOTEL
+          - HOUSE_BOAT
+          - HUT
+          - LIGHTHOUSE
+          - LODGE
+          - LOG_CABIN
+          - LUXURY_TENT
+          - MANOR
+          - MILL
+          - MOBILE_HOME
+          - MOUNTAIN_HUT
+          - PENSION
+          - PENTHOUSE
+          - RESIDENCE
+          - RESORT
+          - RIAD
+          - ROOM
+          - ROOM_BREAKFAST
+          - STUDIO
+          - TENT
+          - TINY_HOME
+          - TIPI
+          - TOWER
+          - TREE_HOUSE
+          - TRULLO
+          - VACATION_APARTMENT
+          - VACATION_HOME
+          - VILLA
+          - YACHT
+          - YURT
+        checkInCheckOutTimes:
+          $ref: '#/components/schemas/CheckInCheckOutTimes'
+        floor:
+          type: integer
+          description: The floor on which the property is located, starting with 0 for the ground floor
+          format: int32
+          example: 0
+        sizeOfPlot:
+          type: number
+          description: Total area includes the whole area of the property accessible to the guest. This includes the garden, terraces or garages
+          example: 140.5
+        buildYear:
+          type: integer
+          description: Build year of the property
+          format: int32
+          example: 2001
+        modernizedYear:
+          type: integer
+          description: Year of renovation
+          format: int32
+          example: 2007
+        license:
+          type: string
+          description: License number of the property (the license number is required for properties in the Balearic area in Spain)
+          example: '1231882'
+        regulatoryInformation:
+          type: object
+          additionalProperties:
+            type: string
+            description: Store regulatory information for the apartment
+          description: Store regulatory information for the apartment
+        isTestApartment:
+          type: boolean
+          description: Mark as test apartment
+        onRequestDetails:
+          $ref: '#/components/schemas/OnRequestDetails'
+        leadTimeHours:
+          type: integer
+          description: Booking lead time in hours
+          format: int32
+        duplicateFrom:
+          type: array
+          description: Use this object if other Holidu partners also have this property in their system. Please contact us before using this.
+          items:
+            $ref: '#/components/schemas/DuplicateFrom'
+        active:
+          type: boolean
+          description: Should apartment be activated
+        holiduApartmentId:
+          type: integer
+          description: Holidu Apartment Id
+          format: int64
+    ApartmentAddress:
+      type: object
+      properties:
+        street:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: Street
+          example: Karlstrasse 66
+        zipCode:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ZIP Code (max 20 chars)
+          example: '76133'
+        city:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: City
+          example: Munich
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: Country code represented in standard ISO 3166-1 ALPHA-2 format
+          example: DE
+      description: Address of the rental property
+    CheckInDuration:
+      required:
+      - checkInFrom
+      - checkInTo
+      type: object
+      properties:
+        checkInFrom:
+          type: string
+          description: Check in from (24h format)
+          format: time
+          example: '12:00'
+        checkInTo:
+          type: string
+          description: Check in to (24h format)
+          format: time
+          example: '21:00'
+      description: List of possible check in times
+    DuplicateFrom:
+      type: object
+      properties:
+        provider:
+          type: string
+          description: Name of this provider as in our system (please ask us the right name first)
+          example: HRS
+        duplicatedApartmentId:
+          type: string
+          description: Id of the duplicate apartment in the other partner system.
+          example: '123654'
+      description: Use this object if other Holidu partners also have this property in their system. Please contact us before using this.
+    BasicApartmentDto:
+      required:
+      - apartmentType
+      - guestCapacityRules
+      - lat
+      - lng
+      type: object
+      properties:
+        providerApartmentGroupId:
+          type: string
+          description: ID of the house where apartment is located. If several apartments are located in one house, they'll share the same providerApartmentGroupId
+          example: house-123
+        lat:
+          type: number
+          description: Latitude
+          example: 50.9293009
+        lng:
+          type: number
+          description: Longitude
+          example: 5.9779776
+        name:
+          type: string
+          description: Name of the apartment
+          example: Villa Munich Center
+        apartmentAddress:
+          $ref: '#/components/schemas/ApartmentAddress'
+        contactDetails:
+          $ref: '#/components/schemas/ContactDetails'
+        guestCapacityRules:
+          $ref: '#/components/schemas/GuestCapacityRules'
+        numberOfBedrooms:
+          maximum: 30
+          minimum: 1
+          type: integer
+          format: int32
+          example: 2
+        numberOfLivingrooms:
+          maximum: 30
+          minimum: 1
+          type: integer
+          format: int32
+          example: 1
+        numberOfBathrooms:
+          maximum: 30
+          minimum: 1
+          type: integer
+          format: int32
+          example: 2
+        sizeInSqm:
+          type: number
+          description: Size of apartment in square meters
+          example: 100
+        apartmentType:
+          type: string
+          description: Type of the apartment
+          example: VILLA
+          enum:
+          - ALLOTMENT_GARDEN
+          - APARTMENT
+          - APARTMENT_HOTEL
+          - BARN
+          - BEACH_HUT
+          - BED_AND_BREAKFAST
+          - BOAT
+          - BUNGALOW
+          - CAMPER
+          - CAMPING
+          - CARAVAN
+          - CASTLE
+          - CAVE
+          - CHACARA
+          - CHALET
+          - COTTAGE
+          - COUNTRY_HOUSE
+          - FARM
+          - FARMHOUSE
+          - FINCA
+          - FISHING_HOUSE
+          - GITE
+          - GLAMPING
+          - GUEST_HOUSE
+          - GUEST_ROOM
+          - HOLIDAY_VILLAGE
+          - HOMESTAY
+          - HOSTEL
+          - HOTEL
+          - HOUSE_BOAT
+          - HUT
+          - LIGHTHOUSE
+          - LODGE
+          - LOG_CABIN
+          - LUXURY_TENT
+          - MANOR
+          - MILL
+          - MOBILE_HOME
+          - MOUNTAIN_HUT
+          - PENSION
+          - PENTHOUSE
+          - RESIDENCE
+          - RESORT
+          - RIAD
+          - ROOM
+          - ROOM_BREAKFAST
+          - STUDIO
+          - TENT
+          - TINY_HOME
+          - TIPI
+          - TOWER
+          - TREE_HOUSE
+          - TRULLO
+          - VACATION_APARTMENT
+          - VACATION_HOME
+          - VILLA
+          - YACHT
+          - YURT
+        checkInCheckOutTimes:
+          $ref: '#/components/schemas/CheckInCheckOutTimes'
+        floor:
+          type: integer
+          description: The floor on which the property is located, starting with 0 for the ground floor
+          format: int32
+          example: 0
+        sizeOfPlot:
+          type: number
+          description: Total area includes the whole area of the property accessible to the guest. This includes the garden, terraces or garages
+          example: 140.5
+        buildYear:
+          type: integer
+          description: Build year of the property
+          format: int32
+          example: 2001
+        modernizedYear:
+          type: integer
+          description: Year of renovation
+          format: int32
+          example: 2007
+        license:
+          type: string
+          description: License number of the property (the license number is required for properties in the Balearic area in Spain)
+          example: '1231882'
+        regulatoryInformation:
+          type: object
+          additionalProperties:
+            type: string
+            description: Store regulatory information for the apartment
+          description: Store regulatory information for the apartment
+        isTestApartment:
+          type: boolean
+          description: Mark as test apartment
+        onRequestDetails:
+          $ref: '#/components/schemas/OnRequestDetails'
+        leadTimeHours:
+          type: integer
+          description: Booking lead time in hours
+          format: int32
+        duplicateFrom:
+          type: array
+          description: Use this object if other Holidu partners also have this property in their system. Please contact us before using this.
+          items:
+            $ref: '#/components/schemas/DuplicateFrom'
+    ApartmentInformation:
+      type: object
+      properties:
+        providerApartmentId:
+          type: string
+        holiduApartmentId:
+          type: string
+        active:
+          type: boolean
+        lastUpdate:
+          type: string
+          format: date-time
+    ApartmentValidation:
+      type: object
+      properties:
+        holiduApartmentId:
+          type: integer
+          description: Holidu Apartment Id
+          format: int64
+        providerApartmentId:
+          type: string
+          description: Provider Apartment Id
+        lastValidatedAt:
+          type: string
+          description: Last time validation ran for apartment
+          format: date-time
+        valid:
+          type: boolean
+          description: Is apartment valid
+        validationErrorMessages:
+          type: array
+          description: Validation Error Messages
+          items:
+            $ref: '#/components/schemas/ValidationErrorMessage'
+    GuestCapacityRules:
+      required:
+      - standardCapacity
+      type: object
+      properties:
+        standardCapacity:
+          minimum: 1
+          type: integer
+          description: The standard capacity of guests allowed. This includes a minimum of 1 adult and excludes babies.
+          format: int32
+          example: 1
+        adultsOnly:
+          type: boolean
+          description: Does apartment permit only adults
+          example: false
+        additionalChildren:
+          minimum: 0
+          type: integer
+          description: Additional number of children.
+          format: int32
+          example: 0
+        maxBabies:
+          minimum: 0
+          type: integer
+          description: Maximum number of babies allowed.
+          format: int32
+          example: 2
+      description: Guest capacity rules applicable to apartment
+    CheckInCheckOutTimes:
+      required:
+      - checkIn
+      - checkOutUntil
+      type: object
+      properties:
+        checkIn:
+          type: array
+          description: List of possible check in times
+          items:
+            $ref: '#/components/schemas/CheckInDuration'
+        checkOutUntil:
+          type: string
+          description: Check out time (24h format)
+          example: '14:30'
+      description: Check-ins and check-outs details
+    ContactDetails:
+      type: object
+      properties:
+        contactName:
+          type: string
+          description: Contact person for this apartment
+          example: John Doe
+        contactPhone:
+          type: string
+          description: Phone number of contact person
+          example: +123(4)56789
+        contactEmail:
+          type: string
+          description: Email of contact person
+          example: john@doe.com
+      description: Contact details
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

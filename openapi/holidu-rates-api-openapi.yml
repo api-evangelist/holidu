@@ -1,0 +1,223 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Rates API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Rates
+paths:
+  /v2/rates:
+    get:
+      tags:
+      - Rates
+      summary: Get apartment rate plans
+      operationId: getRates
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful retrieval of apartment rates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentRates'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+      deprecated: true
+    post:
+      tags:
+      - Rates
+      summary: Update apartment rate plans
+      operationId: setRates
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApartmentRates'
+        required: true
+      responses:
+        '200':
+          description: Successful creation or update of rate plans for the apartment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApartmentRates'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '406':
+          description: Request terminated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+      deprecated: true
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    DailyRate:
+      title: Daily Rate
+      required:
+      - checkinAllowed
+      - checkoutAllowed
+      - date
+      - price
+      type: object
+      properties:
+        date:
+          type: string
+          description: Date
+          format: date
+          example: '2023-05-01'
+        price:
+          type: number
+          description: Daily price
+          example: 95
+        priceForExtraPerson:
+          type: number
+          description: Additional cost per extra person
+          example: 20
+        checkinAllowed:
+          type: boolean
+          description: Check in is possible on this day
+          example: true
+        checkoutAllowed:
+          type: boolean
+          description: Check out is possible on this day
+          example: false
+      description: List of daily rates
+    RatePlan:
+      title: Rate Plan
+      required:
+      - currency
+      - dailyRates
+      - guests
+      - minimumStay
+      - ratePlanId
+      type: object
+      properties:
+        ratePlanId:
+          type: string
+          description: Unique identifier for this rate plan
+          example: SHORT_STAY_RATE
+        guests:
+          maximum: 100
+          minimum: 1
+          type: integer
+          description: Number of guests. Allowed number of guests must be between 1 and 100
+          format: int32
+          example: 2
+        currency:
+          type: string
+          example: EUR
+        minimumStay:
+          type: integer
+          description: Minimum Stay (days)
+          format: int32
+          example: 1
+        maximumStay:
+          type: integer
+          description: Maximum Stay (days)
+          format: int32
+          example: 30
+        dailyRates:
+          type: array
+          description: List of daily rates
+          items:
+            $ref: '#/components/schemas/DailyRate'
+    ApartmentRates:
+      title: Apartment Rates
+      required:
+      - ratePlans
+      type: object
+      properties:
+        ratePlans:
+          type: array
+          items:
+            $ref: '#/components/schemas/RatePlan'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

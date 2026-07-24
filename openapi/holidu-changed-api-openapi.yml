@@ -1,0 +1,107 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Changed API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Changed
+paths:
+  /changed:
+    post:
+      operationId: changed
+      summary: Get a list of property IDs that have changed within the specified time window.
+      description: Returns property IDs with data potentially updated within the specified time range. The inventory is continuously refreshed, with more frequent updates for recent days.
+      security:
+      - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                changedSince:
+                  type: string
+                  format: date-time
+                  description: Start of the time window (inclusive) in ISO-8601 format from which property changes are returned, e.g. 2024-10-01T14:48:00.000Z
+                changedUntil:
+                  type: string
+                  format: date-time
+                  description: End of the time window (inclusive) in ISO-8601 format until which property changes are returned, e.g. 2024-10-01T16:00:00.000Z
+                domainId:
+                  type: integer
+                  minimum: 1
+                  description: Controls visibility of inventory, you should get the value from your TAM
+                salesChannelId:
+                  type: string
+                  minLength: 1
+                  description: Sales channel identifier, consult Holidu for the correct value
+                changeDetectionMode:
+                  type: string
+                  enum:
+                  - DOCUMENT_REFRESH
+                  - DOCUMENT_CHANGE
+                  description: Controls what triggers a change event. DOCUMENT_REFRESH includes any re-indexing, DOCUMENT_CHANGE only includes actual data changes. Defaults to DOCUMENT_REFRESH
+              required:
+              - changedSince
+              - domainId
+              additionalProperties: false
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  changedPropertyIds:
+                    type: array
+                    items:
+                      type: string
+                    description: List of property IDs with data updated within the specified time window.
+                required:
+                - changedPropertyIds
+                additionalProperties: false
+        default:
+          $ref: '#/components/responses/error'
+      tags:
+      - Changed
+components:
+  responses:
+    error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              issues:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                  required:
+                  - message
+                  additionalProperties: false
+            required:
+            - message
+            - code
+            additionalProperties: false
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

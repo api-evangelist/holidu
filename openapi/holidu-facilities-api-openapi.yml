@@ -1,0 +1,1580 @@
+openapi: 3.0.3
+info:
+  title: Affiliate Apartment Facilities API
+  version: 1.1.0
+servers:
+- url: https://external-api.holidu.com
+tags:
+- name: Facilities
+paths:
+  /v2/facilities:
+    get:
+      tags:
+      - Facilities
+      summary: Get facilities for apartment
+      operationId: getFacilities
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: List of apartment facilities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentFacility'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+    post:
+      tags:
+      - Facilities
+      summary: Update facilities for an apartment
+      operationId: updateFacilities
+      parameters:
+      - name: providerApartmentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: holiduApartmentId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ApartmentFacility'
+        required: true
+      responses:
+        '200':
+          description: Updated list of apartment facilities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApartmentFacility'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '404':
+          description: Apartment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/facilities/types:
+    get:
+      tags:
+      - Facilities
+      summary: Get facility types
+      operationId: getFacilityTypes
+      responses:
+        '200':
+          description: List of facility types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  enum:
+                  - SMOKING_ALLOWED
+                  - SMOKING_NOT_ALLOWED
+                  - SMOKING_AREA
+                  - PETS_ALLOWED
+                  - PETS_ALLOWED_ON_REQUEST
+                  - PETS_ALLOWED_SMALL_PETS
+                  - PETS_ALLOWED_CAT
+                  - PETS_ALLOWED_DOG
+                  - PETS_ALLOWED_DOG_MAX_10_KG
+                  - PETS_ALLOWED_DOG_MORE_THAN_10_KG
+                  - PETS_NOT_ALLOWED
+                  - PETS_ON_AVAILABILITY
+                  - VIEW
+                  - VIEW_OCEAN
+                  - VIEW_LAKE
+                  - VIEW_CITY
+                  - VIEW_GARDEN
+                  - VIEW_LANDMARK
+                  - VIEW_MOUNTAIN
+                  - VIEW_RIVER
+                  - VIEW_SEA
+                  - VIEW_BEACH
+                  - VIEW_GOLF_COURSE
+                  - VIEW_WATER
+                  - VIEW_INNER_COURTYARD
+                  - VIEW_POOL
+                  - WATERFRONT
+                  - BARRIER_FREE
+                  - SUITABLE_FOR_DISABLED
+                  - SUITABLE_FOR_ELDERLY
+                  - BARRIER_FREE_NOT
+                  - ENERGY
+                  - ENERGY_SOLAR
+                  - ENERGY_WIND
+                  - WATER_HOT
+                  - ROOF_FLAT
+                  - ENTRANCE_PRIVATE
+                  - ROOF_THATCHED
+                  - ANIMALS
+                  - ANIMALS_CAT
+                  - ANIMALS_DOG
+                  - ANIMALS_FARM
+                  - POOL
+                  - POOL_PRIVATE
+                  - POOL_CHILDREN
+                  - POOL_HEATED
+                  - POOL_INFINITY
+                  - POOL_TOYS
+                  - POOL_ROOFTOP
+                  - POOL_SEASONALLY_OPENED
+                  - POOL_FENCED
+                  - WHIRLPOOL
+                  - WHIRLPOOL_BATHTUB
+                  - ELEVATOR
+                  - INTERNET
+                  - INTERNET_NOT
+                  - INTERNET_WIFI
+                  - INTERNET_LAN
+                  - SAUNA
+                  - INFRARED_CABIN
+                  - CHIMNEY
+                  - STOVE_WOOD
+                  - FIREPLACE
+                  - CHILDFRIENDLY
+                  - RENOVATED
+                  - ALLERGY_FRIENDLY
+                  - BEST_PRICE
+                  - FOR_EVENTS
+                  - LUXURY
+                  - QUIET
+                  - VISITED_BY_HOLIDU
+                  - WASHER
+                  - DRYER
+                  - WASHER_DRYER_COMBO
+                  - FLAT_IRON
+                  - FLAT_IRON_AND_BOARD
+                  - HEATING
+                  - HEATING_NOT
+                  - HEATING_OIL
+                  - HEATING_GAS
+                  - HEATING_UNDERFLOOR
+                  - HEATING_WOOD_STOVE
+                  - HEATING_ELECTRIC
+                  - AIR_CONDITION
+                  - VENTILATOR
+                  - SOLARIUM
+                  - POOL_INDOOR
+                  - POOL_INDOOR_CHILDREN
+                  - WHIRLPOOL_INDOOR
+                  - TV
+                  - TV_CHILDREN
+                  - TV_LCD
+                  - TV_FLAT_SCREEN
+                  - TV_GERMAN_CHANNELS
+                  - TV_FRENCH_CHANNELS
+                  - TV_ENGLISH_CHANNELS
+                  - TV_SPANISH_CHANNELS
+                  - TV_DUTCH_CHANNELS
+                  - TV_DANISH_CHANNELS
+                  - TV_ITALIAN_CHANNELS
+                  - TV_INTERNATIONAL_CHANNELS
+                  - TV_CABLE
+                  - TV_SATELLITE
+                  - TV_DIGITAL
+                  - TV_PAY_PER_VIEW
+                  - BEAMER
+                  - BLURAY_PLAYER
+                  - DVD_PLAYER
+                  - CD_PLAYER
+                  - RADIO
+                  - MP3_PLAYER
+                  - IPOD_DOCK
+                  - SPEAKERS
+                  - SOUND_SYSTEM
+                  - COMPUTER
+                  - TELEPHONE
+                  - HIGHCHAIR
+                  - PLAYROOM
+                  - ROOMS_LOUNGE
+                  - INTERCOM
+                  - FIRE_PIT
+                  - FIRE_EXTINGUISHER
+                  - FIRE_ALARM
+                  - CARBONMONOXIDE_DETECTOR
+                  - ALARM_HOUSE
+                  - BED_KING
+                  - BED_QUEEN
+                  - BED_DOUBLE
+                  - BED_SINGLE
+                  - BED_CHILDREN
+                  - BED_BABY
+                  - BED_EXTRA
+                  - BED_SLEEPING_COUCH
+                  - BED_SLEEPING_COUCH_2
+                  - BED_SLEEPING_COUCH_1
+                  - BED_FOLDAWAY
+                  - BED_BUNK
+                  - BED_BUNK_1
+                  - BED_BUNK_2
+                  - BED_FLOOR_MATTRESS
+                  - BED_AIR_MATTRESS
+                  - ROOMS_DININGROOM
+                  - ROOMS_LIVINGROOM
+                  - ROOMS_SINGLE
+                  - ROOMS_DOUBLE
+                  - ROOMS_FAMILY
+                  - ROOMS_BATHROOM
+                  - ROOMS_BEDROOM
+                  - ROOMS_COMMON
+                  - SUITED_FOR_GROUPS
+                  - OUTDOOR_DINING_AREA
+                  - SAFE
+                  - BALCONY_TERRACE
+                  - BALCONY
+                  - BALCONY_COVERED
+                  - BALCONY_UNCOVERED
+                  - TERRACE
+                  - TERRACE_COVERED
+                  - TERRACE_UNCOVERED
+                  - TERRACE_ROOFTOP
+                  - GARDEN
+                  - HOUSEOWNED_BEACH
+                  - GARDEN_FURNITURE
+                  - HAMMOCK
+                  - STROLLER
+                  - DECK_CHAIR
+                  - BEACH_CHAIR
+                  - POOL_OUTDOOR
+                  - POOL_OUTDOOR_CHILDREN
+                  - WHIRLPOOL_OUTDOOR
+                  - STEAMBATH
+                  - FENCED_PROPERTY
+                  - FENCED_PROPERTY_NOT
+                  - TOYS
+                  - TOYS_BOARD_GAME
+                  - TOYS_BOOKS
+                  - TOYS_BOOKS_FOR_CHILDREN
+                  - TOYS_DVDS
+                  - TOYS_DVDS_FOR_CHILDREN
+                  - GAME_CONSOLE_PS3
+                  - GAME_CONSOLE_PS4
+                  - GAME_CONSOLE_XBOX_ONE
+                  - GAME_CONSOLE_XBOX_360
+                  - GAME_CONSOLE_WII
+                  - GAME_CONSOLE_OTHER
+                  - PLAYGROUND
+                  - GRILL
+                  - GRILL_GAS
+                  - GRILL_COAL
+                  - GRILL_ELECTRIC
+                  - PARKING
+                  - PARKING_SPOT
+                  - PARKING_AT_OBJECT
+                  - PARKING_GARAGE
+                  - PARKING_CARPORT
+                  - PARKING_STREET
+                  - PARKING_SECURE
+                  - PARKING_DISABLED
+                  - CONSERVATORY
+                  - BICYCLE_RACK
+                  - BICYCLE_CELLAR
+                  - BICYCLE_RENTALS_ON_SITE
+                  - LANDING_STAGE
+                  - SKI_IN_OUT
+                  - SKI_BUS_AT_PROPERTY
+                  - PARASOL
+                  - KITCHEN
+                  - KITCHEN_NOT
+                  - KITCHENETTE
+                  - OVEN
+                  - COOKTOP
+                  - MICROWAVE
+                  - FRIDGE
+                  - ICE_MAKER
+                  - FREEZER
+                  - FRIDGE_FREEZER_COMBINATION
+                  - DISHWASHER
+                  - WATER_HEATER
+                  - COFFEE_TEA_MACHINE
+                  - COFFEE_MACHINE
+                  - ESPRESSO_MACHINE
+                  - COFFEE
+                  - MIXER
+                  - TOASTER
+                  - JUICER
+                  - MINIBAR
+                  - KETTLE
+                  - SPICES
+                  - DISHES
+                  - CUTLERY
+                  - KITCHEN_UTENSILS
+                  - SHOWER
+                  - SHOWER_BATHTUB_COMBO
+                  - SHOWER_BATHTUB
+                  - SHOWER_OUTSIDE
+                  - BATHTUB
+                  - SEPARATE_TOILET
+                  - EN_SUITE_TOILET
+                  - HAIRDRYER
+                  - VACUUM_CLEANER
+                  - IRONING_BOARD
+                  - TROUSERPRESS
+                  - WARDROBE
+                  - CLOTHES_HANGERS
+                  - FURNITURE_DESK
+                  - CURTAINS_BLACKOUT
+                  - SMOKE_DETECTOR
+                  - TOWELS
+                  - TOWELS_BEACH_POOL
+                  - TOWELS_NOT
+                  - TOILETRIES
+                  - BEDLINEN
+                  - BEDLINEN_NOT
+                  - DISHCLOTH
+                  - BATHROBE
+                  - BREAKFAST
+                  - HALF_BOARD
+                  - LUNCHSERVICE_PACKED
+                  - CHILDCARE
+                  - BIKE_RENTAL
+                  - SKI_RENTAL
+                  - SKI_STORAGE
+                  - SKI_PASS
+                  - SCOOTER_RENTAL
+                  - CAR_RENTAL
+                  - BOAT_RENTAL
+                  - BIKE_PROVIDED
+                  - BOAT_PROVIDED
+                  - AIRPORT_SHUTTLE
+                  - SHUTTLE_SERVICE
+                  - FIRST_AID_KIT
+                  - DOORMAN
+                  - RECEPTION_24H
+                  - ATM
+                  - DRY_CLEANING
+                  - IRONING_SERVICE
+                  - LUGGAGE_STORAGE
+                  - CURRENCY_EXCHANGE
+                  - RESTAURANT
+                  - MINIMARKET
+                  - HOUSEKEEPING
+                  - HOUSEKEEPING_DAILY
+                  - HOUSEKEEPING_WEEKLY
+                  - BOOK_WITHOUT_CREDIT_CARD
+                  - CHEQUES_VACANCES
+                  - GROUPS_NOT_ALLOWED
+                  - YOUTH_GROUPS_NOT_ALLOWED
+                  - YOUTH_GROUPS_ALLOWED
+                  - SUITABLE_YOUNG_PEOPLE
+                  - SUITABLE_CHILDREN
+                  - SUITABLE_CHILDREN_NO
+                  - CHILDREN_NOT_ALLOWED
+                  - FAMILY_FRIENDLY
+                  - HOUSEOWNER_LIVES_ONSPOT
+                  - LONGTERM_STAYS_ALLOWED
+                  - CHECKIN_HOST
+                  - CHECKIN_SELF
+                  - KEY_CARD_ACCESS
+                  - LOCATION_GROUND_FLOOR
+                  - LOCATION_UPPER_FLOOR
+                  - WINTER_SPORTS
+                  - WATER_SPORTS
+                  - SKI_VACATION
+                  - BEACH_VACATION
+                  - FARM_VACATION
+                  - NATURE
+                  - WELLNESS
+                  - WELLNESS_TREATMENTS
+                  - WELLNESS_AREA
+                  - GYM
+                  - TENNIS_COURT
+                  - GOLF
+                  - MINIGOLF
+                  - FISHING
+                  - SAILING
+                  - HIKING
+                  - HORSEBACK_RIDING
+                  - WATERPARK
+                  - SURFING
+                  - WINDSURFING
+                  - KITESURFING
+                  - BIKING
+                  - DIVING
+                  - MOUNTAIN_BIKING
+                  - BOAT_TRIP
+                  - BILLIARD_TABLE
+                  - TABLE_TENNIS
+                  - PUBLIC_TRANSPORTATION
+                  - CHILDREN_ALLOWED
+                  - SINK
+                  - BASKETBALL
+                  - BIKE
+                  - BOAT
+                  - VOLLEY_BALL_COURT
+                  - GOLF_COURT
+                  - CROSS_COUNTRY_SKI
+                  - BY_THE_WATER
+                  - IN_THE_SKI_RESORT
+                  - CLOSE_TO_SKI_LIFTS
+                  - SKI_PASS_DISCOUNTED
+                  - SKI_PASS_INCLUDED
+                  - SKI_RENTAL_DISCOUNTED
+                  - SKI_RENTAL_INCLUDED
+                  - SKI_SCHOOL_DISCOUNTED
+                  - SKI_SCHOOL_INCLUDED
+                  - BIKE_STORAGE
+                  - LGBTQ_FRIENDLY
+                  - GREEN_PROPERTY
+                  - EVENT_FRIENDLY
+                  - PRIVATE_BEACH
+                  - BEACH_ACCESS
+                  - BEACH_FRONT
+                  - LAKE_FRONT
+                  - WATER_FRONT
+                  - OCEAN_FRONT
+                  - ELECTRIC_VEHICLE_CHARGING_STATION
+                  - ELECTRIC_BIKE_CHARGING_STATION
+                  - MOBILITY_PUBLIC_TRANSPORT
+                  - MOBILITY_BIKES
+                  - MOBILITY_EBIKES
+                  - RENEWABLE_ENERGY
+                  - RECYCLING_GLASS
+                  - RECYCLING_PAPER
+                  - RECYCLING_PLASTIC
+                  - RECYCLING_ORGANIC
+                  - ENERGY_SAVING_SOLAR_PANELS
+                  - ENERGY_SAVING_WIND_POWER
+                  - ENERGY_SAVING_METHANE_DIGESTER
+                  - ENERGY_SAVING_SOLAR_COLLECTOR
+                  - ENERGY_SAVING_LIGHTING
+                  - ENERGY_SAVING_SMART_CONTROLS
+                  - ENERGY_SOLAR_THERMAL_PANELS
+                  - ENERGY_HEAT_PUMPS
+                  - ENERGY_GREEN_ELECTRICITY_PROVIDER
+                  - ENERGY_BIOMASS
+                  - ENERGY_GEOTHERMICS
+                  - ENERGY_INFRARED_HEATING_PANELS
+                  - ENERGY_MASONRY_HEATER
+                  - INSULATION_GLASS
+                  - INSULATION_ROOF
+                  - INSULATION_WALL
+                  - INSULATION_FLOOR
+                  - INSULATION_NATURAL_MATERIALS
+                  - INSULATION_GREEN_COOL_ROOF
+                  - WATER_SAVING_SHOWER
+                  - WATER_SAVING_TOILET
+                  - WATER_SAVING_TAPS
+                  - RAINWATER_TREATMENT
+                  - GREY_WATER_SYSTEM
+                  - OWN_PRODUCE_JAM
+                  - OWN_PRODUCE_VEGETABLES
+                  - OWN_PRODUCE_HERBS
+                  - OWN_PRODUCE_OLIVE_OIL
+                  - OWN_PRODUCE_HONEY
+                  - OWN_PRODUCE_FRUITS
+                  - OWN_PRODUCE_EGGS
+                  - OWN_PRODUCE_CHEESE
+                  - OWN_PRODUCE_BREAD
+                  - OWN_PRODUCE_NUTS
+                  - ECO_CLEANING_PRODUCTS
+                  - SUSTAINABLE_CONSTRUCTION
+                  - EVENT_MEAL
+                  - EVENT_BIRTHDAY_CHILD
+                  - EVENT_BABY_SHOWER
+                  - EVENT_STAG_PARTY
+                  - EVENT_WEDDING
+                  - EVENT_BIRTHDAY_ADULT
+                  - SHOWER_ROLL_IN
+                  - SHOWER_GRAB_RAILS
+                  - TOILET_RAISED
+                  - WIDE_DOORS
+                  - STEP_FREE_ACCESS
+                  - BATHTUB_CHAIR
+                  - BATHROOM_TURNING_CYCLE_MIN_1_5_M
+                  - BATHROOM_EMERGENCY_CORD
+                  - STEP_FREE_INTERIOR
+                  - SHOWER_CHAIR
+                  - TOILET_GRAB_RAILS
+                  - BATHROOM_SINK_LOWERED
+                  - INTERNET_WIFI_FOR_VIDEO_CALLS
+                  - DRINKING_WATER_BOTTLED
+                  - DISH_DETERGENT
+                  - SHAMPOO
+                  - PARTIES_NOT_ALLOWED
+                  - LAUNDRY
+                  - LAUNDRY_SERVICE
+                  - WATER_PARK
+                  - CORONA_RULES_APPLIED
+                  - SOUTERRAIN
+                  - BOWLING
+                  - KEGELBAHN
+                  - YOGA_SCHOOL
+                  - UNIT_SIZE
+                  - PRINTER
+                  - PIANO
+                  - BABYSITTING_SERVICES
+                  - ROOM_SERVICE
+                  - HOUR_SEC
+                  - _24HOUR_SECURITY
+                  - AIR_PURIFIER
+                  - BABY_MONITOR
+                  - BED_EXTRA_LONG
+                  - BIDET
+                  - BOOT_DRIER
+                  - BREAD_SERVICE
+                  - BROADCAST_LIVE_SPORT
+                  - CANOEING
+                  - CASHLESS_PAYMENT
+                  - CLEANING_PRODUCTS
+                  - CLOTHES_DRYING_RACK
+                  - COFFEE_GRINDER
+                  - CONCIERGE
+                  - COOKING_CLASS
+                  - EXPRESS_CHECKINOUT
+                  - ECOTOURISM
+                  - FLOOR_CARPETING
+                  - GROCERY_DELIVERY
+                  - HOT_SPRINGS
+                  - HYPOALLERGENIC_PILLOW
+                  - JET_SKIING
+                  - KAYAKING
+                  - KIDS_CLUB
+                  - LIVE_MUSIC
+                  - MEAL_DELIVERY
+                  - MOSQUITO_NET
+                  - MOTORBOATING
+                  - NEWSPAPER
+                  - NO_STEP_FREE_ACCESS
+                  - NORDIC_WALKING
+                  - RECYCLING
+                  - SANDBOX
+                  - SHOPPING
+                  - SKI_SCHOOL
+                  - SKIING
+                  - SNORKELING
+                  - SUNLOUNGER
+                  - TOOTHBRUSH
+                  - TRAMPOLINE
+                  - TV_STREAMING
+                  - VISUAL_AID_BRAILLE
+                  - VISUAL_AID_TACTILE_SIGNS
+                  - WILDLIFE_VIEWING
+                  - WINERY
+                  - WING_FOIL
+                  - STAND_UP_PADDLING
+                  - CLIMBING
+                  - SWIMMING
+                  - PARAGLIDING
+                  - RUNNING
+                  - CANYONING
+                  - YOGA
+                  - PARTNER_SUSTAINABILITY_BADGE
+                  - GASTGEBER_MIT_HERZ
+                  - ALLGAEU_TOP_HOTELS
+                  - CERTIFICATE_4FUER3
+                  - CERTIFICATE_ADAC_CAMPINGPLATZ_AUSZEICHNUNG
+                  - CERTIFICATE_ALBCARD
+                  - CERTIFICATE_ALB_CROSSING
+                  - CERTIFICATE_ALBSTEIG
+                  - CERTIFICATE_BAG_OBSTHOF
+                  - CERTIFICATE_BAG_URLAUB_AUF_DEM_BAUERNHOF
+                  - CERTIFICATE_BARRIEREFREI_ERLEBEN
+                  - CERTIFICATE_BARRIEREFREIE_UNTERKUNFT_OKGO_CH
+                  - CERTIFICATE_BERGSTEIGERDOERFER_CH
+                  - CERTIFICATE_BETT_UND_BIKE
+                  - CERTIFICATE_BETT_UND_BIKE_ADFC
+                  - CERTIFICATE_BIKE_HOTEL_HOTTELIERSUISSE_CH
+                  - CERTIFICATE_BIOSPHAEREN_GASTGEBER
+                  - CERTIFICATE_CAUSE_WE_CARE_CH
+                  - CERTIFICATE_DEHOGA_UMWELTCHECK_GOLD
+                  - CERTIFICATE_DEHOGA_UMWELTCHECK_SILBER
+                  - CERTIFICATE_DLG_LANDURLAUB
+                  - CERTIFICATE_DLG_URLAUB_AUF_DEM_WINZERHOF
+                  - CERTIFICATE_ECARF_ALLERGIKERFREUNDLICH
+                  - CERTIFICATE_ECHTE_GASTLICHKEIT_SCHWARZWALD
+                  - CERTIFICATE_ECHT_NACHHALTIG
+                  - CERTIFICATE_ECOCAMPING
+                  - CERTIFICATE_EMPFOHLENES_WEINHOTEL_BADEN_WUERTTEMBERG
+                  - CERTIFICATE_FAMILIEN_FERIEN
+                  - CERTIFICATE_FAMILIEN_RESTAURANTS
+                  - CERTIFICATE_FIVE_STAR_CH
+                  - CERTIFICATE_FIVE_STAR_GASTROSUISSE_CH
+                  - CERTIFICATE_FIVE_STAR_HOTELLERIESUISSE_CH
+                  - CERTIFICATE_FIVE_STAR_SERVICED_APARTMENTS_CH
+                  - CERTIFICATE_FIVE_STAR_SUPERIOR_CH
+                  - CERTIFICATE_FIVE_STAR_SUPERIOR_HOTTELLERIESUISSE_CH
+                  - CERTIFICATE_FOUR_STAR_CH
+                  - CERTIFICATE_FOUR_STAR_GASTROSUISSE_CH
+                  - CERTIFICATE_FOUR_STAR_HOTELLERIESUISSE_CH
+                  - CERTIFICATE_FOUR_STAR_SERVICED_APARTMENTS_CH
+                  - CERTIFICATE_FOUR_STAR_SUPERIOR_CH
+                  - CERTIFICATE_FOUR_STAR_SUPERIOR_HOTTELLERIESUISSE_CH
+                  - CERTIFICATE_GLIDE_RESTAAURANTS_CH
+                  - CERTIFICATE_GREENSIGN_LEVEL_3
+                  - CERTIFICATE_GREENSIGN_LEVEL_4
+                  - CERTIFICATE_IBEX_FAIRSTAY_CH
+                  - CERTIFICATE_LAND_URLAUB
+                  - CERTIFICATE_MICHELIN_STERN
+                  - CERTIFICATE_MOEHNETALRADWEG
+                  - CERTIFICATE_MOTORBIKE_FRIENDLY
+                  - CERTIFICATE_NACHHALTIGE_FERIENIMMOBILIE
+                  - CERTIFICATE_NATURPARK_WIRTE
+                  - CERTIFICATE_OHNE_GLUTEN_CH
+                  - CERTIFICATE_ONE_STAR_CH
+                  - CERTIFICATE_ONE_STAR_GASTROSUISSE_CH
+                  - CERTIFICATE_ONE_STAR_HOTELLERIESUISSE_CH
+                  - CERTIFICATE_ONE_STAR_SERVICED_APARTMENTS_CH
+                  - CERTIFICATE_ONE_STAR_SUPERIOR_CH
+                  - CERTIFICATE_ONE_STAR_SUPERIOR_HOTELLERIESUISSE_CH
+                  - CERTIFICATE_PARTNER_NATIONALPARK_SCHWARZWALD
+                  - CERTIFICATE_QUALITAETSBETRIEB_ROTHAARSTEIG
+                  - CERTIFICATE_SAUERLAENDER_WANDERGASTHOEFE
+                  - CERTIFICATE_SAUERLAND_HOEHENFLUG
+                  - CERTIFICATE_SCHMALLENBERGER_KINDERLAND
+                  - CERTIFICATE_SCHMECK_DEN_SUEDEN
+                  - CERTIFICATE_SCHNEESPORTHOTEL_HOTELLERIESUISSE_CH
+                  - CERTIFICATE_SCHWARZWALD_BALANCE
+                  - CERTIFICATE_SCHWARZWALD_PLUS
+                  - CERTIFICATE_SERVICE_QUALITAET_DEUTSCHLAND
+                  - CERTIFICATE_STERNE_IM_SAUERLAND
+                  - CERTIFICATE_STV_FIVE_STARS_CH
+                  - CERTIFICATE_STV_FIVE_STARS_SUP_CH
+                  - CERTIFICATE_STV_FOUR_STARS_CH
+                  - CERTIFICATE_STV_FOUR_STARS_SUP_CH
+                  - CERTIFICATE_STV_ONE_STAR_CH
+                  - CERTIFICATE_STV_ONE_STAR_SUP_CH
+                  - CERTIFICATE_STV_THREE_STARS_CH
+                  - CERTIFICATE_STV_THREE_STARS_SUP_CH
+                  - CERTIFICATE_STV_TWO_STARS_CH
+                  - CERTIFICATE_STV_TWO_STARS_SUP_CH
+                  - CERTIFICATE_SWISS_HISTORIC_HOTELS_CH
+                  - CERTIFICATE_SWISS_LODGE_HOTTELIERSUISSE_CH
+                  - CERTIFICATE_SWISSTAINABLE_LEVEL_ONE_CH
+                  - CERTIFICATE_SWISSTAINABLE_LEVEL_TWO_CH
+                  - CERTIFICATE_SWISSTAINSABLE_LEVEL_THREE_CH
+                  - CERTIFICATE_THREE_STAR_CH
+                  - CERTIFICATE_THREE_STAR_GASTROSUISSE_CH
+                  - CERTIFICATE_THREE_STAR_HOTELLERIESUISSE_CH
+                  - CERTIFICATE_THREE_STAR_SERVICED_APARTMENTS_CH
+                  - CERTIFICATE_THREE_STAR_SUPERIOR_CH
+                  - CERTIFICATE_THREE_STAR_SUPERIOR_HOTTELLERIESUISSE_CH
+                  - CERTIFICATE_TRAUFGAENGE_GASTGEBER
+                  - CERTIFICATE_TWO_STAR_CH
+                  - CERTIFICATE_TWO_STAR_GASTROSUISSE_CH
+                  - CERTIFICATE_TWO_STAR_HOTELLERIESUISSE_CH
+                  - CERTIFICATE_TWO_STAR_SERVICED_APARTMENTS_CH
+                  - CERTIFICATE_TWO_STAR_SUPERIOR_CH
+                  - CERTIFICATE_TWO_STAR_SUPERIOR_HOTTELLERIESUISSE_CH
+                  - CERTIFICATE_URLAUB_AUF_DEM_BAUERNHOF
+                  - CERTIFICATE_URLAUB_AUF_DEM_BAUERNHOF_GER
+                  - CERTIFICATE_WANDERBARES_DEUTSCHLAND
+                  - CERTIFICATE_WANDERBARES_DEUTSCHLAND_GASTRONOMIE
+                  - CERTIFICATE_WANDER_HOTEL_HOTTELIERSUISSE_CH
+                  - CERTIFICATE_WELLNESS_AND_SPA_HOTTELIERSUISSE_CH
+                  - CERTIFICATE_WELLNESS_HOTEL_HOTTELIERSUISSE_CH
+                  - CERTIFICATE_WELLNESS_STARS_DEUTSCHLAND
+                  - CERTIFICATE_WIN_CHARTA_DES_LANDES_BADEN_WUERTTEMBERG
+                  - CERTIFICATE_WINTERSPORTARENA_SAUERLAND
+                  - DREIWELTEN_CARD
+                  - ECHT_BODENSEE_CARD
+                  - GUESTCARD
+                  - HOCHSCHWARZWALD_CARD
+                  - SAUERLAND_CARD
+                  - SAUERLAND_SOMMER_CARD
+                  - SCHMALLENBERGER_SAUERLAND_CARD
+                  - WILLINGEN_MEINE_CARD
+                  - MARKENPARTNER
+                  - CERTIFICATE_URLAUBS_WINZERHOF
+                  - CERTIFICATE_URLAUBS_REITERHOF
+                  - CERTIFICATE_SCHWARZWALD_
+                  - BALANCE
+                  - CERTIFICATE_VIABONO
+                  - CERTIFICATE_MEDICAL_WELLNESS_THREE_STARS
+                  - CERTIFICATE_MEDICAL_WELLNESS_FOUR_STARS
+                  - CERTIFICATE_MEDICAL_WELLNESS_FIVE_STARS
+                  - CERTIFICATE_VIA_MICHELIN_TWO_STARS
+                  - CERTIFICATE_VIA_MICHELIN_THREE_STARS
+                  - CERTIFICATE_BRONZE_DEHOGA
+                  - CERTIFICATE_BIKE_AREA_SAUERLAND
+                  - CERTIFICATE_SAUERLAND_WALDROUTE
+                  - CERTIFICATE_KAISERSTUEHLER_WINZERHOF
+                  - CERTIFICATE_WEINHOTELS_KAISERSTUHL
+                  - CERTIFICATE_KOSTENLOS_STORNIERBAR_GARANTIE
+                  - CERTIFICATE_WIR_FUER_SIE
+                  - CERTIFICATE_PARTNER_BIOSPHAERENGEBIET_SCHWAEBISCHE_ALB
+                  - CERTIFICATE_REISEN_FUER_ALLE
+                  - CERTIFICATE_DLG_
+                  - LANDURLAUB
+                  - CERTIFICATE_BIOSFERA_PARTNERBETRIEB_CH
+                  - THEMENPARTNER_KULTUR
+                  - THEMENPARTNER_RAD
+                  - THEMENPARTNER_WANDERN
+                  - THEMENPARTNER_FAMILIE
+                  - THEMENPARTNER_WELLNESS
+                  - TOP_GASTGEBER_BOFE
+                  - LUNCH
+                  - DINNER
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+  /v2/facilities/locations:
+    get:
+      tags:
+      - Facilities
+      summary: Get facility locations
+      operationId: getFacilityLocations
+      responses:
+        '200':
+          description: List of possible facility Locations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  enum:
+                  - UNDEFINED
+                  - NEAR_BY
+                  - IN_APARTMENT
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoliduErrorResponse'
+components:
+  schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    Room:
+      type: object
+      properties:
+        roomId:
+          type: string
+          description: A unique identifier for the room
+          example: '123'
+        roomType:
+          type: string
+          description: Room type
+          example: BED_ROOM
+          enum:
+          - BED_ROOM
+          - LIVING_ROOM
+          - BATH_ROOM
+          - KITCHEN
+      description: Room
+    FacilityAvailabilityData:
+      type: object
+      properties:
+        availableFrom:
+          $ref: '#/components/schemas/AvailableTime'
+        availableTo:
+          $ref: '#/components/schemas/AvailableTime'
+    ApartmentFacility:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          description: Facility type. Here you should map your facilities to ours. The allowed values can be taken from GET /v2/facilities/types
+          example: POOL
+          enum:
+          - SMOKING_ALLOWED
+          - SMOKING_NOT_ALLOWED
+          - SMOKING_AREA
+          - PETS_ALLOWED
+          - PETS_ALLOWED_ON_REQUEST
+          - PETS_ALLOWED_SMALL_PETS
+          - PETS_ALLOWED_CAT
+          - PETS_ALLOWED_DOG
+          - PETS_ALLOWED_DOG_MAX_10_KG
+          - PETS_ALLOWED_DOG_MORE_THAN_10_KG
+          - PETS_NOT_ALLOWED
+          - PETS_ON_AVAILABILITY
+          - VIEW
+          - VIEW_OCEAN
+          - VIEW_LAKE
+          - VIEW_CITY
+          - VIEW_GARDEN
+          - VIEW_LANDMARK
+          - VIEW_MOUNTAIN
+          - VIEW_RIVER
+          - VIEW_SEA
+          - VIEW_BEACH
+          - VIEW_GOLF_COURSE
+          - VIEW_WATER
+          - VIEW_INNER_COURTYARD
+          - VIEW_POOL
+          - WATERFRONT
+          - BARRIER_FREE
+          - SUITABLE_FOR_DISABLED
+          - SUITABLE_FOR_ELDERLY
+          - BARRIER_FREE_NOT
+          - ENERGY
+          - ENERGY_SOLAR
+          - ENERGY_WIND
+          - WATER_HOT
+          - ROOF_FLAT
+          - ENTRANCE_PRIVATE
+          - ROOF_THATCHED
+          - ANIMALS
+          - ANIMALS_CAT
+          - ANIMALS_DOG
+          - ANIMALS_FARM
+          - POOL
+          - POOL_PRIVATE
+          - POOL_CHILDREN
+          - POOL_HEATED
+          - POOL_INFINITY
+          - POOL_TOYS
+          - POOL_ROOFTOP
+          - POOL_SEASONALLY_OPENED
+          - POOL_FENCED
+          - WHIRLPOOL
+          - WHIRLPOOL_BATHTUB
+          - ELEVATOR
+          - INTERNET
+          - INTERNET_NOT
+          - INTERNET_WIFI
+          - INTERNET_LAN
+          - SAUNA
+          - INFRARED_CABIN
+          - CHIMNEY
+          - STOVE_WOOD
+          - FIREPLACE
+          - CHILDFRIENDLY
+          - RENOVATED
+          - ALLERGY_FRIENDLY
+          - BEST_PRICE
+          - FOR_EVENTS
+          - LUXURY
+          - QUIET
+          - VISITED_BY_HOLIDU
+          - WASHER
+          - DRYER
+          - WASHER_DRYER_COMBO
+          - FLAT_IRON
+          - FLAT_IRON_AND_BOARD
+          - HEATING
+          - HEATING_NOT
+          - HEATING_OIL
+          - HEATING_GAS
+          - HEATING_UNDERFLOOR
+          - HEATING_WOOD_STOVE
+          - HEATING_ELECTRIC
+          - AIR_CONDITION
+          - VENTILATOR
+          - SOLARIUM
+          - POOL_INDOOR
+          - POOL_INDOOR_CHILDREN
+          - WHIRLPOOL_INDOOR
+          - TV
+          - TV_CHILDREN
+          - TV_LCD
+          - TV_FLAT_SCREEN
+          - TV_GERMAN_CHANNELS
+          - TV_FRENCH_CHANNELS
+          - TV_ENGLISH_CHANNELS
+          - TV_SPANISH_CHANNELS
+          - TV_DUTCH_CHANNELS
+          - TV_DANISH_CHANNELS
+          - TV_ITALIAN_CHANNELS
+          - TV_INTERNATIONAL_CHANNELS
+          - TV_CABLE
+          - TV_SATELLITE
+          - TV_DIGITAL
+          - TV_PAY_PER_VIEW
+          - BEAMER
+          - BLURAY_PLAYER
+          - DVD_PLAYER
+          - CD_PLAYER
+          - RADIO
+          - MP3_PLAYER
+          - IPOD_DOCK
+          - SPEAKERS
+          - SOUND_SYSTEM
+          - COMPUTER
+          - TELEPHONE
+          - HIGHCHAIR
+          - PLAYROOM
+          - ROOMS_LOUNGE
+          - INTERCOM
+          - FIRE_PIT
+          - FIRE_EXTINGUISHER
+          - FIRE_ALARM
+          - CARBONMONOXIDE_DETECTOR
+          - ALARM_HOUSE
+          - BED_KING
+          - BED_QUEEN
+          - BED_DOUBLE
+          - BED_SINGLE
+          - BED_CHILDREN
+          - BED_BABY
+          - BED_EXTRA
+          - BED_SLEEPING_COUCH
+          - BED_SLEEPING_COUCH_2
+          - BED_SLEEPING_COUCH_1
+          - BED_FOLDAWAY
+          - BED_BUNK
+          - BED_BUNK_1
+          - BED_BUNK_2
+          - BED_FLOOR_MATTRESS
+          - BED_AIR_MATTRESS
+          - ROOMS_DININGROOM
+          - ROOMS_LIVINGROOM
+          - ROOMS_SINGLE
+          - ROOMS_DOUBLE
+          - ROOMS_FAMILY
+          - ROOMS_BATHROOM
+          - ROOMS_BEDROOM
+          - ROOMS_COMMON
+          - SUITED_FOR_GROUPS
+          - OUTDOOR_DINING_AREA
+          - SAFE
+          - BALCONY_TERRACE
+          - BALCONY
+          - BALCONY_COVERED
+          - BALCONY_UNCOVERED
+          - TERRACE
+          - TERRACE_COVERED
+          - TERRACE_UNCOVERED
+          - TERRACE_ROOFTOP
+          - GARDEN
+          - HOUSEOWNED_BEACH
+          - GARDEN_FURNITURE
+          - HAMMOCK
+          - STROLLER
+          - DECK_CHAIR
+          - BEACH_CHAIR
+          - POOL_OUTDOOR
+          - POOL_OUTDOOR_CHILDREN
+          - WHIRLPOOL_OUTDOOR
+          - STEAMBATH
+          - FENCED_PROPERTY
+          - FENCED_PROPERTY_NOT
+          - TOYS
+          - TOYS_BOARD_GAME
+          - TOYS_BOOKS
+          - TOYS_BOOKS_FOR_CHILDREN
+          - TOYS_DVDS
+          - TOYS_DVDS_FOR_CHILDREN
+          - GAME_CONSOLE_PS3
+          - GAME_CONSOLE_PS4
+          - GAME_CONSOLE_XBOX_ONE
+          - GAME_CONSOLE_XBOX_360
+          - GAME_CONSOLE_WII
+          - GAME_CONSOLE_OTHER
+          - PLAYGROUND
+          - GRILL
+          - GRILL_GAS
+          - GRILL_COAL
+          - GRILL_ELECTRIC
+          - PARKING
+          - PARKING_SPOT
+          - PARKING_AT_OBJECT
+          - PARKING_GARAGE
+          - PARKING_CARPORT
+          - PARKING_STREET
+          - PARKING_SECURE
+          - PARKING_DISABLED
+          - CONSERVATORY
+          - BICYCLE_RACK
+          - BICYCLE_CELLAR
+          - BICYCLE_RENTALS_ON_SITE
+          - LANDING_STAGE
+          - SKI_IN_OUT
+          - SKI_BUS_AT_PROPERTY
+          - PARASOL
+          - KITCHEN
+          - KITCHEN_NOT
+          - KITCHENETTE
+          - OVEN
+          - COOKTOP
+          - MICROWAVE
+          - FRIDGE
+          - ICE_MAKER
+          - FREEZER
+          - FRIDGE_FREEZER_COMBINATION
+          - DISHWASHER
+          - WATER_HEATER
+          - COFFEE_TEA_MACHINE
+          - COFFEE_MACHINE
+          - ESPRESSO_MACHINE
+          - COFFEE
+          - MIXER
+          - TOASTER
+          - JUICER
+          - MINIBAR
+          - KETTLE
+          - SPICES
+          - DISHES
+          - CUTLERY
+          - KITCHEN_UTENSILS
+          - SHOWER
+          - SHOWER_BATHTUB_COMBO
+          - SHOWER_BATHTUB
+          - SHOWER_OUTSIDE
+          - BATHTUB
+          - SEPARATE_TOILET
+          - EN_SUITE_TOILET
+          - HAIRDRYER
+          - VACUUM_CLEANER
+          - IRONING_BOARD
+          - TROUSERPRESS
+          - WARDROBE
+          - CLOTHES_HANGERS
+          - FURNITURE_DESK
+          - CURTAINS_BLACKOUT
+          - SMOKE_DETECTOR
+          - TOWELS
+          - TOWELS_BEACH_POOL
+          - TOWELS_NOT
+          - TOILETRIES
+          - BEDLINEN
+          - BEDLINEN_NOT
+          - DISHCLOTH
+          - BATHROBE
+          - BREAKFAST
+          - HALF_BOARD
+          - LUNCHSERVICE_PACKED
+          - CHILDCARE
+          - BIKE_RENTAL
+          - SKI_RENTAL
+          - SKI_STORAGE
+          - SKI_PASS
+          - SCOOTER_RENTAL
+          - CAR_RENTAL
+          - BOAT_RENTAL
+          - BIKE_PROVIDED
+          - BOAT_PROVIDED
+          - AIRPORT_SHUTTLE
+          - SHUTTLE_SERVICE
+          - FIRST_AID_KIT
+          - DOORMAN
+          - RECEPTION_24H
+          - ATM
+          - DRY_CLEANING
+          - IRONING_SERVICE
+          - LUGGAGE_STORAGE
+          - CURRENCY_EXCHANGE
+          - RESTAURANT
+          - MINIMARKET
+          - HOUSEKEEPING
+          - HOUSEKEEPING_DAILY
+          - HOUSEKEEPING_WEEKLY
+          - BOOK_WITHOUT_CREDIT_CARD
+          - CHEQUES_VACANCES
+          - GROUPS_NOT_ALLOWED
+          - YOUTH_GROUPS_NOT_ALLOWED
+          - YOUTH_GROUPS_ALLOWED
+          - SUITABLE_YOUNG_PEOPLE
+          - SUITABLE_CHILDREN
+          - SUITABLE_CHILDREN_NO
+          - CHILDREN_NOT_ALLOWED
+          - FAMILY_FRIENDLY
+          - HOUSEOWNER_LIVES_ONSPOT
+          - LONGTERM_STAYS_ALLOWED
+          - CHECKIN_HOST
+          - CHECKIN_SELF
+          - KEY_CARD_ACCESS
+          - LOCATION_GROUND_FLOOR
+          - LOCATION_UPPER_FLOOR
+          - WINTER_SPORTS
+          - WATER_SPORTS
+          - SKI_VACATION
+          - BEACH_VACATION
+          - FARM_VACATION
+          - NATURE
+          - WELLNESS
+          - WELLNESS_TREATMENTS
+          - WELLNESS_AREA
+          - GYM
+          - TENNIS_COURT
+          - GOLF
+          - MINIGOLF
+          - FISHING
+          - SAILING
+          - HIKING
+          - HORSEBACK_RIDING
+          - WATERPARK
+          - SURFING
+          - WINDSURFING
+          - KITESURFING
+          - BIKING
+          - DIVING
+          - MOUNTAIN_BIKING
+          - BOAT_TRIP
+          - BILLIARD_TABLE
+          - TABLE_TENNIS
+          - PUBLIC_TRANSPORTATION
+          - CHILDREN_ALLOWED
+          - SINK
+          - BASKETBALL
+          - BIKE
+          - BOAT
+          - VOLLEY_BALL_COURT
+          - GOLF_COURT
+          - CROSS_COUNTRY_SKI
+          - BY_THE_WATER
+          - IN_THE_SKI_RESORT
+          - CLOSE_TO_SKI_LIFTS
+          - SKI_PASS_DISCOUNTED
+          - SKI_PASS_INCLUDED
+          - SKI_RENTAL_DISCOUNTED
+          - SKI_RENTAL_INCLUDED
+          - SKI_SCHOOL_DISCOUNTED
+          - SKI_SCHOOL_INCLUDED
+          - BIKE_STORAGE
+          - LGBTQ_FRIENDLY
+          - GREEN_PROPERTY
+          - EVENT_FRIENDLY
+          - PRIVATE_BEACH
+          - BEACH_ACCESS
+          - BEACH_FRONT
+          - LAKE_FRONT
+          - WATER_FRONT
+          - OCEAN_FRONT
+          - ELECTRIC_VEHICLE_CHARGING_STATION
+          - ELECTRIC_BIKE_CHARGING_STATION
+          - MOBILITY_PUBLIC_TRANSPORT
+          - MOBILITY_BIKES
+          - MOBILITY_EBIKES
+          - RENEWABLE_ENERGY
+          - RECYCLING_GLASS
+          - RECYCLING_PAPER
+          - RECYCLING_PLASTIC
+          - RECYCLING_ORGANIC
+          - ENERGY_SAVING_SOLAR_PANELS
+          - ENERGY_SAVING_WIND_POWER
+          - ENERGY_SAVING_METHANE_DIGESTER
+          - ENERGY_SAVING_SOLAR_COLLECTOR
+          - ENERGY_SAVING_LIGHTING
+          - ENERGY_SAVING_SMART_CONTROLS
+          - ENERGY_SOLAR_THERMAL_PANELS
+          - ENERGY_HEAT_PUMPS
+          - ENERGY_GREEN_ELECTRICITY_PROVIDER
+          - ENERGY_BIOMASS
+          - ENERGY_GEOTHERMICS
+          - ENERGY_INFRARED_HEATING_PANELS
+          - ENERGY_MASONRY_HEATER
+          - INSULATION_GLASS
+          - INSULATION_ROOF
+          - INSULATION_WALL
+          - INSULATION_FLOOR
+          - INSULATION_NATURAL_MATERIALS
+          - INSULATION_GREEN_COOL_ROOF
+          - WATER_SAVING_SHOWER
+          - WATER_SAVING_TOILET
+          - WATER_SAVING_TAPS
+          - RAINWATER_TREATMENT
+          - GREY_WATER_SYSTEM
+          - OWN_PRODUCE_JAM
+          - OWN_PRODUCE_VEGETABLES
+          - OWN_PRODUCE_HERBS
+          - OWN_PRODUCE_OLIVE_OIL
+          - OWN_PRODUCE_HONEY
+          - OWN_PRODUCE_FRUITS
+          - OWN_PRODUCE_EGGS
+          - OWN_PRODUCE_CHEESE
+          - OWN_PRODUCE_BREAD
+          - OWN_PRODUCE_NUTS
+          - ECO_CLEANING_PRODUCTS
+          - SUSTAINABLE_CONSTRUCTION
+          - EVENT_MEAL
+          - EVENT_BIRTHDAY_CHILD
+          - EVENT_BABY_SHOWER
+          - EVENT_STAG_PARTY
+          - EVENT_WEDDING
+          - EVENT_BIRTHDAY_ADULT
+          - SHOWER_ROLL_IN
+          - SHOWER_GRAB_RAILS
+          - TOILET_RAISED
+          - WIDE_DOORS
+          - STEP_FREE_ACCESS
+          - BATHTUB_CHAIR
+          - BATHROOM_TURNING_CYCLE_MIN_1_5_M
+          - BATHROOM_EMERGENCY_CORD
+          - STEP_FREE_INTERIOR
+          - SHOWER_CHAIR
+          - TOILET_GRAB_RAILS
+          - BATHROOM_SINK_LOWERED
+          - INTERNET_WIFI_FOR_VIDEO_CALLS
+          - DRINKING_WATER_BOTTLED
+          - DISH_DETERGENT
+          - SHAMPOO
+          - PARTIES_NOT_ALLOWED
+          - LAUNDRY
+          - LAUNDRY_SERVICE
+          - WATER_PARK
+          - CORONA_RULES_APPLIED
+          - SOUTERRAIN
+          - BOWLING
+          - KEGELBAHN
+          - YOGA_SCHOOL
+          - UNIT_SIZE
+          - PRINTER
+          - PIANO
+          - BABYSITTING_SERVICES
+          - ROOM_SERVICE
+          - HOUR_SEC
+          - _24HOUR_SECURITY
+          - AIR_PURIFIER
+          - BABY_MONITOR
+          - BED_EXTRA_LONG
+          - BIDET
+          - BOOT_DRIER
+          - BREAD_SERVICE
+          - BROADCAST_LIVE_SPORT
+          - CANOEING
+          - CASHLESS_PAYMENT
+          - CLEANING_PRODUCTS
+          - CLOTHES_DRYING_RACK
+          - COFFEE_GRINDER
+          - CONCIERGE
+          - COOKING_CLASS
+          - EXPRESS_CHECKINOUT
+          - ECOTOURISM
+          - FLOOR_CARPETING
+          - GROCERY_DELIVERY
+          - HOT_SPRINGS
+          - HYPOALLERGENIC_PILLOW
+          - JET_SKIING
+          - KAYAKING
+          - KIDS_CLUB
+          - LIVE_MUSIC
+          - MEAL_DELIVERY
+          - MOSQUITO_NET
+          - MOTORBOATING
+          - NEWSPAPER
+          - NO_STEP_FREE_ACCESS
+          - NORDIC_WALKING
+          - RECYCLING
+          - SANDBOX
+          - SHOPPING
+          - SKI_SCHOOL
+          - SKIING
+          - SNORKELING
+          - SUNLOUNGER
+          - TOOTHBRUSH
+          - TRAMPOLINE
+          - TV_STREAMING
+          - VISUAL_AID_BRAILLE
+          - VISUAL_AID_TACTILE_SIGNS
+          - WILDLIFE_VIEWING
+          - WINERY
+          - WING_FOIL
+          - STAND_UP_PADDLING
+          - CLIMBING
+          - SWIMMING
+          - PARAGLIDING
+          - RUNNING
+          - CANYONING
+          - YOGA
+          - PARTNER_SUSTAINABILITY_BADGE
+          - GASTGEBER_MIT_HERZ
+          - ALLGAEU_TOP_HOTELS
+          - CERTIFICATE_4FUER3
+          - CERTIFICATE_ADAC_CAMPINGPLATZ_AUSZEICHNUNG
+          - CERTIFICATE_ALBCARD
+          - CERTIFICATE_ALB_CROSSING
+          - CERTIFICATE_ALBSTEIG
+          - CERTIFICATE_BAG_OBSTHOF
+          - CERTIFICATE_BAG_URLAUB_AUF_DEM_BAUERNHOF
+          - CERTIFICATE_BARRIEREFREI_ERLEBEN
+          - CERTIFICATE_BARRIEREFREIE_UNTERKUNFT_OKGO_CH
+          - CERTIFICATE_BERGSTEIGERDOERFER_CH
+          - CERTIFICATE_BETT_UND_BIKE
+          - CERTIFICATE_BETT_UND_BIKE_ADFC
+          - CERTIFICATE_BIKE_HOTEL_HOTTELIERSUISSE_CH
+          - CERTIFICATE_BIOSPHAEREN_GASTGEBER
+          - CERTIFICATE_CAUSE_WE_CARE_CH
+          - CERTIFICATE_DEHOGA_UMWELTCHECK_GOLD
+          - CERTIFICATE_DEHOGA_UMWELTCHECK_SILBER
+          - CERTIFICATE_DLG_LANDURLAUB
+          - CERTIFICATE_DLG_URLAUB_AUF_DEM_WINZERHOF
+          - CERTIFICATE_ECARF_ALLERGIKERFREUNDLICH
+          - CERTIFICATE_ECHTE_GASTLICHKEIT_SCHWARZWALD
+          - CERTIFICATE_ECHT_NACHHALTIG
+          - CERTIFICATE_ECOCAMPING
+          - CERTIFICATE_EMPFOHLENES_WEINHOTEL_BADEN_WUERTTEMBERG
+          - CERTIFICATE_FAMILIEN_FERIEN
+          - CERTIFICATE_FAMILIEN_RESTAURANTS
+          - CERTIFICATE_FIVE_STAR_CH
+          - CERTIFICATE_FIVE_STAR_GASTROSUISSE_CH
+          - CERTIFICATE_FIVE_STAR_HOTELLERIESUISSE_CH
+          - CERTIFICATE_FIVE_STAR_SERVICED_APARTMENTS_CH
+          - CERTIFICATE_FIVE_STAR_SUPERIOR_CH
+          - CERTIFICATE_FIVE_STAR_SUPERIOR_HOTTELLERIESUISSE_CH
+          - CERTIFICATE_FOUR_STAR_CH
+          - CERTIFICATE_FOUR_STAR_GASTROSUISSE_CH
+          - CERTIFICATE_FOUR_STAR_HOTELLERIESUISSE_CH
+          - CERTIFICATE_FOUR_STAR_SERVICED_APARTMENTS_CH
+          - CERTIFICATE_FOUR_STAR_SUPERIOR_CH
+          - CERTIFICATE_FOUR_STAR_SUPERIOR_HOTTELLERIESUISSE_CH
+          - CERTIFICATE_GLIDE_RESTAAURANTS_CH
+          - CERTIFICATE_GREENSIGN_LEVEL_3
+          - CERTIFICATE_GREENSIGN_LEVEL_4
+          - CERTIFICATE_IBEX_FAIRSTAY_CH
+          - CERTIFICATE_LAND_URLAUB
+          - CERTIFICATE_MICHELIN_STERN
+          - CERTIFICATE_MOEHNETALRADWEG
+          - CERTIFICATE_MOTORBIKE_FRIENDLY
+          - CERTIFICATE_NACHHALTIGE_FERIENIMMOBILIE
+          - CERTIFICATE_NATURPARK_WIRTE
+          - CERTIFICATE_OHNE_GLUTEN_CH
+          - CERTIFICATE_ONE_STAR_CH
+          - CERTIFICATE_ONE_STAR_GASTROSUISSE_CH
+          - CERTIFICATE_ONE_STAR_HOTELLERIESUISSE_CH
+          - CERTIFICATE_ONE_STAR_SERVICED_APARTMENTS_CH
+          - CERTIFICATE_ONE_STAR_SUPERIOR_CH
+          - CERTIFICATE_ONE_STAR_SUPERIOR_HOTELLERIESUISSE_CH
+          - CERTIFICATE_PARTNER_NATIONALPARK_SCHWARZWALD
+          - CERTIFICATE_QUALITAETSBETRIEB_ROTHAARSTEIG
+          - CERTIFICATE_SAUERLAENDER_WANDERGASTHOEFE
+          - CERTIFICATE_SAUERLAND_HOEHENFLUG
+          - CERTIFICATE_SCHMALLENBERGER_KINDERLAND
+          - CERTIFICATE_SCHMECK_DEN_SUEDEN
+          - CERTIFICATE_SCHNEESPORTHOTEL_HOTELLERIESUISSE_CH
+          - CERTIFICATE_SCHWARZWALD_BALANCE
+          - CERTIFICATE_SCHWARZWALD_PLUS
+          - CERTIFICATE_SERVICE_QUALITAET_DEUTSCHLAND
+          - CERTIFICATE_STERNE_IM_SAUERLAND
+          - CERTIFICATE_STV_FIVE_STARS_CH
+          - CERTIFICATE_STV_FIVE_STARS_SUP_CH
+          - CERTIFICATE_STV_FOUR_STARS_CH
+          - CERTIFICATE_STV_FOUR_STARS_SUP_CH
+          - CERTIFICATE_STV_ONE_STAR_CH
+          - CERTIFICATE_STV_ONE_STAR_SUP_CH
+          - CERTIFICATE_STV_THREE_STARS_CH
+          - CERTIFICATE_STV_THREE_STARS_SUP_CH
+          - CERTIFICATE_STV_TWO_STARS_CH
+          - CERTIFICATE_STV_TWO_STARS_SUP_CH
+          - CERTIFICATE_SWISS_HISTORIC_HOTELS_CH
+          - CERTIFICATE_SWISS_LODGE_HOTTELIERSUISSE_CH
+          - CERTIFICATE_SWISSTAINABLE_LEVEL_ONE_CH
+          - CERTIFICATE_SWISSTAINABLE_LEVEL_TWO_CH
+          - CERTIFICATE_SWISSTAINSABLE_LEVEL_THREE_CH
+          - CERTIFICATE_THREE_STAR_CH
+          - CERTIFICATE_THREE_STAR_GASTROSUISSE_CH
+          - CERTIFICATE_THREE_STAR_HOTELLERIESUISSE_CH
+          - CERTIFICATE_THREE_STAR_SERVICED_APARTMENTS_CH
+          - CERTIFICATE_THREE_STAR_SUPERIOR_CH
+          - CERTIFICATE_THREE_STAR_SUPERIOR_HOTTELLERIESUISSE_CH
+          - CERTIFICATE_TRAUFGAENGE_GASTGEBER
+          - CERTIFICATE_TWO_STAR_CH
+          - CERTIFICATE_TWO_STAR_GASTROSUISSE_CH
+          - CERTIFICATE_TWO_STAR_HOTELLERIESUISSE_CH
+          - CERTIFICATE_TWO_STAR_SERVICED_APARTMENTS_CH
+          - CERTIFICATE_TWO_STAR_SUPERIOR_CH
+          - CERTIFICATE_TWO_STAR_SUPERIOR_HOTTELLERIESUISSE_CH
+          - CERTIFICATE_URLAUB_AUF_DEM_BAUERNHOF
+          - CERTIFICATE_URLAUB_AUF_DEM_BAUERNHOF_GER
+          - CERTIFICATE_WANDERBARES_DEUTSCHLAND
+          - CERTIFICATE_WANDERBARES_DEUTSCHLAND_GASTRONOMIE
+          - CERTIFICATE_WANDER_HOTEL_HOTTELIERSUISSE_CH
+          - CERTIFICATE_WELLNESS_AND_SPA_HOTTELIERSUISSE_CH
+          - CERTIFICATE_WELLNESS_HOTEL_HOTTELIERSUISSE_CH
+          - CERTIFICATE_WELLNESS_STARS_DEUTSCHLAND
+          - CERTIFICATE_WIN_CHARTA_DES_LANDES_BADEN_WUERTTEMBERG
+          - CERTIFICATE_WINTERSPORTARENA_SAUERLAND
+          - DREIWELTEN_CARD
+          - ECHT_BODENSEE_CARD
+          - GUESTCARD
+          - HOCHSCHWARZWALD_CARD
+          - SAUERLAND_CARD
+          - SAUERLAND_SOMMER_CARD
+          - SCHMALLENBERGER_SAUERLAND_CARD
+          - WILLINGEN_MEINE_CARD
+          - MARKENPARTNER
+          - CERTIFICATE_URLAUBS_WINZERHOF
+          - CERTIFICATE_URLAUBS_REITERHOF
+          - CERTIFICATE_SCHWARZWALD_
+          - BALANCE
+          - CERTIFICATE_VIABONO
+          - CERTIFICATE_MEDICAL_WELLNESS_THREE_STARS
+          - CERTIFICATE_MEDICAL_WELLNESS_FOUR_STARS
+          - CERTIFICATE_MEDICAL_WELLNESS_FIVE_STARS
+          - CERTIFICATE_VIA_MICHELIN_TWO_STARS
+          - CERTIFICATE_VIA_MICHELIN_THREE_STARS
+          - CERTIFICATE_BRONZE_DEHOGA
+          - CERTIFICATE_BIKE_AREA_SAUERLAND
+          - CERTIFICATE_SAUERLAND_WALDROUTE
+          - CERTIFICATE_KAISERSTUEHLER_WINZERHOF
+          - CERTIFICATE_WEINHOTELS_KAISERSTUHL
+          - CERTIFICATE_KOSTENLOS_STORNIERBAR_GARANTIE
+          - CERTIFICATE_WIR_FUER_SIE
+          - CERTIFICATE_PARTNER_BIOSPHAERENGEBIET_SCHWAEBISCHE_ALB
+          - CERTIFICATE_REISEN_FUER_ALLE
+          - CERTIFICATE_DLG_
+          - LANDURLAUB
+          - CERTIFICATE_BIOSFERA_PARTNERBETRIEB_CH
+          - THEMENPARTNER_KULTUR
+          - THEMENPARTNER_RAD
+          - THEMENPARTNER_WANDERN
+          - THEMENPARTNER_FAMILIE
+          - THEMENPARTNER_WELLNESS
+          - TOP_GASTGEBER_BOFE
+          - LUNCH
+          - DINNER
+        maxAmount:
+          type: integer
+          description: Max Amount
+          format: int32
+          example: 1
+        privateUsage:
+          type: boolean
+          description: Facility is in private use
+          example: true
+        additionalFeesApply:
+          type: boolean
+          description: Additional fees apply for the use of this facility
+          example: true
+        room:
+          $ref: '#/components/schemas/Room'
+        availableTime:
+          $ref: '#/components/schemas/FacilityAvailabilityData'
+        location:
+          type: string
+          description: Location of facility
+          example: NEAR_BY
+          enum:
+          - UNDEFINED
+          - NEAR_BY
+          - IN_APARTMENT
+    AvailableTime:
+      type: object
+      properties:
+        pointInMonth:
+          type: string
+          description: Point in the month
+          example: MIDDLE
+          enum:
+          - BEGINNING
+          - MIDDLE
+          - END
+        month:
+          type: string
+          description: Month
+          example: JANUARY
+          enum:
+          - JANUARY
+          - FEBRUARY
+          - MARCH
+          - APRIL
+          - MAY
+          - JUNE
+          - JULY
+          - AUGUST
+          - SEPTEMBER
+          - OCTOBER
+          - NOVEMBER
+          - DECEMBER
+      description: Time until facility would be available
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.
