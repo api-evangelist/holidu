@@ -1,0 +1,115 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/holidu-connectivity-api.json
+note: >-
+  Entity graph derived from the Connectivity API operations and component
+  schemas (61 schemas). Identifiers observed: apartmentId (apartment key),
+  providerGroupId (multi-unit parent), rateId (rate plan), bookingId. SEARCH of
+  the object reference did not surface documented id-prefix conventions.
+entities:
+- name: MultiUnitParent
+  id_field: providerGroupId
+  description: Parent listing for a compound/park/hotel/guest house grouping multiple apartments.
+  operations: [getMultiUnit, upsertMultiUnit, getMultiUnitPhotos, updateMultiUnitPhotos, getMultiUnitFacilities, updateMultiUnitFacilities, getMultiUnitDescriptions, updateMultiUnitDescriptions]
+- name: Apartment
+  id_field: apartmentId
+  description: A rentable unit; the central entity most sub-resources belong to.
+  operations: [getApartment, upsertApartment, activateApartment, deactivateApartment, getAllApartmentInformation, getApartmentValidation]
+- name: Description
+  belongs_to: Apartment
+  operations: [getApartmentDescriptions, upsertApartmentDescriptions]
+- name: Facility
+  belongs_to: Apartment
+  operations: [getFacilities, updateFacilities, getFacilityTypes, getFacilityLocations]
+- name: Photo
+  belongs_to: Apartment
+  operations: [getPhotos, updatePhotos]
+- name: Review
+  belongs_to: Apartment
+  operations: [getCustomerReviews, updateCustomerReviews]
+- name: LengthOfStay
+  belongs_to: Apartment
+  operations: [getLos, upsertLos, deleteLos, getLosRateIds]
+- name: Availability
+  belongs_to: Apartment
+  operations: [getAvailability, updateAvailability]
+- name: Rate
+  belongs_to: Apartment
+  id_field: rateId
+  operations: [getRates, setRates]
+- name: ExtraCost
+  belongs_to: Apartment
+  operations: [getExtraCosts, updateExtraCosts]
+- name: Discount
+  belongs_to: Apartment
+  operations: [getDiscountById, upsertDiscount, getDiscounts]
+- name: TermsAndConditions
+  belongs_to: Apartment
+  operations: [getTermsAndConditions, updateTermsAndConditions]
+- name: PaymentConfiguration
+  belongs_to: Apartment
+  operations: [getPaymentConfiguration, updatePaymentConfiguration, deletePaymentConfiguration, getPaymentConfigurationRateIds]
+- name: CancellationPolicy
+  belongs_to: Apartment
+  operations: [getCancellationPolicy, updateCancellationConditions, deleteCancellationPolicy, getCancellationPolicyRateIds]
+- name: Booking
+  id_field: bookingId
+  belongs_to: Apartment
+  operations: [updateBooking, cancelBooking, getBookingDetails]
+relationships:
+- from: MultiUnitParent
+  to: Apartment
+  type: has_many
+  via: providerGroupId
+- from: Apartment
+  to: Description
+  type: has_many
+  via: apartmentId
+- from: Apartment
+  to: Facility
+  type: has_many
+  via: apartmentId
+- from: Apartment
+  to: Photo
+  type: has_many
+  via: apartmentId
+- from: Apartment
+  to: Review
+  type: has_many
+  via: apartmentId
+- from: Apartment
+  to: LengthOfStay
+  type: has_many
+  via: apartmentId
+- from: Apartment
+  to: Availability
+  type: has_many
+  via: apartmentId
+- from: Apartment
+  to: Rate
+  type: has_many
+  via: apartmentId
+- from: Apartment
+  to: ExtraCost
+  type: has_many
+  via: apartmentId
+- from: Apartment
+  to: Discount
+  type: has_many
+  via: apartmentId
+- from: Apartment
+  to: TermsAndConditions
+  type: has_one
+  via: apartmentId
+- from: Apartment
+  to: PaymentConfiguration
+  type: has_many
+  via: rateId
+- from: Apartment
+  to: CancellationPolicy
+  type: has_many
+  via: rateId
+- from: Apartment
+  to: Booking
+  type: has_many
+  via: apartmentId

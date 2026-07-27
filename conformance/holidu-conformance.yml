@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: derived
+source:
+- openapi/holidu-connectivity-api.json
+- openapi/holidu-affiliate-api.json
+- https://developer.holidu.com/reference
+standards:
+- id: openapi-3
+  conforms: true
+  evidence: All published specs are OpenAPI 3.0/3.1 documents.
+- id: apikey-auth
+  conforms: true
+  evidence: Connectivity API uses an api-key header; Affiliate API uses x-api-key.
+- id: oauth2
+  conforms: true
+  evidence: >-
+    The security service issues tokens via OAuth 2.0 client_credentials; Holidu
+    authenticates to affiliate LOS-push callbacks with an OAuth 2.0 Bearer JWT
+    (RFC 6750).
+- id: rfc6750-bearer-jwt
+  conforms: true
+  evidence: Affiliate BearerAuth scheme is http/bearer with bearerFormat JWT (RFC 6750).
+- id: rfc9110-idempotent-put
+  conforms: true
+  evidence: LOS Push (PUT /{apartmentId}/los) is an idempotent upsert per RFC 9110 section 9.3.4.
+- id: rfc6570-uri-template
+  conforms: true
+  evidence: Affiliate details response returns an RFC 6570-compatible urlTemplate.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use custom JSON envelopes, not application/problem+json.
+- id: json-api
+  conforms: false
+- id: fhir-r4
+  conforms: false
+- id: fapi
+  conforms: false
+- id: scim
+  conforms: false

@@ -1,0 +1,11 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/holidu-hapi-with-oauth20.json, openapi/holidu-security-service-with-tokens.json
+schemes:
+- name: sec0
+  source: openapi/holidu-hapi-with-oauth20.json
+  flows: []
+- name: sec0
+  source: openapi/holidu-security-service-with-tokens.json
+  flows: []
+scopes: []

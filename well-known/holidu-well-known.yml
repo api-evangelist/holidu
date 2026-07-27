@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+host: https://www.holidu.com
+documents:
+- path: /.well-known/security.txt          # RFC 9116
+  status: 200
+  file: holidu-security.txt
+- path: /.well-known/openid-configuration   # OIDC discovery
+  status: 403
+- path: /.well-known/oauth-authorization-server  # RFC 8414
+  status: 403
+- path: /.well-known/api-catalog             # RFC 9727
+  status: 403
+- path: /.well-known/ai-plugin.json
+  status: 403
+notes: >-
+  Only /.well-known/security.txt returned 200. The remaining probes returned 403
+  (edge bot-protection on the not-found handler), which is not a confirmed
+  published document. The developer hub publishes an AI index at
+  https://developer.holidu.com/llms.txt (captured under llms/).

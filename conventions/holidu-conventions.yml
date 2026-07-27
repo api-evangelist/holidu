@@ -1,0 +1,68 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.holidu.com/docs/request-urls
+derived_from:
+- openapi/holidu-connectivity-api.json
+- openapi/holidu-affiliate-api.json
+authentication:
+  style: api-key-header
+  connectivity_api:
+    header: api-key
+  affiliate_api:
+    header: x-api-key
+    alternative: Bearer JWT (OAuth 2.0, RFC 6750) for Holidu-initiated LOS push callbacks
+  security_service:
+    flow: oauth2 client_credentials
+  cross_link: authentication/holidu-authentication.yml
+idempotency:
+  supported: true
+  style: idempotent-put-upsert
+  detail: >-
+    The Affiliate LOS Push endpoint (PUT /{apartmentId}/los) is an idempotent
+    upsert per RFC 9110 §9.3.4: the request body always carries the complete LOS
+    dataset for the apartment and fully replaces any previously stored data
+    (201 Created on first store, 204 No Content on replace). Connectivity upsert
+    operations (upsertApartment, upsertLos, upsertDiscount, etc.) follow the same
+    full-replace semantics. There is no Idempotency-Key header; idempotency is a
+    property of the PUT/upsert contract.
+  reference: https://www.rfc-editor.org/rfc/rfc9110#section-9.3.4
+  cross_link: errors/holidu-problem-types.yml
+pagination:
+  style: page-number
+  scope: affiliate-api search
+  params:
+  - pageIndex
+  - pageSize
+  response_fields:
+  - metadata.totalCount
+  - items
+  - errors
+partial_errors:
+  supported: true
+  detail: >-
+    Affiliate batch endpoints (search, details, availabilities) return an
+    "errors" array alongside "items" so per-property failures are reported
+    without failing the whole request.
+url_templating:
+  standard: RFC 6570
+  detail: >-
+    The Affiliate details endpoint returns an RFC 6570-compatible "urlTemplate"
+    for building checkout links with check-in/check-out dates.
+localization:
+  detail: >-
+    Affiliate requests accept locale and currency parameters; supported values
+    are published at /reference/supported-languages-currencies.
+concurrency:
+  detail: >-
+    Only one update per apartment may be in flight at once; concurrent updates
+    for the same apartment return 429. A 15-second lock applies after an
+    interrupted update before retrying.
+  cross_link: rate-limits
+versioning:
+  scheme: uri-path
+  current: v2
+  cross_link: lifecycle/holidu-lifecycle.yml
+error_envelope:
+  connectivity: '{ "error": "<text>" }'
+  affiliate: '{ "message": "<text>", "code": "<code>", "issues": [...] }'
+  cross_link: errors/holidu-problem-types.yml

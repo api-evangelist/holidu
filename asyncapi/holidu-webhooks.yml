@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.holidu.com/docs/what-is-onsite-booking
+spec_type: Webhooks
+note: >-
+  Holidu does not publish an AsyncAPI document. It does document a webhook/callback
+  surface ("Endpoints on your side") that the partner implements and Holidu calls
+  in real time, plus a Holidu-initiated LOS push. No event surface is fabricated;
+  these are the documented callback contracts.
+webhooks:
+- name: real-time-availability-request
+  direction: holidu-to-partner
+  description: Holidu requests real-time availability for a property from the partner.
+  docs: https://developer.holidu.com/docs/real-time-availability-request
+- name: real-time-booking-request
+  direction: holidu-to-partner
+  description: Holidu sends a real-time booking request to the partner (onsite booking flow).
+  docs: https://developer.holidu.com/docs/booking-notification-body
+- name: real-time-booking-cancellation-notification
+  direction: holidu-to-partner
+  description: Receive real-time notifications when a cancellation happens through Holidu.
+  docs: https://developer.holidu.com/docs/real-time-booking-cancellation-notification
+- name: real-time-booking-modification-notification
+  direction: holidu-to-partner
+  description: Receive real-time notifications when a booking is modified through Holidu.
+  docs: https://developer.holidu.com/docs/real-time-booking-modification-notification
+- name: los-push
+  direction: holidu-to-affiliate
+  description: >-
+    Holidu pushes the complete length-of-stay pricing dataset to the affiliate
+    (idempotent PUT upsert, RFC 9110). Authenticated with an OAuth 2.0 Bearer JWT.
+  operation: openapi/holidu-affiliate-api.json#upsertLos

@@ -1,0 +1,21 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.holidu.com/changelog
+versioning:
+  scheme: uri-path
+  current: v2
+  note: >-
+    The Connectivity API paths are prefixed /v2/. Holidu API V2 was officially
+    released and is the current version; V1 (HAPI v1) is deprecated.
+  docs: https://developer.holidu.com/reference/intro
+deprecation:
+  policy: >-
+    Holidu API V1 (HAPI version 1) is deprecated. No new development is planned
+    for V1 and partners are asked to migrate to V2 "as soon as possible." No
+    firm sunset date is published in the changelog.
+  deprecated_version: v1
+  migrate_to: v2
+  announcement: https://developer.holidu.com/changelog/hapi-version-1-is-deprecated
+  sunset_header: false
+status_page: https://status.holidu.com/
+deprecated_operations: []

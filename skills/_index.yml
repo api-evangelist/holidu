@@ -1,0 +1,15 @@
+generated: '2026-07-19'
+method: generated
+skills:
+- file: holidu-search-and-details.md
+  name: Search Holidu offers and retrieve details
+  api: openapi/holidu-affiliate-api.json
+  operations: [search, details, availabilities, changed]
+- file: holidu-onboard-apartment.md
+  name: Onboard an apartment to Holidu
+  api: openapi/holidu-connectivity-api.json
+  operations: [upsertApartment, upsertApartmentDescriptions, updatePhotos, updateFacilities, getApartmentValidation, activateApartment, deactivateApartment]
+- file: holidu-manage-rates-availability.md
+  name: Manage Holidu rates, availability and length-of-stay pricing
+  api: openapi/holidu-connectivity-api.json
+  operations: [updateAvailability, setRates, upsertLos, updateExtraCosts, upsertDiscount, getLosRateIds]

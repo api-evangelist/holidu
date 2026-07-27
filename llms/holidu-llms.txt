@@ -1,0 +1,105 @@
+# Holidu Developer Hub Documentation
+
+> Our Holidu API allows you to connect with millions of travellers all over the world, simply by developing a few HAPI endpoints.
+
+## Guides
+- [Required Steps to implement Holidu Payment](https://developer.holidu.com/docs/required-steps-to-implement-holidu-payment.md)
+- [Request URLs](https://developer.holidu.com/docs/request-urls.md)
+- [Apartments](https://developer.holidu.com/docs/general-static-data.md)
+- [Descriptions](https://developer.holidu.com/docs/localization.md)
+- [Photos](https://developer.holidu.com/docs/photos.md)
+- [Facilities](https://developer.holidu.com/docs/facilities.md)
+- [Reviews](https://developer.holidu.com/docs/reviews-1.md)
+- [A Multi-Unit Parent Listing](https://developer.holidu.com/docs/multi-unit-parent-listing.md): This endpoint creates a parent listing (compound, establishment, guest houses, or hotel) and returns a "providerGroupId" to be used with other Multi-Unit endpoints.
+- [A Multi-Unit Parent Listing Description](https://developer.holidu.com/docs/multi-unit-parent-listing-description.md): The Parent Unit Description Endpoint is specifically designed to manage and update descriptive information for parent multi-unit listing, such as parks, hotels, guest houses, or similar establishments. This endpoint enables detailed descriptions that help convey the unique attributes, atmosphere, and key features of these properties to potential guests and residents.
+- [A Multi-Unit Parent Listing Photos](https://developer.holidu.com/docs/multi-unit-parent-listing-photos.md): The Parent Listing Photos Endpoint is designed to manage and update visual content for parent multi-unit properties, such as holiday parks, hotels, guest houses, and similar establishments. This endpoint focuses on showcasing the entire compound or establishment, including its facilities and shared amenities, rather than individual property-level details.
+- [A Multi-Unit Parent Listing Facilities](https://developer.holidu.com/docs/multi-unit-parent-listing-facilities.md): The Parent Listing Facilities Endpoint is designed specifically for sending facility information related to parent multi-unit properties such as parks, hotels, guest houses, or similar establishments. These facilities are accessible to the residents of the complex and can vary in terms of accessibility, cost, and privacy.
+- [Length of stay (LOS)](https://developer.holidu.com/docs/length-of-stay-los.md)
+- [Extra costs](https://developer.holidu.com/docs/extra-costs-1.md)
+- [Discounts](https://developer.holidu.com/docs/discounts-1.md)
+- [Payment configuration](https://developer.holidu.com/docs/payment-configuration.md)
+- [Cancellation conditions](https://developer.holidu.com/docs/cancellation-conditions.md)
+- [Cancel bookings](https://developer.holidu.com/docs/cancel-bookings.md)
+- [Endpoints on your side](https://developer.holidu.com/docs/what-is-onsite-booking.md)
+- [Real time availability request](https://developer.holidu.com/docs/real-time-availability-request.md)
+- [Real time booking request](https://developer.holidu.com/docs/booking-notification-body.md)
+- [Credit Card Payment Through PCI](https://developer.holidu.com/docs/credit-card-payment-through-pci.md)
+- [Real time booking cancellation notification](https://developer.holidu.com/docs/real-time-booking-cancellation-notification.md): Receive real-time notifications when a cancellation happens through Holidu.
+- [Real-time booking modification notification](https://developer.holidu.com/docs/real-time-booking-modification-notification.md)
+
+## API Reference
+- [Get parent apartment in multi-unit structure](https://developer.holidu.com/reference/getmultiunit.md)
+- [Create or update parent apartment in multi-unit structure](https://developer.holidu.com/reference/upsertmultiunit.md)
+- [Intro](https://developer.holidu.com/reference/intro.md)
+- [API response codes](https://developer.holidu.com/reference/api-response-codes.md)
+- [Get photos for a multi-unit](https://developer.holidu.com/reference/getmultiunitphotos.md)
+- [Update photos for a multi-unit](https://developer.holidu.com/reference/updatemultiunitphotos.md)
+- [Get facilities for a multi-unit](https://developer.holidu.com/reference/getmultiunitfacilities.md)
+- [Update facilities for a multi-unit](https://developer.holidu.com/reference/updatemultiunitfacilities.md)
+- [Get descriptions for a multi-unit](https://developer.holidu.com/reference/getmultiunitdescriptions.md)
+- [Update descriptions for a multi-unit](https://developer.holidu.com/reference/updatemultiunitdescriptions.md)
+- [Deactivate apartment for provider](https://developer.holidu.com/reference/deactivateapartment.md)
+- [Activate apartment for provider](https://developer.holidu.com/reference/activateapartment.md)
+- [Get an apartment](https://developer.holidu.com/reference/getapartment.md)
+- [Create or update an apartment](https://developer.holidu.com/reference/upsertapartment.md)
+- [Get basic information about all apartments](https://developer.holidu.com/reference/getallapartmentinformation.md)
+- [Get validation result of apartment](https://developer.holidu.com/reference/getapartmentvalidation.md)
+- [Get descriptions for an apartment](https://developer.holidu.com/reference/getapartmentdescriptions.md)
+- [Create or update descriptions for an apartment](https://developer.holidu.com/reference/upsertapartmentdescriptions.md)
+- [Get facilities for apartment](https://developer.holidu.com/reference/getfacilities.md)
+- [Update facilities for an apartment](https://developer.holidu.com/reference/updatefacilities.md)
+- [Get facility types](https://developer.holidu.com/reference/getfacilitytypes.md)
+- [Get facility locations](https://developer.holidu.com/reference/getfacilitylocations.md)
+- [Get photos for an apartment](https://developer.holidu.com/reference/getphotos.md)
+- [Update photos for an apartment](https://developer.holidu.com/reference/updatephotos.md)
+- [Get customer reviews for apartment](https://developer.holidu.com/reference/getcustomerreviews.md)
+- [Post the customer reviews of an apartment](https://developer.holidu.com/reference/updatecustomerreviews.md)
+- [Get LOS for an apartment](https://developer.holidu.com/reference/getlos.md)
+- [Create or update LOS for an apartment](https://developer.holidu.com/reference/upsertlos.md)
+- [Delete LOS for an apartment](https://developer.holidu.com/reference/deletelos.md)
+- [Get LOS rate Ids for an apartment](https://developer.holidu.com/reference/getlosrateids.md)
+- [Get apartment availability](https://developer.holidu.com/reference/getavailability.md)
+- [Update apartment availability](https://developer.holidu.com/reference/updateavailability.md)
+- [Get apartment rate plans](https://developer.holidu.com/reference/getrates.md)
+- [Update apartment rate plans](https://developer.holidu.com/reference/setrates.md)
+- [Get the extra costs of an apartment](https://developer.holidu.com/reference/getextracosts.md)
+- [Update the extra costs of an apartment](https://developer.holidu.com/reference/updateextracosts.md)
+- [Get a single discount for an apartment by discount id](https://developer.holidu.com/reference/getdiscountbyid.md)
+- [Create or update a single discount for an apartment](https://developer.holidu.com/reference/upsertdiscount.md)
+- [Get discounts for an apartment](https://developer.holidu.com/reference/getdiscounts.md)
+- [Get terms and conditions for apartment](https://developer.holidu.com/reference/gettermsandconditions.md)
+- [Update terms and conditions for apartment](https://developer.holidu.com/reference/updatetermsandconditions.md)
+- [Get payment configuration for apartment](https://developer.holidu.com/reference/getpaymentconfiguration.md)
+- [Update payment configuration for apartment](https://developer.holidu.com/reference/updatepaymentconfiguration.md): Replaces existing payment configurations with new ones for apartment
+- [Delete payment configuration for apartment](https://developer.holidu.com/reference/deletepaymentconfiguration.md): Deletes existing payment configuration for apartment
+- [Get cancellation conditions for apartment](https://developer.holidu.com/reference/getcancellationpolicy.md)
+- [Update cancellation conditions for apartment](https://developer.holidu.com/reference/updatecancellationconditions.md): Replaces any pre-configured cancellation policies with new ones for Apartment
+- [Delete cancellation policy for apartment](https://developer.holidu.com/reference/deletecancellationpolicy.md): Deletes existing cancellation policy for apartment
+- [Get payment configuration rateIds for apartment](https://developer.holidu.com/reference/getpaymentconfigurationrateids.md)
+- [Get cancellation policy rate Ids for apartment](https://developer.holidu.com/reference/getcancellationpolicyrateids.md)
+- [Update booking details](https://developer.holidu.com/reference/updatebooking.md)
+- [Cancel a booking](https://developer.holidu.com/reference/cancelbooking.md)
+- [Get booking details](https://developer.holidu.com/reference/getbookingdetails.md)
+- [Introduction](https://developer.holidu.com/reference/intro-1.md): In this API reference section of the developer hub, you can find all endpoints the **Holidu Affiliate API** offers.   The API allows you to search for offers, retrieve detailed property information, check availabilities, and stay in sync with changes.
+- [How to Integrate with Holidu: Capabilities & Use Cases](https://developer.holidu.com/reference/how-to-integrate-with-holidu-capabilities-use-cases.md)
+- [Search for offers based on the provided criteria](https://developer.holidu.com/reference/search-1.md): Retrieve a paginated list of offers matching specified filtering criteria, ranked by relevance. If dates are provided, only available offers for those dates are returned with exact pricing. Each offer includes basic property information.
+- [Get detailed information about the provided offers](https://developer.holidu.com/reference/details-1.md): Retrieve detailed static information for specified offers. The "extras" parameter allows for the inclusion of additional data points to the response. The response includes an RFC 6570-compatible "urlTemplate" for generating checkout page links with check-in and check-out dates. If some requested offers cannot be retrieved, these will be reported in the "errors" array, with the corresponding property identifier, error code, and descriptive message.
+- [Get a list of property IDs that have changed within the specified time window.](https://developer.holidu.com/reference/changed-1.md): Returns property IDs with data potentially updated within the specified time range. The inventory is continuously refreshed, with more frequent updates for recent days.
+- [Get information about the availability of given offers](https://developer.holidu.com/reference/availabilities-1.md): Retrieve real-time prices and availability for specified properties on given dates.
+- [Create or replace LOS data for an apartment](https://developer.holidu.com/reference/upsertlos-1.md): Holidu calls this endpoint to push the complete LOS data for an apartment to the affiliate.  This is an idempotent upsert ([RFC 9110 §9.3.4](https://www.rfc-editor.org/rfc/rfc9110#section-9.3.4)): - If the affiliate does not yet have LOS data for this apartment, it should store the payload and respond with `201 Created`. - If LOS data already exists, the affiliate should **fully replace** it with the provided payload and respond with `204 No Content`.  The request body always contains the **complete** LOS dataset for the apartment. Any check-in dates the affiliate previously stored but that are absent from this payload are no longer valid and must be removed.  An empty `los` map (`{}`) means no pricing is available for the apartment — the affiliate should remove all stored LOS data for it.  ## Authentication  Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)).  | Property | Value | |----------|-------| | **Type** | `http` | | **Scheme** | `bearer` | | **Bearer format** | `JWT` |  Token exchange details are agreed upon during onboarding.  ## Request body examples  **Multiple check-in dates with tiered pricing:** ```json {   "los": {     "2024-06-01": [       { "currency": "EUR", "guests": 2, "price": [0, 0, 300.00, 400.00, 500.00] },       { "currency": "EUR", "guests": 4, "price": [0, 0, 350.00, 460.00, 580.00] }     ],     "2024-06-02": [       { "currency": "EUR", "guests": 2, "price": [0, 150.00, 280.00] }     ]   } } ```  **Single check-in date with one pricing tier:** ```json {   "los": {     "2024-06-01": [       { "currency": "EUR", "guests": 2, "price": [0, 0, 300.00, 400.00, 500.00] }     ]   } } ```  **Empty LOS (no pricing available / fully booked):** ```json { "los": {} } ```
+- [Property Types](https://developer.holidu.com/reference/property-types.md)
+- [Languages & Currencies](https://developer.holidu.com/reference/supported-languages-currencies.md): This page lists all currencies and locales you can use with the currency and locale parameters in the Holidu Affiliate API. Provide these codes in your requests to receive prices in the requested currency and content (descriptions, room details) in the requested language/region.
+
+## Recipes
+- [Basic LOS](https://developer.holidu.com/recipes/basic-los.md)
+- [Recipe Title](https://developer.holidu.com/recipes/recipe-title.md)
+
+## Pages
+- [Holidu Whitelabels](https://developer.holidu.com/holidu-whitelabels.md)
+
+## Changelog
+- [📈 Digest into multi-rates in Holidu API!](https://developer.holidu.com/changelog/digest-into-multi-rates-in-holidu-api.md)
+- [Check out our newly added feature - Booking lead time](https://developer.holidu.com/changelog/draft-check-out-our-newly-added-feature-booking-lead-time.md)
+- [Let's enhance facilities!](https://developer.holidu.com/changelog/lets-enhance-facilities.md)
+- [Meet our enhanced Discount Endpoint!](https://developer.holidu.com/changelog/our-new-discount-endpoint.md)
+- [Get ready to migrate to Holidu API V2!](https://developer.holidu.com/changelog/hapi-version-1-is-deprecated.md)

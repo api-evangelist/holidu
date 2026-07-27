@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Holidu Connectivity API
+  version: 1.0.0
+extends: openapi/holidu-connectivity-api.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enrichment:
+      auth: api-key header (per-partner key issued at onboarding)
+      environments: sandbox provider-api-sandbox.holidu.com / prod provider-api.holidu.com
+      idempotency: upsert operations fully replace resource state (RFC 9110 semantics)
+      concurrency: one in-flight update per apartment; concurrent same-apartment updates return 429; 15s lock
+      versioning: uri-path /v2 (V1 deprecated)
+      data_model: data-model/holidu-data-model.yml
+      errors: errors/holidu-problem-types.yml
+      conventions: conventions/holidu-conventions.yml
+- target: $.info
+  update:
+    x-agentic-access: agentic-access/holidu-agentic-access.yml

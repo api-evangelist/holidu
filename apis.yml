@@ -1,8 +1,19 @@
 aid: holidu
 name: Holidu
-description: 'Holidu is a company surfaced as a portfolio company of eqt-ventures, hv-capital, northzone
-  and added to the API Evangelist network as a stub for enrichment. Sector: travel-and-leisure. This profile
-  is a lead awaiting the enrichment pipeline.'
+description: >-
+  Holidu is a Munich-based vacation-rental search engine and short-term-rental
+  technology company that helps travellers find and book holiday homes and helps
+  property owners and managers distribute their inventory. Holidu exposes a public
+  Developer Hub with two production REST APIs: the Affiliate API, for searching
+  offers, retrieving property details, checking real-time availability and syncing
+  changes; and the Connectivity (provider) API, a v2 property-management surface of
+  ~50 operations covering apartments, multi-unit listings, descriptions, photos,
+  facilities, reviews, rates, length-of-stay pricing, availability, extra costs,
+  discounts, booking terms, payment and cancellation configuration, and bookings.
+  Authentication is via per-partner API keys (with an OAuth 2.0 security service and
+  Bearer-JWT callbacks), sandbox and production hosts are separated, and Holidu runs
+  a HackerOne bug-bounty program. Holidu is backed by EQT Ventures, HV Capital and
+  Northzone.
 url: https://raw.githubusercontent.com/api-evangelist/holidu/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,20 +21,432 @@ x-backed-by:
 - eqt-ventures
 - hv-capital
 - northzone
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: developer-hub-with-openapi
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Travel And Leisure
-apis: []
+- Vacation Rentals
+- Short-Term Rentals
+- Hospitality
+- Property Management
+- Booking
+- Channel Manager
+- Connectivity
+- Affiliate
+apis:
+- aid: holidu:holidu-apartment-api
+  name: Holidu Apartment API
+  description: The Apartment API from Holidu — 5 operation(s) for apartment.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Apartment
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-apartment-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-availabilities-api
+  name: Holidu Availabilities API
+  description: The Availabilities API from Holidu — 1 operation(s) for availabilities.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Availabilities
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-availabilities-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-availability-api
+  name: Holidu Availability API
+  description: The Availability API from Holidu — 1 operation(s) for availability.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Availability
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-availability-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-booking-terms-api
+  name: Holidu Booking Terms API
+  description: The Booking Terms API from Holidu — 5 operation(s) for booking terms.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Booking Terms
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-booking-terms-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-bookings-api
+  name: Holidu Bookings API
+  description: The Bookings API from Holidu — 3 operation(s) for bookings.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Bookings
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-bookings-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-changed-api
+  name: Holidu Changed API
+  description: The Changed API from Holidu — 1 operation(s) for changed.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Changed
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-changed-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-descriptions-api
+  name: Holidu Descriptions API
+  description: The Descriptions API from Holidu — 1 operation(s) for descriptions.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Descriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-descriptions-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-details-api
+  name: Holidu Details API
+  description: The Details API from Holidu — 1 operation(s) for details.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Details
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-details-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-discounts-api
+  name: Holidu Discounts API
+  description: The Discounts API from Holidu — 2 operation(s) for discounts.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Discounts
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-discounts-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-extra-costs-api
+  name: Holidu Extra Costs API
+  description: The Extra Costs API from Holidu — 1 operation(s) for extra costs.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Extra Costs
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-extra-costs-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-facilities-api
+  name: Holidu Facilities API
+  description: The Facilities API from Holidu — 3 operation(s) for facilities.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Facilities
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-facilities-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-los-api
+  name: Holidu LOS API
+  description: The LOS API from Holidu — 2 operation(s) for los.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - LOS
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-los-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-los-push-api-api
+  name: Holidu LOS Push API API
+  description: Length of Stay pricing push operations.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - LOS Push API
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-los-push-api-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-multiunit-api
+  name: Holidu MultiUnit API
+  description: The MultiUnit API from Holidu — 1 operation(s) for multiunit.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - MultiUnit
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-multiunit-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-multiunit-facility-api
+  name: Holidu MultiUnit Facility API
+  description: The MultiUnit Facility API from Holidu — 1 operation(s) for multiunit facility.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - MultiUnit Facility
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-multiunit-facility-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-multiunit-localization-api
+  name: Holidu MultiUnit Localization API
+  description: The MultiUnit Localization API from Holidu — 1 operation(s) for multiunit localization.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - MultiUnit Localization
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-multiunit-localization-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-multiunit-photo-api
+  name: Holidu MultiUnit Photo API
+  description: The MultiUnit Photo API from Holidu — 1 operation(s) for multiunit photo.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - MultiUnit Photo
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-multiunit-photo-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-photos-api
+  name: Holidu Photos API
+  description: The Photos API from Holidu — 1 operation(s) for photos.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Photos
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-photos-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-rates-api
+  name: Holidu Rates API
+  description: The Rates API from Holidu — 1 operation(s) for rates.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Rates
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-rates-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-reviews-api
+  name: Holidu Reviews API
+  description: The Reviews API from Holidu — 1 operation(s) for reviews.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Reviews
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-reviews-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-search-api
+  name: Holidu Search API
+  description: The Search API from Holidu — 1 operation(s) for search.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-search-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-test-api
+  name: Holidu Test API
+  description: The Test API from Holidu — 1 operation(s) for test.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Test
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-test-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
+- aid: holidu:holidu-testa-api
+  name: Holidu Testa API
+  description: The Testa API from Holidu — 1 operation(s) for testa.
+  humanURL: https://developer.holidu.com/reference/intro-1
+  baseURL: https://external-api.holidu.com
+  tags:
+  - Testa
+  properties:
+  - type: OpenAPI
+    url: openapi/holidu-testa-api-openapi.yml
+  - type: Sandbox
+    url: sandbox/holidu-sandbox.yml
+  - type: DataModel
+    url: data-model/holidu-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+image: https://www.holidu.com/favicon.ico
 common:
 - type: Website
   url: https://www.holidu.com/
+- type: DeveloperPortal
+  url: https://developer.holidu.com/
+- type: Documentation
+  url: https://developer.holidu.com/docs
+- type: APIReference
+  url: https://developer.holidu.com/reference
+- type: GettingStarted
+  url: https://developer.holidu.com/reference/how-to-integrate-with-holidu-capabilities-use-cases
+- type: ChangeLog
+  url: https://developer.holidu.com/changelog
+- type: StatusPage
+  url: https://status.holidu.com/
+- type: Support
+  url: https://developer.holidu.com/discuss
+- type: SignUp
+  url: https://partner.holidu.com/
+- type: GitHubOrganization
+  url: https://github.com/holidu
+- type: LLMsTxt
+  url: llms/holidu-llms.txt
+- type: OpenAPI
+  url: openapi/holidu-affiliate-api.json
+- type: OpenAPI
+  url: openapi/holidu-connectivity-api.json
+- type: Authentication
+  url: authentication/holidu-authentication.yml
+- type: OAuthScopes
+  url: scopes/holidu-scopes.yml
+- type: AgenticAccess
+  url: agentic-access/holidu-agentic-access.yml
+- type: Conventions
+  url: conventions/holidu-conventions.yml
+- type: Idempotency
+  url: conventions/holidu-conventions.yml
+- type: ErrorCatalog
+  url: errors/holidu-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/holidu-lifecycle.yml
+- type: Deprecation
+  url: https://developer.holidu.com/changelog/hapi-version-1-is-deprecated
+- type: ChangeLog
+  url: changelog/holidu-changelog.yml
+- type: Sandbox
+  url: sandbox/holidu-sandbox.yml
+- type: DataModel
+  url: data-model/holidu-data-model.yml
+- type: Conformance
+  url: conformance/holidu-conformance.yml
+- type: MCPServer
+  url: mcp/holidu-mcp.yml
+- type: Webhooks
+  url: asyncapi/holidu-webhooks.yml
+- type: WellKnown
+  url: well-known/holidu-well-known.yml
+- type: SecurityTxt
+  url: well-known/holidu-security.txt
+- type: DomainSecurity
+  url: security/holidu-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/holidu-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.holidu.com/.well-known/security.txt
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

@@ -1,0 +1,18 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Holidu Affiliate API
+  version: 1.0.0
+extends: openapi/holidu-affiliate-api.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enrichment:
+      pagination: page-number (pageIndex/pageSize, metadata.totalCount)
+      idempotency: LOS Push (PUT /{apartmentId}/los) is an idempotent upsert per RFC 9110 section 9.3.4
+      url_templating: RFC 6570 urlTemplate in details response
+      partial_errors: batch endpoints return an errors[] alongside items
+      conventions: conventions/holidu-conventions.yml
+      errors: errors/holidu-problem-types.yml
+- target: $.info
+  update:
+    x-agentic-access: agentic-access/holidu-agentic-access.yml

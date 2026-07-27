@@ -1,0 +1,22 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/holidu-connectivity-api.json
+environments:
+- name: sandbox
+  api: Connectivity API
+  base_url: https://provider-api-sandbox.holidu.com
+  purpose: >-
+    Integration/test environment for the Connectivity (provider) API. Declared
+    as the first server entry in the Connectivity API OpenAPI, ahead of the
+    production host.
+- name: production
+  api: Connectivity API
+  base_url: https://provider-api.holidu.com
+- name: production
+  api: Affiliate API
+  base_url: https://external-api.holidu.com
+notes: >-
+  Holidu separates sandbox and production for the Connectivity API by host
+  (provider-api-sandbox vs provider-api). API keys are issued per partner during
+  onboarding; no public self-serve test keys or magic test identifiers are
+  published in the developer hub. No fabricated test credentials are recorded.

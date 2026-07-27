@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source:
+- openapi/holidu-affiliate-api.json
+- openapi/holidu-connectivity-api.json
+note: >-
+  No official hosted/remote Holidu MCP server was found. This is a candidate tool
+  list derived from OpenAPI operations for the two production APIs. The Affiliate
+  API (read-oriented: search/details/availability) is the strongest agent-facing
+  surface; the Connectivity API is a write-heavy property-management surface.
+server:
+  name: holidu
+  transport: http
+tools:
+- name: search_offers
+  description: Search vacation-rental offers by criteria; returns a paginated, ranked list.
+  source_operation: openapi/holidu-affiliate-api.json#search
+- name: get_offer_details
+  description: Retrieve detailed static information for specified offers, including a checkout urlTemplate.
+  source_operation: openapi/holidu-affiliate-api.json#details
+- name: get_availabilities
+  description: Retrieve real-time prices and availability for properties on given dates.
+  source_operation: openapi/holidu-affiliate-api.json#availabilities
+- name: get_changed_properties
+  description: List property IDs whose data changed within a time window (delta sync).
+  source_operation: openapi/holidu-affiliate-api.json#changed
+- name: get_apartment
+  description: Get an apartment's data from the Connectivity API.
+  source_operation: openapi/holidu-connectivity-api.json#getApartment
+- name: get_availability
+  description: Get an apartment's availability calendar.
+  source_operation: openapi/holidu-connectivity-api.json#getAvailability
+- name: get_rates
+  description: Get an apartment's rate plans.
+  source_operation: openapi/holidu-connectivity-api.json#getRates
+- name: get_booking_details
+  description: Get details for a booking.
+  source_operation: openapi/holidu-connectivity-api.json#getBookingDetails

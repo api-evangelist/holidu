@@ -1,0 +1,71 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.holidu.com/reference/api-response-codes
+derived_from:
+- openapi/holidu-connectivity-api.json
+- openapi/holidu-affiliate-api.json
+format: custom-json
+error_envelope:
+  connectivity_api:
+    schema: HoliduErrorResponse
+    shape: '{ "error": "<message text>" }'
+    validation_shape: '{ "errorCode": "<code>", "message": "<text>" }'
+  affiliate_api:
+    shape: '{ "message": "<text>", "code": "<code>", "issues": [ { "message": "<text>" } ] }'
+    partial_errors: >-
+      Batch endpoints (search, details, availabilities) return an "errors" array
+      alongside successful "items" so partial failures are reported per property
+      identifier rather than failing the whole request.
+concurrency_rules:
+  single_apartment_update: >-
+    Only one update per apartment may be in flight at a time; concurrent updates
+    for the same apartment trigger 429. Concurrent requests are only permitted
+    for different apartments.
+  lock_period_seconds: 15
+problems:
+- status: 200
+  title: Success
+  meaning: The request was processed; the response body shows what was processed.
+- status: 202
+  title: Accepted
+  meaning: The request was accepted but not necessarily successful. Used for booking updates.
+  source_operation: openapi/holidu-connectivity-api.json#updateBooking
+- status: 400
+  title: Bad Request
+  meaning: Usually a missing or malformed parameter.
+  remediation: Verify request syntax and that all required parameters are present.
+- status: 401
+  title: Unauthorized
+  meaning: A valid api_key was not provided, so the API could not associate a user with the request.
+  remediation: Supply a valid API key in the api-key (Connectivity) or x-api-key (Affiliate) header.
+- status: 403
+  title: Forbidden
+  meaning: The caller is authenticated but not permitted to perform the action.
+- status: 404
+  title: Not Found
+  meaning: The request method and path do not specify a known action, or the object specified does not exist.
+- status: 406
+  title: Not Acceptable
+  meaning: The endpoint does not accept the pushed data in the account configuration (e.g. pushing to rates/availability while configured for LOS).
+  source_operation: openapi/holidu-connectivity-api.json#updateAvailability
+- status: 409
+  title: Conflict
+  meaning: The resource state conflicts with the request (e.g. duplicate customer reviews).
+  source_operation: openapi/holidu-connectivity-api.json#updateCustomerReviews
+- status: 413
+  title: Payload Too Large
+  meaning: The rates endpoints accept at most 500 rate plans per request.
+  remediation: Reduce the payload size below 500 rate plans.
+  source_operation: openapi/holidu-affiliate-api.json#upsertLos
+- status: 418
+  title: Business rule not satisfied
+  meaning: A provider-specific business validation failed (used by booking and validation endpoints).
+  source_operation: openapi/holidu-connectivity-api.json#getApartmentValidation
+- status: 429
+  title: Too Many Requests
+  meaning: Too many updates were pushed for a single apartment, often at the same time across multiple endpoints.
+  remediation: Wait for previous requests for that apartment to complete; only send concurrent requests for different apartments.
+- status: 500
+  title: Internal Server Error
+  meaning: Holidu servers experienced a problem.
+  remediation: Stop requests and retry after several seconds.

@@ -1,0 +1,45 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.holidu.com/changelog
+scheme: dated-titled-entries
+current_version: v2.0
+note: >-
+  The Holidu Developer Hub (ReadMe.io) publishes a dated, titled changelog.
+  Publication dates are shown relative ("over 1 year ago") rather than as ISO
+  dates on the index; the recent window is captured below. Each entry links to a
+  markdown page under /changelog/<slug>.md.
+entries:
+- title: "Digest into multi-rates in Holidu API!"
+  when_relative: over 1 year ago
+  status: added
+  url: https://developer.holidu.com/changelog/digest-into-multi-rates-in-holidu-api
+- title: "Check out our newly added feature - Booking lead time"
+  when_relative: about 2 years ago
+  status: added
+  url: https://developer.holidu.com/changelog/draft-check-out-our-newly-added-feature-booking-lead-time
+- title: "Let's enhance facilities!"
+  when_relative: over 2 years ago
+  status: improved
+  url: https://developer.holidu.com/changelog/lets-enhance-facilities
+- title: "Meet our enhanced Discount Endpoint!"
+  when_relative: over 2 years ago
+  status: deprecated
+  url: https://developer.holidu.com/changelog/our-new-discount-endpoint
+- title: "Get ready to migrate to Holidu API V2!"
+  when_relative: over 2 years ago
+  status: added
+  breaking: true
+  url: https://developer.holidu.com/changelog/hapi-version-1-is-deprecated
+- title: "Holidu API V2 is Officially Released!"
+  when_relative: over 2 years ago
+  status: added
+  breaking: true
+- title: "Keep Your Apartment Information Accurate and Up-to-Date with Our New /validation Endpoint"
+  when_relative: over 3 years ago
+  status: improved
+- title: "Holidu is in preparation for version 2 of the API."
+  when_relative: over 4 years ago
+  status: improved
+- title: "Welcome to the brand new developer hub"
+  when_relative: over 4 years ago
+  status: added
