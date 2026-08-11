@@ -379,6 +379,8 @@ maintainers:
   email: info@apis.io
 image: https://www.holidu.com/favicon.ico
 common:
+- type: Overlay
+  url: overlays/holidu-affiliate-api-overlay.yaml
 - type: Website
   url: https://www.holidu.com/
 - type: DeveloperPortal
@@ -402,9 +404,9 @@ common:
 - type: LLMsTxt
   url: llms/holidu-llms.txt
 - type: OpenAPI
-  url: openapi/holidu-affiliate-api.json
+  url: openapi/_original/holidu-affiliate-api.json
 - type: OpenAPI
-  url: openapi/holidu-connectivity-api.json
+  url: openapi/_original/holidu-connectivity-api.json
 - type: Authentication
   url: authentication/holidu-authentication.yml
 - type: OAuthScopes
