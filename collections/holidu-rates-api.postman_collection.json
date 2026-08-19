@@ -1,0 +1,673 @@
+{
+  "item": [
+    {
+      "id": "3f7c6abb-3646-4dda-a750-74363d57ea3d",
+      "name": "Rates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "58f686fc-6c5b-4a48-8b9d-a8434eec14f1",
+          "name": "Get apartment rate plans",
+          "request": {
+            "name": "Get apartment rate plans",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "rates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f07e6ca1-044f-4942-b692-95a6cbd5beca",
+              "name": "Successful retrieval of apartment rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ratePlans\": [\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    },\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c9dc032-75a6-467e-813b-65d222d0d945",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d83c1caa-c5d5-4664-83a6-722929ac32a1",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdabc133-40fd-4204-8879-7c5309fb1461",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98640d56-25a3-4d3b-9141-4f5a2fb43e79",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8901fb8f-3ec8-4558-b9fc-fba879a9a12e",
+          "name": "Update apartment rate plans",
+          "request": {
+            "name": "Update apartment rate plans",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "rates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ratePlans\": [\n    {\n      \"currency\": \"<string>\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": \"<boolean>\",\n          \"checkoutAllowed\": \"<boolean>\",\n          \"date\": \"<date>\",\n          \"price\": \"<number>\",\n          \"priceForExtraPerson\": \"<number>\"\n        },\n        {\n          \"checkinAllowed\": \"<boolean>\",\n          \"checkoutAllowed\": \"<boolean>\",\n          \"date\": \"<date>\",\n          \"price\": \"<number>\",\n          \"priceForExtraPerson\": \"<number>\"\n        }\n      ],\n      \"guests\": \"<integer>\",\n      \"minimumStay\": \"<integer>\",\n      \"ratePlanId\": \"<string>\",\n      \"maximumStay\": \"<integer>\"\n    },\n    {\n      \"currency\": \"<string>\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": \"<boolean>\",\n          \"checkoutAllowed\": \"<boolean>\",\n          \"date\": \"<date>\",\n          \"price\": \"<number>\",\n          \"priceForExtraPerson\": \"<number>\"\n        },\n        {\n          \"checkinAllowed\": \"<boolean>\",\n          \"checkoutAllowed\": \"<boolean>\",\n          \"date\": \"<date>\",\n          \"price\": \"<number>\",\n          \"priceForExtraPerson\": \"<number>\"\n        }\n      ],\n      \"guests\": \"<integer>\",\n      \"minimumStay\": \"<integer>\",\n      \"ratePlanId\": \"<string>\",\n      \"maximumStay\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1cc06c70-00fd-4f35-b482-d1cec6c460ef",
+              "name": "Successful creation or update of rate plans for the apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ratePlans\": [\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    },\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ratePlans\": [\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    },\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1445164-e5b4-445f-988f-0b24961557d8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ratePlans\": [\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    },\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efb8d478-5118-48b6-9db2-b226f64feccc",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ratePlans\": [\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    },\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96cfd528-43ac-444e-bc97-bc8a0139730d",
+              "name": "Request terminated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ratePlans\": [\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    },\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71a9fdbc-6847-49c4-8c96-3c040bfde40f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ratePlans\": [\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    },\n    {\n      \"currency\": \"EUR\",\n      \"dailyRates\": [\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        },\n        {\n          \"checkinAllowed\": true,\n          \"checkoutAllowed\": false,\n          \"date\": \"2023-05-01\",\n          \"price\": 95,\n          \"priceForExtraPerson\": 20\n        }\n      ],\n      \"guests\": 2,\n      \"minimumStay\": 1,\n      \"ratePlanId\": \"SHORT_STAY_RATE\",\n      \"maximumStay\": 30\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "df3c74da-659f-4fda-90a3-1347361bd7f9",
+    "name": "Affiliate Apartment Rates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

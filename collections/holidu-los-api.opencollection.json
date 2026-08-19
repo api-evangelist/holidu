@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment LOS API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LOS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get LOS for an apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/los",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rateId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get LOS for an apartment"
+        },
+        {
+          "info": {
+            "name": "Create or update LOS for an apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/v2/los",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update LOS for an apartment"
+        },
+        {
+          "info": {
+            "name": "Delete LOS for an apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://external-api.holidu.com/v2/los",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rateId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete LOS for an apartment"
+        },
+        {
+          "info": {
+            "name": "Get LOS rate Ids for an apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/los/rate-ids",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get LOS rate Ids for an apartment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

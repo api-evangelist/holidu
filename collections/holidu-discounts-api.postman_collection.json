@@ -1,0 +1,944 @@
+{
+  "item": [
+    {
+      "id": "05187625-3843-4611-a19f-f3600b0c9014",
+      "name": "Discounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "046ecf69-b240-4028-b637-b92ded0bf43f",
+          "name": "Get a single discount for an apartment by discount id",
+          "request": {
+            "name": "Get a single discount for an apartment by discount id",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "discount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "discountId",
+                  "value": "<long>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ea7ce94-00b7-4df0-a4a1-b9bfe229bb77",
+              "name": "Successful retrieval of discount by id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "discountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"discountPercent\": 12,\n  \"discountType\": \"EARLY_BIRD\",\n  \"status\": \"ACTIVE\",\n  \"id\": 8440,\n  \"providerDiscountId\": \"string\",\n  \"name\": \"Pre Season Discount\",\n  \"conditions\": {\n    \"daysBeforeCheckIn\": 60,\n    \"minStay\": 5,\n    \"bookingSeason\": [\n      {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      }\n    ],\n    \"travelSeason\": [\n      {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      }\n    ],\n    \"deviceType\": \"DESKTOP\",\n    \"userType\": \"USER_AUTHENTICATED\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c80a5f5-5ec2-4e8b-8f77-fab51e48695e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "discountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cd3bb03-badf-4fc2-95e4-ff84717e7bec",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "discountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2d1e21e-f96f-44b4-9ad3-6ee2e76d302f",
+              "name": "Apartment or discount does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "discountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb863746-034e-48dd-8ea2-f2060d4c456d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "discountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc33b32b-53cb-47bc-96e6-6db2d255d140",
+          "name": "Create or update a single discount for an apartment",
+          "request": {
+            "name": "Create or update a single discount for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "discount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"discountPercent\": \"<number>\",\n  \"discountType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"id\": \"<long>\",\n  \"providerDiscountId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"conditions\": {\n    \"daysBeforeCheckIn\": \"<integer>\",\n    \"minStay\": \"<integer>\",\n    \"bookingSeason\": [\n      {\n        \"onlyApplicableFrom\": \"<date>\",\n        \"onlyApplicableUntil\": \"<date>\"\n      },\n      {\n        \"onlyApplicableFrom\": \"<date>\",\n        \"onlyApplicableUntil\": \"<date>\"\n      }\n    ],\n    \"travelSeason\": [\n      {\n        \"onlyApplicableFrom\": \"<date>\",\n        \"onlyApplicableUntil\": \"<date>\"\n      },\n      {\n        \"onlyApplicableFrom\": \"<date>\",\n        \"onlyApplicableUntil\": \"<date>\"\n      }\n    ],\n    \"deviceType\": \"<string>\",\n    \"userType\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb17a517-3779-44b5-a55e-ee9f72a6661e",
+              "name": "Discount created or updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"ACTIVE\",\n  \"name\": \"Long stay Discount\",\n  \"discountType\": \"LONG_STAY\",\n  \"discountPercent\": \"10\",\n  \"conditions\": {\n    \"minStay\": \"15\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"discountPercent\": 12,\n  \"discountType\": \"EARLY_BIRD\",\n  \"status\": \"ACTIVE\",\n  \"id\": \"<long>\",\n  \"providerDiscountId\": \"<string>\",\n  \"name\": \"Pre Season Discount\",\n  \"conditions\": {\n    \"daysBeforeCheckIn\": 60,\n    \"minStay\": 5,\n    \"bookingSeason\": [\n      {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      }\n    ],\n    \"travelSeason\": [\n      {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      }\n    ],\n    \"deviceType\": \"<string>\",\n    \"userType\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fe0bf88-805a-4b09-a21d-2d310c5b6135",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"ACTIVE\",\n  \"name\": \"Long stay Discount\",\n  \"discountType\": \"LONG_STAY\",\n  \"discountPercent\": \"10\",\n  \"conditions\": {\n    \"minStay\": \"15\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26f73429-bec1-479b-8fa7-4d8d3e46c610",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"ACTIVE\",\n  \"name\": \"Long stay Discount\",\n  \"discountType\": \"LONG_STAY\",\n  \"discountPercent\": \"10\",\n  \"conditions\": {\n    \"minStay\": \"15\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15349806-a0c5-4a9b-be45-235dd72fb7cc",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"ACTIVE\",\n  \"name\": \"Long stay Discount\",\n  \"discountType\": \"LONG_STAY\",\n  \"discountPercent\": \"10\",\n  \"conditions\": {\n    \"minStay\": \"15\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ec0e94b-0d88-4dca-8b91-99ec19fd8ba4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"ACTIVE\",\n  \"name\": \"Long stay Discount\",\n  \"discountType\": \"LONG_STAY\",\n  \"discountPercent\": \"10\",\n  \"conditions\": {\n    \"minStay\": \"15\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5054b02-97ed-4929-9bad-049fa357cbe1",
+          "name": "Get discounts for an apartment",
+          "request": {
+            "name": "Get discounts for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "discounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef85dae6-eae0-4f5c-8ba3-4178ad18f0d3",
+              "name": "Successful retrieval of discounts for an apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"discountPercent\": 12,\n    \"discountType\": \"EARLY_BIRD\",\n    \"status\": \"ACTIVE\",\n    \"id\": \"<long>\",\n    \"providerDiscountId\": \"<string>\",\n    \"name\": \"Pre Season Discount\",\n    \"conditions\": {\n      \"daysBeforeCheckIn\": 60,\n      \"minStay\": 5,\n      \"bookingSeason\": [\n        {\n          \"onlyApplicableFrom\": \"2020-08-01\",\n          \"onlyApplicableUntil\": \"2021-04-30\"\n        },\n        {\n          \"onlyApplicableFrom\": \"2020-08-01\",\n          \"onlyApplicableUntil\": \"2021-04-30\"\n        }\n      ],\n      \"travelSeason\": [\n        {\n          \"onlyApplicableFrom\": \"2020-08-01\",\n          \"onlyApplicableUntil\": \"2021-04-30\"\n        },\n        {\n          \"onlyApplicableFrom\": \"2020-08-01\",\n          \"onlyApplicableUntil\": \"2021-04-30\"\n        }\n      ],\n      \"deviceType\": \"<string>\",\n      \"userType\": \"<string>\"\n    }\n  },\n  {\n    \"discountPercent\": 12,\n    \"discountType\": \"EARLY_BIRD\",\n    \"status\": \"ACTIVE\",\n    \"id\": \"<long>\",\n    \"providerDiscountId\": \"<string>\",\n    \"name\": \"Pre Season Discount\",\n    \"conditions\": {\n      \"daysBeforeCheckIn\": 60,\n      \"minStay\": 5,\n      \"bookingSeason\": [\n        {\n          \"onlyApplicableFrom\": \"2020-08-01\",\n          \"onlyApplicableUntil\": \"2021-04-30\"\n        },\n        {\n          \"onlyApplicableFrom\": \"2020-08-01\",\n          \"onlyApplicableUntil\": \"2021-04-30\"\n        }\n      ],\n      \"travelSeason\": [\n        {\n          \"onlyApplicableFrom\": \"2020-08-01\",\n          \"onlyApplicableUntil\": \"2021-04-30\"\n        },\n        {\n          \"onlyApplicableFrom\": \"2020-08-01\",\n          \"onlyApplicableUntil\": \"2021-04-30\"\n        }\n      ],\n      \"deviceType\": \"<string>\",\n      \"userType\": \"<string>\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c2e1622-71ff-4fd5-8ce5-2a3f918d333f",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "729d74c7-3278-489b-81a0-7415b573d915",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ec308e7-1517-48ff-9cf0-60cf9f19c7fe",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "discounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "271f9041-ab95-40f0-8a42-62e07ae2aaba",
+    "name": "Affiliate Apartment Discounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

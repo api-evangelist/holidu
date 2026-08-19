@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment LOS Push API API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LOS Push API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or replace LOS data for an apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://external-api.holidu.com/:apartmentId/los",
+            "params": [
+              {
+                "name": "apartmentId",
+                "value": "apt-12345",
+                "type": "path",
+                "description": "Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Holidu calls this endpoint to push the complete LOS data for an apartment to the affiliate.\n\nThis is an idempotent upsert ([RFC 9110 §9.3.4](https://www.rfc-editor.org/rfc/rfc9110#section-9.3.4)):\n- If the affiliate does not yet have LOS data for this apartment, it should store the payload and respond with `201 Created`.\n- If LOS data already exists, the affiliate should **fully replace** it with the provided payload and respond with `204 No Content`.\n\nThe request body always contains the **comp"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

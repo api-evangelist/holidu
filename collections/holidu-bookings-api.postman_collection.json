@@ -1,0 +1,1225 @@
+{
+  "item": [
+    {
+      "id": "08322602-2df1-4fb1-a077-398d76d70ad5",
+      "name": "Bookings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66fd599a-3946-4762-8519-153eeefacc50",
+          "name": "Update booking details",
+          "request": {
+            "name": "Update booking details",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "bookings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerBookingId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"arrival\": \"<date>\",\n  \"bareRentalPrice\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"departure\": \"<date>\",\n  \"providerApartmentId\": \"<string>\",\n  \"totalPrice\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"commissionablePrice\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"costs\": [\n    {\n      \"name\": \"<string>\",\n      \"totalPrice\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      },\n      \"paymentTime\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"totalPrice\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      },\n      \"paymentTime\": \"<string>\"\n    }\n  ],\n  \"numberOfGuests\": \"<integer>\",\n  \"rateId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db0cb3d1-d0b6-4810-9bb1-98e31d60d9ea",
+              "name": "Booking data has been updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"arrival\": \"2020-10-20\",\n  \"bareRentalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"departure\": \"2020-10-30\",\n  \"providerApartmentId\": \"123456\",\n  \"totalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"commissionablePrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"costs\": [\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    },\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    }\n  ],\n  \"numberOfGuests\": 2,\n  \"rateId\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"providerApartmentId\": \"string\",\n  \"arrival\": \"2000-05-31\",\n  \"departure\": \"1964-03-02\",\n  \"guests\": [\n    {\n      \"age\": 6925\n    },\n    {\n      \"age\": 3057\n    }\n  ],\n  \"customer\": {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"gender\": \"FEMALE\",\n    \"zip\": \"string\",\n    \"city\": \"string\",\n    \"street\": \"string\",\n    \"country\": \"DE\",\n    \"phone\": \"string\",\n    \"language\": \"string\"\n  },\n  \"specialCustomerRequest\": \"string\",\n  \"guestReceipt\": {\n    \"costs\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"basisOfCalculation\": \"string\",\n        \"paymentTime\": \"string\",\n        \"type\": \"string\",\n        \"pricePerUnit\": {\n          \"amount\": 6294.475429066604,\n          \"currency\": \"string\"\n        },\n        \"unitsSelected\": 348,\n        \"totalPrice\": {\n          \"amount\": 4445.999194736936,\n          \"currency\": \"string\"\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"basisOfCalculation\": \"string\",\n        \"paymentTime\": \"string\",\n        \"type\": \"string\",\n        \"pricePerUnit\": {\n          \"amount\": 4105.732138158212,\n          \"currency\": \"string\"\n        },\n        \"unitsSelected\": 1846,\n        \"totalPrice\": {\n          \"amount\": 3299.7082862879965,\n          \"currency\": \"string\"\n        }\n      }\n    ],\n    \"discount\": {\n      \"discountId\": 7270,\n      \"providerDiscountId\": \"string\",\n      \"name\": \"string\",\n      \"percentage\": 9918.04433243762,\n      \"amount\": {\n        \"amount\": 2493.5343119533118,\n        \"currency\": \"string\"\n      }\n    },\n    \"bareRentalPrice\": {\n      \"amount\": 5530.230110663221,\n      \"currency\": \"string\"\n    }\n  },\n  \"paymentProcessing\": {\n    \"paymentWithBooking\": {\n      \"paymentPlanUuid\": \"string\",\n      \"paymentHandler\": \"string\",\n      \"paymentMethod\": \"string\",\n      \"paymentTotalWithBooking\": {\n        \"amount\": 8190.3363070932,\n        \"currency\": \"string\"\n      },\n      \"paymentRates\": [\n        {\n          \"dueDate\": \"1956-08-16T10:52:13.142Z\",\n          \"value\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"dueDate\": \"1946-10-01T02:22:31.640Z\",\n          \"value\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    \"paymentOnsite\": [\n      {\n        \"amount\": 8952.345350954894,\n        \"currency\": \"string\"\n      },\n      {\n        \"amount\": 5507.60057656707,\n        \"currency\": \"string\"\n      }\n    ]\n  },\n  \"cancellationFees\": [\n    {\n      \"validUntil\": \"2010-07-15T17:14:06.907Z\",\n      \"feeInPercentage\": 7635.63407663344\n    },\n    {\n      \"validUntil\": \"2002-03-30T18:45:43.757Z\",\n      \"feeInPercentage\": 8553.70404247928\n    }\n  ],\n  \"metaData\": {\n    \"bookedAt\": \"1984-02-16T10:26:56.489Z\",\n    \"createdAt\": \"1965-06-01T06:06:23.306Z\",\n    \"updatedAt\": \"2012-12-22T06:36:13.083Z\",\n    \"status\": \"CONFIRMED\",\n    \"cancelledAt\": \"1956-04-15T04:12:05.689Z\",\n    \"holiduBookingId\": 5383,\n    \"commission\": {\n      \"percentage\": 595.8967658359837,\n      \"commissionToHolidu\": {\n        \"amount\": 5170.189962303051,\n        \"currency\": \"string\"\n      }\n    }\n  },\n  \"rateId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14cc4f6a-497b-450d-a104-d8db256a5298",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"arrival\": \"2020-10-20\",\n  \"bareRentalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"departure\": \"2020-10-30\",\n  \"providerApartmentId\": \"123456\",\n  \"totalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"commissionablePrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"costs\": [\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    },\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    }\n  ],\n  \"numberOfGuests\": 2,\n  \"rateId\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32b862e4-29bc-46db-8dbc-25f5bef0af14",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"arrival\": \"2020-10-20\",\n  \"bareRentalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"departure\": \"2020-10-30\",\n  \"providerApartmentId\": \"123456\",\n  \"totalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"commissionablePrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"costs\": [\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    },\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    }\n  ],\n  \"numberOfGuests\": 2,\n  \"rateId\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adc5bc55-8f81-4d57-8704-f88ac3654aa7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"arrival\": \"2020-10-20\",\n  \"bareRentalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"departure\": \"2020-10-30\",\n  \"providerApartmentId\": \"123456\",\n  \"totalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"commissionablePrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"costs\": [\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    },\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    }\n  ],\n  \"numberOfGuests\": 2,\n  \"rateId\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "248496bd-d3f5-48d0-ad2c-b3b16226d1af",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"arrival\": \"2020-10-20\",\n  \"bareRentalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"departure\": \"2020-10-30\",\n  \"providerApartmentId\": \"123456\",\n  \"totalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"commissionablePrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"costs\": [\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    },\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    }\n  ],\n  \"numberOfGuests\": 2,\n  \"rateId\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1d20a35-7bc6-46c5-bb80-75385af1d9ca",
+              "name": "Requested method is not available in sandbox environment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"arrival\": \"2020-10-20\",\n  \"bareRentalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"departure\": \"2020-10-30\",\n  \"providerApartmentId\": \"123456\",\n  \"totalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"commissionablePrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"costs\": [\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    },\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    }\n  ],\n  \"numberOfGuests\": 2,\n  \"rateId\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "I'm a teapot (RFC 2324)",
+              "code": 418,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67ce9fc8-80ab-4ff6-a238-8693e8023ae5",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"arrival\": \"2020-10-20\",\n  \"bareRentalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"departure\": \"2020-10-30\",\n  \"providerApartmentId\": \"123456\",\n  \"totalPrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"commissionablePrice\": {\n    \"amount\": 100,\n    \"currency\": \"EUR\"\n  },\n  \"costs\": [\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    },\n    {\n      \"name\": \"FINAL_CLEANING\",\n      \"totalPrice\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n      },\n      \"paymentTime\": \"WITH_RATES\"\n    }\n  ],\n  \"numberOfGuests\": 2,\n  \"rateId\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef6e7b20-86ad-4cec-ac24-117374dfc9f0",
+          "name": "Cancel a booking",
+          "request": {
+            "name": "Cancel a booking",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "bookings",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "providerBookingId",
+                  "value": "<string>",
+                  "description": "Provider booking id. Either this or holiduBookingId is required."
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduBookingId",
+                  "value": "<long>",
+                  "description": "Holidu booking id. Either this or providerBookingId is required."
+                },
+                {
+                  "disabled": false,
+                  "key": "cancellationFee",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reason",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79814544-fbb8-49a0-b3ea-8466c6cd8eba",
+              "name": "The booking was cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cancellationFee",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cancellationStatus\": \"CANCELLATION_SUCCESSFUL\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb176adb-1621-4bff-9294-b8675715dd2d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cancellationFee",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79fbeac6-f62c-4bcf-8a97-da4daef65a68",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cancellationFee",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a05e34fc-fcad-443c-a7ed-65ae39fb99f5",
+              "name": "Booking does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cancellationFee",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83c78c8f-be57-423f-8ee9-5d20b054143d",
+              "name": "Requested method is not available in sandbox environment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cancellationFee",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "I'm a teapot (RFC 2324)",
+              "code": 418,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c6f0c6c-9c0c-4bc9-a8b3-d8bd6ad4f596",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cancellationFee",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9c96c4c-48b4-4d5c-a0ab-47ba05602d9c",
+          "name": "Get booking details",
+          "request": {
+            "name": "Get booking details",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "bookings",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "Only needed for subprovider identification."
+                },
+                {
+                  "disabled": false,
+                  "key": "providerBookingId",
+                  "value": "<string>",
+                  "description": "Booking id. Either this or holiduBookingId is required."
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduBookingId",
+                  "value": "<long>",
+                  "description": "Holidu booking id. Either this or bookingId is required."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "404753b1-0c4b-48c5-9148-2f488b4a3e6e",
+              "name": "Information for the booking",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"providerApartmentId\": \"string\",\n  \"arrival\": \"2022-05-14\",\n  \"departure\": \"1990-08-30\",\n  \"guests\": [\n    {\n      \"age\": 2762\n    },\n    {\n      \"age\": 4576\n    }\n  ],\n  \"customer\": {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"gender\": \"FEMALE\",\n    \"zip\": \"string\",\n    \"city\": \"string\",\n    \"street\": \"string\",\n    \"country\": \"DE\",\n    \"phone\": \"string\",\n    \"language\": \"string\"\n  },\n  \"specialCustomerRequest\": \"string\",\n  \"guestReceipt\": {\n    \"costs\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"basisOfCalculation\": \"string\",\n        \"paymentTime\": \"string\",\n        \"type\": \"string\",\n        \"pricePerUnit\": {\n          \"amount\": 8873.707020781734,\n          \"currency\": \"string\"\n        },\n        \"unitsSelected\": 4682,\n        \"totalPrice\": {\n          \"amount\": 2507.625725243885,\n          \"currency\": \"string\"\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"basisOfCalculation\": \"string\",\n        \"paymentTime\": \"string\",\n        \"type\": \"string\",\n        \"pricePerUnit\": {\n          \"amount\": 3889.6029120042517,\n          \"currency\": \"string\"\n        },\n        \"unitsSelected\": 8224,\n        \"totalPrice\": {\n          \"amount\": 4998.217490969592,\n          \"currency\": \"string\"\n        }\n      }\n    ],\n    \"discount\": {\n      \"discountId\": 9041,\n      \"providerDiscountId\": \"string\",\n      \"name\": \"string\",\n      \"percentage\": 9690.35551275644,\n      \"amount\": {\n        \"amount\": 8328.43716812837,\n        \"currency\": \"string\"\n      }\n    },\n    \"bareRentalPrice\": {\n      \"amount\": 5005.995728367352,\n      \"currency\": \"string\"\n    }\n  },\n  \"paymentProcessing\": {\n    \"paymentWithBooking\": {\n      \"paymentPlanUuid\": \"string\",\n      \"paymentHandler\": \"string\",\n      \"paymentMethod\": \"string\",\n      \"paymentTotalWithBooking\": {\n        \"amount\": 6798.116228428806,\n        \"currency\": \"string\"\n      },\n      \"paymentRates\": [\n        {\n          \"dueDate\": \"1993-03-12T10:31:53.767Z\",\n          \"value\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"dueDate\": \"1967-02-27T14:21:56.134Z\",\n          \"value\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    \"paymentOnsite\": [\n      {\n        \"amount\": 3659.56477910077,\n        \"currency\": \"string\"\n      },\n      {\n        \"amount\": 7438.852174761975,\n        \"currency\": \"string\"\n      }\n    ]\n  },\n  \"cancellationFees\": [\n    {\n      \"validUntil\": \"2007-04-01T05:04:42.361Z\",\n      \"feeInPercentage\": 6899.982481468783\n    },\n    {\n      \"validUntil\": \"2010-10-19T06:46:11.311Z\",\n      \"feeInPercentage\": 1330.0536382117577\n    }\n  ],\n  \"metaData\": {\n    \"bookedAt\": \"1954-04-05T15:28:21.841Z\",\n    \"createdAt\": \"1986-08-08T06:00:47.303Z\",\n    \"updatedAt\": \"1973-10-27T04:35:48.310Z\",\n    \"status\": \"CONFIRMED\",\n    \"cancelledAt\": \"2006-01-09T00:26:34.662Z\",\n    \"holiduBookingId\": 6537,\n    \"commission\": {\n      \"percentage\": 954.145618148492,\n      \"commissionToHolidu\": {\n        \"amount\": 6491.267063341673,\n        \"currency\": \"string\"\n      }\n    }\n  },\n  \"rateId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0347388b-78dc-4b43-a992-ee136de383cb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34b5b682-e616-411f-af67-0de49babe830",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d0537ee-a300-49cc-a1c3-43bcfd529ed5",
+              "name": "Booking does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcd63b50-60bf-422d-99a9-7cbea4edf38f",
+              "name": "Requested method is not available in sandbox environment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "I'm a teapot (RFC 2324)",
+              "code": 418,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a02c014-0941-417c-a541-2631b5510a66",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bookings",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerBookingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduBookingId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8860aaa8-73b7-484a-8f37-55734273e86f",
+    "name": "Affiliate Apartment Bookings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

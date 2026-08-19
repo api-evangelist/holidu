@@ -1,0 +1,1312 @@
+{
+  "item": [
+    {
+      "id": "a4004eba-bbff-48db-9d88-e28aff9b0fa4",
+      "name": "LOS",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1ec2028f-9e52-4d59-9e8b-bf0a17985e90",
+          "name": "Get LOS for an apartment",
+          "request": {
+            "name": "Get LOS for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "los"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rateId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "108a6c8c-9c77-4037-9b29-9bd0c63b3c8f",
+              "name": "Successful retrieval of LOS for an apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"los\": {\n    \"key_0\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ],\n    \"key_1\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ],\n    \"key_2\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ]\n  },\n  \"rateId\": \"NON_REFUNDABLE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1aef642c-6df1-4e81-9694-37d40c2f4a5b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3acce582-e2e8-44d6-9747-0daea503a522",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bd69cd7-8f4b-4a13-9fea-79c7b0f9d73e",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82d6ff5b-235c-4b0e-be4a-35902660c73a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "403887f1-164a-498a-b137-1cfa31d0e9f6",
+          "name": "Create or update LOS for an apartment",
+          "request": {
+            "name": "Create or update LOS for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "los"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"los\": {\n    \"key_0\": [\n      {\n        \"currency\": \"<string>\",\n        \"guests\": \"<integer>\",\n        \"price\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      {\n        \"currency\": \"<string>\",\n        \"guests\": \"<integer>\",\n        \"price\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      }\n    ]\n  },\n  \"rateId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43763ff8-010d-41d9-90c1-f1c3241de08f",
+              "name": "Successful creation or update of LOS for an apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"key_0\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ],\n    \"key_1\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ]\n  },\n  \"rateId\": \"NON_REFUNDABLE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"los\": {\n    \"key_0\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ],\n    \"key_1\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ]\n  },\n  \"rateId\": \"NON_REFUNDABLE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfdf0a26-aa00-44ec-b64a-5a4e6024dfc1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"key_0\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ],\n    \"key_1\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ]\n  },\n  \"rateId\": \"NON_REFUNDABLE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9344fd6-4cb0-4a80-b038-05ebf3bd6611",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"key_0\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ],\n    \"key_1\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ]\n  },\n  \"rateId\": \"NON_REFUNDABLE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0acac19-5670-40af-993b-e03efeaaeb1c",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"key_0\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ],\n    \"key_1\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ]\n  },\n  \"rateId\": \"NON_REFUNDABLE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3e51f74-928c-4af7-a9d8-636e8e8a33e3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"key_0\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ],\n    \"key_1\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          100,\n          200,\n          300,\n          400,\n          500,\n          600,\n          700\n        ]\n      }\n    ]\n  },\n  \"rateId\": \"NON_REFUNDABLE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7845500d-18f8-4baa-a424-f65a7aac6fbc",
+          "name": "Delete LOS for an apartment",
+          "request": {
+            "name": "Delete LOS for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "los"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rateId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d2bdda7-f297-49be-b98a-ac6fc8c6fc00",
+              "name": "Successful removal of LOS for an apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60928dd4-d4f1-46cb-80fe-29b4186baa19",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c6e66df-cce1-4d52-8d48-bb93dbe95885",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9951687-a860-4f86-87c0-9b5b602a0961",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a61712ca-9400-4fe3-90f4-70149c51ea54",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49cfb748-22b4-441e-b137-0c79de3555b2",
+          "name": "Get LOS rate Ids for an apartment",
+          "request": {
+            "name": "Get LOS rate Ids for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "los",
+                "rate-ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ee309ed-0a64-405c-96b7-51836a103581",
+              "name": "Successful retrieval of LOS rate Ids for an apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los",
+                    "rate-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fd6b697-0d0e-4ee8-ad25-d9917ae8a698",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los",
+                    "rate-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52dc925e-af50-40a4-add6-b17febd8ddfc",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los",
+                    "rate-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "171210ba-d5f0-453e-b370-592725a4f6c7",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los",
+                    "rate-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28471373-1560-4697-a761-21203138bdeb",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "los",
+                    "rate-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3e6e490f-94a0-4873-a133-99832e2b6c14",
+    "name": "Affiliate Apartment LOS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

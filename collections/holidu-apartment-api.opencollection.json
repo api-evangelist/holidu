@@ -1,0 +1,190 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Apartment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deactivate apartment for provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://external-api.holidu.com/v2/apartment/deactivate",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deactivate apartment for provider"
+        },
+        {
+          "info": {
+            "name": "Activate apartment for provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://external-api.holidu.com/v2/apartment/activate",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Activate apartment for provider"
+        },
+        {
+          "info": {
+            "name": "Get an apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/apartment",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get an apartment"
+        },
+        {
+          "info": {
+            "name": "Create or update an apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/v2/apartment",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update an apartment"
+        },
+        {
+          "info": {
+            "name": "Get basic information about all apartments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/apartments/information",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get basic information about all apartments"
+        },
+        {
+          "info": {
+            "name": "Get validation result of apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/apartment/validation",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get validation result of apartment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

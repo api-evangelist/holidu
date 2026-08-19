@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment MultiUnit Facility API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MultiUnit Facility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get facilities for a multi-unit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/multi-unit/facilities",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "providerGroupId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get facilities for a multi-unit"
+        },
+        {
+          "info": {
+            "name": "Update facilities for a multi-unit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/v2/multi-unit/facilities",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "providerGroupId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update facilities for a multi-unit"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

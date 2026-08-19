@@ -1,0 +1,198 @@
+{
+  "item": [
+    {
+      "id": "12ccf474-9c97-4a3d-97c4-0e423a75e9ce",
+      "name": "Details",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "19fcade1-30ec-4ac7-a488-ce4b8a84caf7",
+          "name": "Get detailed information about the provided offers",
+          "request": {
+            "name": "Get detailed information about the provided offers",
+            "description": {
+              "content": "Retrieve detailed static information for specified offers. The \"extras\" parameter allows for the inclusion of additional data points to the response. The response includes an RFC 6570-compatible \"urlTemplate\" for generating checkout page links with check-in and check-out dates. If some requested offers cannot be retrieved, these will be reported in the \"errors\" array, with the corresponding property identifier, error code, and descriptive message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"propertyIds\": [\n    \"<string>\"\n  ],\n  \"locale\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"extras\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"domainId\": \"<number>\",\n  \"salesChannelId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "afd86b63-7d23-49eb-a191-a065eb337438",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"propertyIds\": [\n    \"<string>\"\n  ],\n  \"locale\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"extras\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"domainId\": \"<number>\",\n  \"salesChannelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"urlTemplate\": \"string\",\n      \"area\": {\n        \"value\": 6536.118839067466,\n        \"unit\": \"UNIT_SM\"\n      },\n      \"bedrooms\": 9017,\n      \"bathrooms\": 9193,\n      \"guests\": 169,\n      \"title\": \"string\",\n      \"propertyType\": {\n        \"id\": \"string\",\n        \"title\": \"string\"\n      },\n      \"petsAllowed\": false,\n      \"location\": {\n        \"name\": \"string\",\n        \"postalCode\": \"string\",\n        \"city\": \"string\",\n        \"coordinates\": {\n          \"lat\": -6.278877149582286,\n          \"lng\": -6.438616106112335\n        }\n      },\n      \"cancellationPolicy\": {\n        \"type\": \"FREE_CANCELLATION\"\n      },\n      \"rating\": {\n        \"value\": 0.6850976871145231,\n        \"count\": 8122\n      },\n      \"rooms\": [\n        {\n          \"type\": \"LIVING_ROOM\"\n        },\n        {\n          \"type\": \"BATHROOM\"\n        }\n      ],\n      \"rules\": \"string\",\n      \"pois\": \"string\",\n      \"reviews\": {\n        \"averageRatings\": [\n          {\n            \"category\": \"string\",\n            \"rating\": 3544.7050490623833\n          },\n          {\n            \"category\": \"string\",\n            \"rating\": 1681.9818941529984\n          }\n        ],\n        \"reviewDetails\": [\n          {\n            \"publishedAt\": \"string\",\n            \"comment\": \"string\",\n            \"language\": \"string\"\n          },\n          {\n            \"publishedAt\": \"string\",\n            \"comment\": \"string\",\n            \"language\": \"string\"\n          }\n        ]\n      },\n      \"price\": {\n        \"currency\": \"string\",\n        \"daily\": 4494.91896461735\n      },\n      \"instantBookable\": false,\n      \"photos\": [\n        {\n          \"thumbnail\": \"http://rMjJPJaWjlqi.qsaoxxkkmd6R4-VFZcqf0ZCTCWjWrB\",\n          \"medium\": \"http://dWirsDDJwcxvNt.klzVINwk6wAmM,\",\n          \"large\": \"http://uz.vseRIz8,rVXadK,t,aQs+MYz1My5eVkqwKcaIVyOwtY-89ZQbQRZFisnU5\"\n        },\n        {\n          \"thumbnail\": \"http://Y.pgiDUBEx6HacCuYY\",\n          \"medium\": \"https://SSzgODymLadZAP.rrnzQxM1GHHS2a\",\n          \"large\": \"https://BgqJshoLJlPEBFO.tuswMEmEWKAxYlc6irM\"\n        }\n      ],\n      \"facilities\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"group\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"group\": \"string\"\n        }\n      ],\n      \"guestCardsAndCertificates\": {\n        \"items\": [\n          {\n            \"title\": \"string\",\n            \"name\": \"string\"\n          },\n          {\n            \"title\": \"string\",\n            \"name\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"urlTemplate\": \"string\",\n      \"area\": {\n        \"value\": 3359.1450212070763,\n        \"unit\": \"UNIT_SF\"\n      },\n      \"bedrooms\": 8749,\n      \"bathrooms\": 496,\n      \"guests\": 6183,\n      \"title\": \"string\",\n      \"propertyType\": {\n        \"id\": \"string\",\n        \"title\": \"string\"\n      },\n      \"petsAllowed\": false,\n      \"location\": {\n        \"name\": \"string\",\n        \"postalCode\": \"string\",\n        \"city\": \"string\",\n        \"coordinates\": {\n          \"lat\": 76.89347997720895,\n          \"lng\": 8.780489538626966\n        }\n      },\n      \"cancellationPolicy\": {\n        \"type\": \"FREE_CANCELLATION\"\n      },\n      \"rating\": {\n        \"value\": 0.6685502903187601,\n        \"count\": 9187\n      },\n      \"rooms\": [\n        {\n          \"type\": \"KITCHEN\"\n        },\n        {\n          \"type\": \"BEDROOM\"\n        }\n      ],\n      \"rules\": \"string\",\n      \"pois\": \"string\",\n      \"reviews\": {\n        \"averageRatings\": [\n          {\n            \"category\": \"string\",\n            \"rating\": 8157.609675073335\n          },\n          {\n            \"category\": \"string\",\n            \"rating\": 9494.342808718246\n          }\n        ],\n        \"reviewDetails\": [\n          {\n            \"publishedAt\": \"string\",\n            \"comment\": \"string\",\n            \"language\": \"string\"\n          },\n          {\n            \"publishedAt\": \"string\",\n            \"comment\": \"string\",\n            \"language\": \"string\"\n          }\n        ]\n      },\n      \"price\": {\n        \"currency\": \"string\",\n        \"daily\": 4114.847378998878\n      },\n      \"instantBookable\": true,\n      \"photos\": [\n        {\n          \"thumbnail\": \"https://fdUOMReIxWSyRBUAWpukqYkY.cqtUBGtSfwQPMQGxBSVa1VP-VoEdLfsMAIyIskUBL\",\n          \"medium\": \"http://gfxETSIpusXYBPeYTf.lkbUlbojqB+yzJfGvJ4SXZr,KXidN6ZlI\",\n          \"large\": \"http://qFsdjcOuxGsdkZfErqZVNxalsCIH.meqIS\"\n        },\n        {\n          \"thumbnail\": \"https://IOWShnImkfiRn.tbnubAGp,JCHAbG87iVuOUmseIb7+2DSgL5Cm3HLIFex9K1Ygs2AyCdmfrO+iYO\",\n          \"medium\": \"http://dpGxYaaYtNlGKdrMufrwLSpnXHXfCHKD.cdogEtD\",\n          \"large\": \"https://NimOGWgmYyXffNFNfhzLIi.rjmAfJ8wgque.7E\"\n        }\n      ],\n      \"facilities\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"group\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"group\": \"string\"\n        }\n      ],\n      \"guestCardsAndCertificates\": {\n        \"items\": [\n          {\n            \"title\": \"string\",\n            \"name\": \"string\"\n          },\n          {\n            \"title\": \"string\",\n            \"name\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"errors\": [\n    {\n      \"propertyId\": \"string\",\n      \"code\": 222.70154919876606,\n      \"message\": \"string\"\n    },\n    {\n      \"propertyId\": \"string\",\n      \"code\": 8159.713433794534,\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37606031-21a6-4b58-95c8-ed6a7caffc55",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"propertyIds\": [\n    \"<string>\"\n  ],\n  \"locale\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"extras\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"domainId\": \"<number>\",\n  \"salesChannelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"issues\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "07301970-a220-42b5-ad8c-e43b45f5498c",
+    "name": "Affiliate Apartment Details API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

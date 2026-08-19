@@ -1,0 +1,577 @@
+{
+  "item": [
+    {
+      "id": "6da9d0ca-66d9-41b5-97d6-18c41b07e891",
+      "name": "Extra Costs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "15277eab-5b57-4ca7-99d2-5b31f48f56cc",
+          "name": "Get the extra costs of an apartment",
+          "request": {
+            "name": "Get the extra costs of an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "apartments",
+                "extracosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac77f49e-075e-4d98-895e-484e4ad27c19",
+              "name": "Successfully retrieved extra costs for apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "extracosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  },\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9cae4f2-c67f-41e9-92a7-c7d8e2fdf2ab",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "extracosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5842028e-e510-42b7-a4bc-fc312a5fa532",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "extracosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d52a85b-2101-455c-a169-7fe68bfe741a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "extracosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4016d7f3-1311-4974-93c1-c80ccbe42f8c",
+          "name": "Update the extra costs of an apartment",
+          "request": {
+            "name": "Update the extra costs of an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "apartments",
+                "extracosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"basisOfCalculation\": \"<string>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"paymentTime\": \"<string>\",\n    \"price\": {\n      \"amount\": \"<number>\",\n      \"type\": \"<string>\",\n      \"currency\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"maximumCount\": \"<integer>\",\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"<date>\",\n        \"onlyApplicableUntil\": \"<date>\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": \"<integer>\",\n        \"toStayLengthInNights\": \"<integer>\"\n      }\n    }\n  },\n  {\n    \"basisOfCalculation\": \"<string>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"paymentTime\": \"<string>\",\n    \"price\": {\n      \"amount\": \"<number>\",\n      \"type\": \"<string>\",\n      \"currency\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"maximumCount\": \"<integer>\",\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"<date>\",\n        \"onlyApplicableUntil\": \"<date>\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": \"<integer>\",\n        \"toStayLengthInNights\": \"<integer>\"\n      }\n    }\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da6725f6-ffc8-463b-8c0f-8ae9c1bc3072",
+              "name": "Successful update of extra costs for apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "extracosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  },\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  },\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7843d226-7ce8-4079-abd2-b52c1a17f374",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "extracosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  },\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b81d8db-f904-4046-ac2f-dff1995c4d5c",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "extracosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  },\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce517364-0f48-437d-af26-5a0c2056e9ee",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "extracosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  },\n  {\n    \"basisOfCalculation\": \"PER_PERSON_PER_NIGHT\",\n    \"id\": \"XYZ_123\",\n    \"name\": \"BEDLINEN\",\n    \"paymentTime\": \"ONSITE\",\n    \"price\": {\n      \"amount\": 90.24,\n      \"type\": \"PERCENTAGE\",\n      \"currency\": \"EUR\"\n    },\n    \"type\": \"MANDATORY\",\n    \"maximumCount\": 1,\n    \"condition\": {\n      \"seasonApplicable\": {\n        \"onlyApplicableFrom\": \"2020-08-01\",\n        \"onlyApplicableUntil\": \"2021-04-30\"\n      },\n      \"numberOfNights\": {\n        \"fromStayLengthInNights\": 1,\n        \"toStayLengthInNights\": 7\n      }\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f836a108-63b4-4ffc-9d42-53eb8019cdce",
+    "name": "Affiliate Apartment Extra Costs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

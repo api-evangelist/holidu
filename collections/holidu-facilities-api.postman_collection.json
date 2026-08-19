@@ -1,0 +1,1037 @@
+{
+  "item": [
+    {
+      "id": "5bb1c6a8-e313-4689-af87-86091e3a2adc",
+      "name": "Facilities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5bcd51de-88ab-4a80-ab8a-aa4ec7749471",
+          "name": "Get facilities for apartment",
+          "request": {
+            "name": "Get facilities for apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "facilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d4d5ad5-e6d5-4477-8256-c2e59facc55b",
+              "name": "List of apartment facilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b0e6ccf-ba58-4081-85b1-1df387c11a58",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a863548-07ca-4183-93b8-af5389beaf39",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca259cab-615e-4dc3-832d-be27fe46f80b",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e0524e0-9c7a-4f1b-8ba7-8abf480dcb8e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2316156-5a08-458c-aa60-28d49c843287",
+          "name": "Update facilities for an apartment",
+          "request": {
+            "name": "Update facilities for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "facilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"maxAmount\": \"<integer>\",\n    \"privateUsage\": \"<boolean>\",\n    \"additionalFeesApply\": \"<boolean>\",\n    \"room\": {\n      \"roomId\": \"<string>\",\n      \"roomType\": \"<string>\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"<string>\",\n        \"month\": \"<string>\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"<string>\",\n        \"month\": \"<string>\"\n      }\n    },\n    \"location\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"maxAmount\": \"<integer>\",\n    \"privateUsage\": \"<boolean>\",\n    \"additionalFeesApply\": \"<boolean>\",\n    \"room\": {\n      \"roomId\": \"<string>\",\n      \"roomType\": \"<string>\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"<string>\",\n        \"month\": \"<string>\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"<string>\",\n        \"month\": \"<string>\"\n      }\n    },\n    \"location\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b777b54e-e7d8-4549-8b2a-aaaae6f63c0d",
+              "name": "Updated list of apartment facilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c17e998b-eb01-41ab-91cc-5f04fc29fd96",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a0ac339-c821-453b-a676-7562f2ddb391",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "869eb1d9-ddc4-49a4-a3b5-58bac423f0eb",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76475f73-e9ef-495c-8085-3054ded13cdc",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"room\": {\n      \"roomId\": \"123\",\n      \"roomType\": \"BED_ROOM\"\n    },\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5855c91a-9280-4cee-b53d-755a36a844e8",
+          "name": "Get facility types",
+          "request": {
+            "name": "Get facility types",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "facilities",
+                "types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7471a51d-ce48-4b17-9bab-123b008674e2",
+              "name": "List of facility types",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities",
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"BALCONY_UNCOVERED\",\n  \"VIEW_RIVER\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac2ec9be-616f-471d-baed-a53978e969e0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities",
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a36c1dfc-1705-4129-b961-4b92ba64737f",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities",
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45fb0734-0ca8-45be-82f4-57977c4cc1e2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities",
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0545b84-4cfe-4170-8233-cfa0b3eb9345",
+          "name": "Get facility locations",
+          "request": {
+            "name": "Get facility locations",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "facilities",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "925f6580-f866-4eac-9190-f746760339d9",
+              "name": "List of possible facility Locations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"IN_APARTMENT\",\n  \"IN_APARTMENT\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "749749a7-78e5-4c58-a818-f6a8d3a8d078",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4bec6de-3a19-4ea9-8302-eb0f0660adad",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7c5e7ea-490e-4711-9015-9149e2200a5c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "facilities",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dbfc0ea6-9a75-4773-ba07-614bfebd1d9c",
+    "name": "Affiliate Apartment Facilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

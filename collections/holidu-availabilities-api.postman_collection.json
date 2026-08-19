@@ -1,0 +1,198 @@
+{
+  "item": [
+    {
+      "id": "aecd204a-e395-430f-8bd3-e56fca90a1a5",
+      "name": "Availabilities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b86176d3-cd51-447e-bc3b-815a1d4e99a6",
+          "name": "Get information about the availability of given offers",
+          "request": {
+            "name": "Get information about the availability of given offers",
+            "description": {
+              "content": "Retrieve real-time prices and availability for specified properties on given dates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "availabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"propertyIds\": [\n    \"<string>\"\n  ],\n  \"checkin\": \"<date>\",\n  \"checkout\": \"<date>\",\n  \"adults\": \"<integer>\",\n  \"children\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"country\": \"<string>\",\n  \"childrenAges\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"salesChannelId\": \"<string>\",\n  \"domainId\": \"<integer>\",\n  \"brand\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eaf4d66f-c6ae-4814-976c-c13759da6d07",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "availabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"propertyIds\": [\n    \"<string>\"\n  ],\n  \"checkin\": \"<date>\",\n  \"checkout\": \"<date>\",\n  \"adults\": \"<integer>\",\n  \"children\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"country\": \"<string>\",\n  \"childrenAges\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"salesChannelId\": \"<string>\",\n  \"domainId\": \"<integer>\",\n  \"brand\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"propertyId\": \"string\",\n      \"isAvailable\": true,\n      \"price\": {\n        \"currency\": \"string\",\n        \"daily\": 8728.351626082214,\n        \"total\": 4249.116200356499,\n        \"nights\": 2310,\n        \"discountAmount\": 1553.4701916029358,\n        \"discountPercentage\": 5616.035137664283,\n        \"totalBeforeDiscount\": 8086.024781121844,\n        \"dailyBeforeDiscount\": 5310.942694537447\n      },\n      \"cancellationPolicy\": {\n        \"cancellationFees\": [\n          {\n            \"free\": false,\n            \"daysBeforeArrival\": 9783,\n            \"percentage\": 3737.975282027527,\n            \"amount\": 7437.218971055406,\n            \"currency\": \"string\"\n          },\n          {\n            \"free\": false,\n            \"daysBeforeArrival\": 9884,\n            \"percentage\": 5761.120280825941,\n            \"amount\": 2284.7014840158586,\n            \"currency\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"propertyId\": \"string\",\n      \"isAvailable\": true,\n      \"price\": {\n        \"currency\": \"string\",\n        \"daily\": 4289.507950200976,\n        \"total\": 4348.410441627167,\n        \"nights\": 5947,\n        \"discountAmount\": 6815.645525538541,\n        \"discountPercentage\": 3400.842073433551,\n        \"totalBeforeDiscount\": 4317.962860793585,\n        \"dailyBeforeDiscount\": 1776.307103276371\n      },\n      \"cancellationPolicy\": {\n        \"cancellationFees\": [\n          {\n            \"free\": true,\n            \"daysBeforeArrival\": 2271,\n            \"percentage\": 7572.475810533007,\n            \"amount\": 452.72319527432825,\n            \"currency\": \"string\"\n          },\n          {\n            \"free\": false,\n            \"daysBeforeArrival\": 9731,\n            \"percentage\": 7434.33173740131,\n            \"amount\": 4197.523370009866,\n            \"currency\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"errors\": [\n    {\n      \"id\": \"string\",\n      \"errorType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"errorType\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad8bef1b-5466-49c0-ad93-c2a2fd4bbb91",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "availabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"propertyIds\": [\n    \"<string>\"\n  ],\n  \"checkin\": \"<date>\",\n  \"checkout\": \"<date>\",\n  \"adults\": \"<integer>\",\n  \"children\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"country\": \"<string>\",\n  \"childrenAges\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"salesChannelId\": \"<string>\",\n  \"domainId\": \"<integer>\",\n  \"brand\": \"<string>\",\n  \"deviceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"issues\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e4d16a1d-b0e8-4bcd-a668-3f6446404360",
+    "name": "Affiliate Apartment Availabilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

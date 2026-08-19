@@ -1,0 +1,673 @@
+{
+  "item": [
+    {
+      "id": "f0b9ccfc-1491-4109-9869-b58c99b2ee89",
+      "name": "Photos",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c16cfb22-c7a9-4ed5-be61-bf0a44a83625",
+          "name": "Get photos for an apartment",
+          "request": {
+            "name": "Get photos for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "photos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8226e7ca-ffe7-46bc-a2fb-c0c591156367",
+              "name": "List of photos for the apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": 4242,\n    \"localizations\": [\n      {\n        \"language\": \"st\",\n        \"title\": \"string\"\n      },\n      {\n        \"language\": \"st\",\n        \"title\": \"string\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": 3037,\n    \"localizations\": [\n      {\n        \"language\": \"st\",\n        \"title\": \"string\"\n      },\n      {\n        \"language\": \"st\",\n        \"title\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a66cee1-f5a7-414b-a3c7-2b42bc000509",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "019cc669-6cba-403e-bc89-5f8f2081abe1",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a824454e-106f-4028-9b03-44bbc604c2f8",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b227d8e1-e7dd-45eb-874d-8380cfdabbd0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b36b2d23-1a04-4b6d-9548-a6e973b63325",
+          "name": "Update photos for an apartment",
+          "request": {
+            "name": "Update photos for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "photos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"position\": \"<integer>\",\n    \"url\": \"<string>\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": \"<integer>\",\n    \"url\": \"<string>\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed8bb4ab-08ba-40b3-aa2a-6c6ea7ceef75",
+              "name": "Updated list of photos for the apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16b5e158-5701-4fb2-8fc2-08ed2cd4aeb7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1aba14c-e826-41fd-b5db-29fe2a91058c",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4646ab8f-a407-4396-9afa-e418d7952092",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3be8c00d-89b1-436c-bfb8-8ac69f1fbbc2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2d49f839-1525-436b-b84f-d905ab3fef65",
+    "name": "Affiliate Apartment Photos API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

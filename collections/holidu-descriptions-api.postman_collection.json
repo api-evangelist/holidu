@@ -1,0 +1,673 @@
+{
+  "item": [
+    {
+      "id": "3f380e3a-0a43-4aeb-914c-aaaf36266d69",
+      "name": "Descriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9bc7ff3-9637-4ad1-838d-814c21a9caf3",
+          "name": "Get descriptions for an apartment",
+          "request": {
+            "name": "Get descriptions for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "description"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a3f68f4-b97b-4477-b900-96f8d8a8be92",
+              "name": "Successfully retrieved descriptions for apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  },\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a55508da-5c4a-4bfb-84ad-131d62a6c580",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59668b34-e58b-4b72-8054-569f357232d9",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2e1f3a8-9f9a-4904-9101-dd4c6bc454d3",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "561acbaf-7c18-47b2-bad1-17a65c5265b5",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f161b1b6-26a9-4376-a2b3-de2054add9e2",
+          "name": "Create or update descriptions for an apartment",
+          "request": {
+            "name": "Create or update descriptions for an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "description"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"description\": \"<string>\",\n    \"language\": \"<string>\",\n    \"title\": \"<string>\",\n    \"locationDescription\": \"<string>\"\n  },\n  {\n    \"description\": \"<string>\",\n    \"language\": \"<string>\",\n    \"title\": \"<string>\",\n    \"locationDescription\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec08ae59-42b1-4797-b3b0-a7107245fc06",
+              "name": "Successfully created or updated descriptions for apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  },\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  },\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e47d23b0-afd8-4856-83d1-4c512a1c7cb3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  },\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2d0ee86-7d99-4a67-82e0-0272a1c2e68c",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  },\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5606f004-148e-47e0-9ecd-3871bdb4917e",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  },\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db62ed13-7754-4ef7-b7e8-bae0ce48a3cf",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  },\n  {\n    \"description\": \"Die Appartamenti La Grotta befinden sich im historischen Zentrum von Bardolino...\",\n    \"language\": \"de\",\n    \"title\": \"La Grotta\",\n    \"locationDescription\": \"The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6a2277e7-6e49-4308-be42-f1811cc20ee2",
+    "name": "Affiliate Apartment Descriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

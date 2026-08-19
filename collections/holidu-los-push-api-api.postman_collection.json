@@ -1,0 +1,659 @@
+{
+  "item": [
+    {
+      "id": "395359af-f59f-42af-81cd-e4b95512cfcf",
+      "name": "LOS Push API",
+      "description": {
+        "content": "Length of Stay pricing push operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a39527db-22a0-4f1c-9a12-48dcd15661f5",
+          "name": "Create or replace LOS data for an apartment",
+          "request": {
+            "name": "Create or replace LOS data for an apartment",
+            "description": {
+              "content": "Holidu calls this endpoint to push the complete LOS data for an apartment to the affiliate.\n\nThis is an idempotent upsert ([RFC 9110 §9.3.4](https://www.rfc-editor.org/rfc/rfc9110#section-9.3.4)):\n- If the affiliate does not yet have LOS data for this apartment, it should store the payload and respond with `201 Created`.\n- If LOS data already exists, the affiliate should **fully replace** it with the provided payload and respond with `204 No Content`.\n\nThe request body always contains the **complete** LOS dataset for the apartment. Any check-in dates the affiliate previously stored but that are absent from this payload are no longer valid and must be removed.\n\nAn empty `los` map (`{}`) means no pricing is available for the apartment — the affiliate should remove all stored LOS data for it.\n\n## Authentication\n\nHolidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)).\n\n| Property | Value |\n|----------|-------|\n| **Type** | `http` |\n| **Scheme** | `bearer` |\n| **Bearer format** | `JWT` |\n\nToken exchange details are agreed upon during onboarding.\n\n## Request body examples\n\n**Multiple check-in dates with tiered pricing:**\n```json\n{\n  \"los\": {\n    \"2024-06-01\": [\n      { \"currency\": \"EUR\", \"guests\": 2, \"price\": [0, 0, 300.00, 400.00, 500.00] },\n      { \"currency\": \"EUR\", \"guests\": 4, \"price\": [0, 0, 350.00, 460.00, 580.00] }\n    ],\n    \"2024-06-02\": [\n      { \"currency\": \"EUR\", \"guests\": 2, \"price\": [0, 150.00, 280.00] }\n    ]\n  }\n}\n```\n\n**Single check-in date with one pricing tier:**\n```json\n{\n  \"los\": {\n    \"2024-06-01\": [\n      { \"currency\": \"EUR\", \"guests\": 2, \"price\": [0, 0, 300.00, 400.00, 500.00] }\n    ]\n  }\n}\n```\n\n**Empty LOS (no pricing available / fully booked):**\n```json\n{ \"los\": {} }\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "port": "affiliateHost",
+              "path": [
+                "holidu",
+                "v1",
+                "apartments",
+                ":apartmentId",
+                "los"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apartmentId",
+                  "description": "(Required) Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+                },
+                {
+                  "description": "The affiliate's API hostname.",
+                  "type": "any",
+                  "value": "api.affiliate-example.com",
+                  "key": "affiliateHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/problem+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"los\": {\n    \"key_0\": [\n      {\n        \"currency\": \"<iso-4217>\",\n        \"guests\": \"<integer>\",\n        \"price\": [\n          \"<decimal>\",\n          \"<decimal>\"\n        ]\n      },\n      {\n        \"currency\": \"<iso-4217>\",\n        \"guests\": \"<integer>\",\n        \"price\": [\n          \"<decimal>\",\n          \"<decimal>\"\n        ]\n      }\n    ],\n    \"key_1\": [\n      {\n        \"currency\": \"<iso-4217>\",\n        \"guests\": \"<integer>\",\n        \"price\": [\n          \"<decimal>\",\n          \"<decimal>\"\n        ]\n      },\n      {\n        \"currency\": \"<iso-4217>\",\n        \"guests\": \"<integer>\",\n        \"price\": [\n          \"<decimal>\",\n          \"<decimal>\"\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14df09ed-7093-4b44-98b6-c048ff802ed2",
+              "name": "LOS data created (first push for this apartment) ([RFC 9110 §15.3.2](https://www.rfc-editor.org/rfc/rfc9110#section-15.3.2)). The `Location` header contains the canonical URI of the new resource ([RFC 9110 §10.2.2](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.2)).",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "port": "affiliateHost",
+                  "path": [
+                    "holidu",
+                    "v1",
+                    "apartments",
+                    ":apartmentId",
+                    "los"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apartmentId",
+                      "description": "(Required) Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+                    },
+                    {
+                      "description": "The affiliate's API hostname.",
+                      "type": "any",
+                      "value": "api.affiliate-example.com",
+                      "key": "affiliateHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"2024-06-01\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          0,\n          300,\n          400,\n          500\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 4,\n        \"price\": [\n          0,\n          0,\n          350,\n          460,\n          580\n        ]\n      }\n    ],\n    \"2024-06-02\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          150,\n          280\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URI of the newly created resource ([RFC 9110 §10.2.2](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.2)).",
+                  "key": "Location",
+                  "value": "https://khoBWxEgKxsculkXb.tjhXJNlw.pZ5yZ7qNbTK9RzwCsDsNQ,wrcmvsgyIVE4CMfeE5JKKA"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "179d87c1-6195-422b-8b81-0810c3e679c2",
+              "name": "LOS data replaced successfully — no response body ([RFC 9110 §15.3.5](https://www.rfc-editor.org/rfc/rfc9110#section-15.3.5)).",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "port": "affiliateHost",
+                  "path": [
+                    "holidu",
+                    "v1",
+                    "apartments",
+                    ":apartmentId",
+                    "los"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apartmentId",
+                      "description": "(Required) Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+                    },
+                    {
+                      "description": "The affiliate's API hostname.",
+                      "type": "any",
+                      "value": "api.affiliate-example.com",
+                      "key": "affiliateHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"2024-06-01\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          0,\n          300,\n          400,\n          500\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 4,\n        \"price\": [\n          0,\n          0,\n          350,\n          460,\n          580\n        ]\n      }\n    ],\n    \"2024-06-02\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          150,\n          280\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a36e16a8-29c8-4f0f-841b-cffbae7b0963",
+              "name": "The request is syntactically invalid (malformed JSON, wrong types, etc.) ([RFC 9110 §15.5.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.1)).",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "port": "affiliateHost",
+                  "path": [
+                    "holidu",
+                    "v1",
+                    "apartments",
+                    ":apartmentId",
+                    "los"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apartmentId",
+                      "description": "(Required) Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+                    },
+                    {
+                      "description": "The affiliate's API hostname.",
+                      "type": "any",
+                      "value": "api.affiliate-example.com",
+                      "key": "affiliateHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"2024-06-01\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          0,\n          300,\n          400,\n          500\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 4,\n        \"price\": [\n          0,\n          0,\n          350,\n          460,\n          580\n        ]\n      }\n    ],\n    \"2024-06-02\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          150,\n          280\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://api.affiliate-example.com/problems/bad-request\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"detail\": \"Request body is not valid JSON.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "012305ec-9851-4a49-acb8-7c30a6bcaf0f",
+              "name": "Authentication credentials are missing or invalid ([RFC 9110 §15.5.2](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.2)). The affiliate should return a `WWW-Authenticate` header indicating the expected scheme ([RFC 9110 §11.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-11.6.1)).",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "port": "affiliateHost",
+                  "path": [
+                    "holidu",
+                    "v1",
+                    "apartments",
+                    ":apartmentId",
+                    "los"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apartmentId",
+                      "description": "(Required) Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+                    },
+                    {
+                      "description": "The affiliate's API hostname.",
+                      "type": "any",
+                      "value": "api.affiliate-example.com",
+                      "key": "affiliateHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"2024-06-01\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          0,\n          300,\n          400,\n          500\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 4,\n        \"price\": [\n          0,\n          0,\n          350,\n          460,\n          580\n        ]\n      }\n    ],\n    \"2024-06-02\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          150,\n          280\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Authentication scheme expected by the affiliate.",
+                  "key": "WWW-Authenticate",
+                  "value": "Bearer realm=\"affiliate-api\""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://api.affiliate-example.com/problems/unauthorized\",\n  \"title\": \"Unauthorized\",\n  \"status\": 401,\n  \"detail\": \"Bearer token is expired or invalid.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f545a5f-88e5-400a-9b1d-6a0079489589",
+              "name": "The affiliate does not recognise the apartment ID ([RFC 9110 §15.5.5](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.5)). This may indicate a mapping or onboarding issue that Holidu should investigate.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "port": "affiliateHost",
+                  "path": [
+                    "holidu",
+                    "v1",
+                    "apartments",
+                    ":apartmentId",
+                    "los"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apartmentId",
+                      "description": "(Required) Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+                    },
+                    {
+                      "description": "The affiliate's API hostname.",
+                      "type": "any",
+                      "value": "api.affiliate-example.com",
+                      "key": "affiliateHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"2024-06-01\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          0,\n          300,\n          400,\n          500\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 4,\n        \"price\": [\n          0,\n          0,\n          350,\n          460,\n          580\n        ]\n      }\n    ],\n    \"2024-06-02\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          150,\n          280\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://api.affiliate-example.com/problems/not-found\",\n  \"title\": \"Not Found\",\n  \"status\": 404,\n  \"detail\": \"Apartment 'apt-99999' is not known to this affiliate.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72c535b9-a09a-411a-91c9-c9207cfb7d1b",
+              "name": "The request body exceeds the affiliate's maximum accepted size ([RFC 9110 §15.5.14](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.14)).",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "port": "affiliateHost",
+                  "path": [
+                    "holidu",
+                    "v1",
+                    "apartments",
+                    ":apartmentId",
+                    "los"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apartmentId",
+                      "description": "(Required) Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+                    },
+                    {
+                      "description": "The affiliate's API hostname.",
+                      "type": "any",
+                      "value": "api.affiliate-example.com",
+                      "key": "affiliateHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"2024-06-01\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          0,\n          300,\n          400,\n          500\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 4,\n        \"price\": [\n          0,\n          0,\n          350,\n          460,\n          580\n        ]\n      }\n    ],\n    \"2024-06-02\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          150,\n          280\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://api.affiliate-example.com/problems/payload-too-large\",\n  \"title\": \"Payload Too Large\",\n  \"status\": 413,\n  \"detail\": \"The LOS payload exceeds the maximum allowed size of 5 MB.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c7c6e37-1003-4024-bfee-3cbcba377007",
+              "name": "The affiliate is rate-limiting Holidu ([RFC 6585 §4](https://www.rfc-editor.org/rfc/rfc6585#section-4)). Holidu will respect the `Retry-After` header before retrying.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "port": "affiliateHost",
+                  "path": [
+                    "holidu",
+                    "v1",
+                    "apartments",
+                    ":apartmentId",
+                    "los"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apartmentId",
+                      "description": "(Required) Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+                    },
+                    {
+                      "description": "The affiliate's API hostname.",
+                      "type": "any",
+                      "value": "api.affiliate-example.com",
+                      "key": "affiliateHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"2024-06-01\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          0,\n          300,\n          400,\n          500\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 4,\n        \"price\": [\n          0,\n          0,\n          350,\n          460,\n          580\n        ]\n      }\n    ],\n    \"2024-06-02\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          150,\n          280\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Indicates how long Holidu should wait before retrying ([RFC 9110 §10.2.3](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.3)). Value is either a number of seconds or an HTTP-date.",
+                  "key": "Retry-After",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://api.affiliate-example.com/problems/too-many-requests\",\n  \"title\": \"Too Many Requests\",\n  \"status\": 429,\n  \"detail\": \"Rate limit exceeded. Retry after 60 seconds.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0f3c410-93f0-485b-950a-e69e8a207a5b",
+              "name": "An unexpected error on the affiliate's side ([RFC 9110 §15.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.6.1)).",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "port": "affiliateHost",
+                  "path": [
+                    "holidu",
+                    "v1",
+                    "apartments",
+                    ":apartmentId",
+                    "los"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apartmentId",
+                      "description": "(Required) Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding."
+                    },
+                    {
+                      "description": "The affiliate's API hostname.",
+                      "type": "any",
+                      "value": "api.affiliate-example.com",
+                      "key": "affiliateHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"los\": {\n    \"2024-06-01\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          0,\n          300,\n          400,\n          500\n        ]\n      },\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 4,\n        \"price\": [\n          0,\n          0,\n          350,\n          460,\n          580\n        ]\n      }\n    ],\n    \"2024-06-02\": [\n      {\n        \"currency\": \"EUR\",\n        \"guests\": 2,\n        \"price\": [\n          0,\n          150,\n          280\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://api.affiliate-example.com/problems/internal-error\",\n  \"title\": \"Internal Server Error\",\n  \"status\": 500,\n  \"detail\": \"An unexpected error occurred.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "89ce677a-821b-458e-a109-e6a4922f57f2",
+    "name": "Affiliate Apartment LOS Push API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Length of Stay pricing push operations.",
+      "type": "text/plain"
+    }
+  }
+}

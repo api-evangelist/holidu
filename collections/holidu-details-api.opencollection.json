@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment Details API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Details",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get detailed information about the provided offers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/details",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve detailed static information for specified offers. The \"extras\" parameter allows for the inclusion of additional data points to the response. The response includes an RFC 6570-compatible \"urlTemplate\" for generating checkout page links with check-in and check-out dates. If some requested offers cannot be retrieved, these will be reported in the \"errors\" array, with the corresponding property identifier, error code, and descriptive message."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

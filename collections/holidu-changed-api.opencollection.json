@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment Changed API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Changed",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of property IDs that have changed within the specified time window.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/changed",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns property IDs with data potentially updated within the specified time range. The inventory is continuously refreshed, with more frequent updates for recent days."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

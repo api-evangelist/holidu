@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment Availability API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get apartment availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/availability",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get apartment availability"
+        },
+        {
+          "info": {
+            "name": "Update apartment availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/v2/availability",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update apartment availability"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

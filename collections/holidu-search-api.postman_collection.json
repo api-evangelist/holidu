@@ -1,0 +1,198 @@
+{
+  "item": [
+    {
+      "id": "5fc96195-dcbe-4e48-aac7-ef3dc015b67f",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9662ce25-643c-4298-a9a5-959e1add000b",
+          "name": "Search for offers based on the provided criteria",
+          "request": {
+            "name": "Search for offers based on the provided criteria",
+            "description": {
+              "content": "Retrieve a paginated list of offers matching specified filtering criteria, ranked by relevance. If dates are provided, only available offers for those dates are returned with exact pricing. Each offer includes basic property information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"adults\": \"<integer>\",\n  \"children\": \"<integer>\",\n  \"locale\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pageIndex\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"searchTerm\": \"<string>\",\n  \"locationBoundingBox\": {\n    \"neLat\": \"<number>\",\n    \"neLng\": \"<number>\",\n    \"swLat\": \"<number>\",\n    \"swLng\": \"<number>\"\n  },\n  \"checkin\": \"<date>\",\n  \"checkout\": \"<date>\",\n  \"childrenAges\": [\n    \"<integer>\"\n  ],\n  \"bedrooms\": \"<integer>\",\n  \"propertyTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"propertyIds\": [\n    \"<string>\"\n  ],\n  \"facilities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"extras\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"salesChannelId\": \"<string>\",\n  \"domainId\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e10c881-dfb6-41dc-bc12-f7c051ade10e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"adults\": \"<integer>\",\n  \"children\": \"<integer>\",\n  \"locale\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pageIndex\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"searchTerm\": \"<string>\",\n  \"locationBoundingBox\": {\n    \"neLat\": \"<number>\",\n    \"neLng\": \"<number>\",\n    \"swLat\": \"<number>\",\n    \"swLng\": \"<number>\"\n  },\n  \"checkin\": \"<date>\",\n  \"checkout\": \"<date>\",\n  \"childrenAges\": [\n    \"<integer>\"\n  ],\n  \"bedrooms\": \"<integer>\",\n  \"propertyTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"propertyIds\": [\n    \"<string>\"\n  ],\n  \"facilities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"extras\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"salesChannelId\": \"<string>\",\n  \"domainId\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"totalCount\": 6863\n  },\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"photos\": [\n        {\n          \"thumbnail\": \"https://cwKvhBHvvppMGDReoju.xsxcoo-BCtd8.a.7K7SoWWNh62RkZ8pvCLnil,HtgDEt21SbnODY\",\n          \"medium\": \"https://blFhpSagsFWLotuM.fgagIH2QT6DHf\",\n          \"large\": \"http://SXrbXptCKDnIGwXCdBpKJVKGqqpqafvXC.vxab,eVr2FPwPJTdWrGOyuGnyewwJjy4ogGxoxmnR1q\"\n        },\n        {\n          \"thumbnail\": \"https://rsGnWmsqJEOJdLT.ysiAAHEmlenNpOyEqzD8tB1xw9lf8dXel,\",\n          \"medium\": \"https://fafQOXCGJoUbslMtzykzbXZjOqCCmN.jmgpV4roAuW4YPS56j8GYfKHbb-wMTWtL8B-Ep\",\n          \"large\": \"http://yhMArKEsfANeTJLENpfFveJxo.bbrwQa8Twpxifa2R+9WnST+VYTMAvQcFVVfitAsMqH8DdGu\"\n        }\n      ],\n      \"url\": \"string\",\n      \"area\": {\n        \"value\": 8763.338988444752,\n        \"unit\": \"UNIT_SM\"\n      },\n      \"bedroomCount\": 8581,\n      \"bathroomCount\": 8338,\n      \"guestCount\": 7276,\n      \"title\": \"string\",\n      \"propertyType\": {\n        \"id\": \"string\",\n        \"title\": \"string\"\n      },\n      \"facilities\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"group\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"group\": \"string\"\n        }\n      ],\n      \"petsAllowed\": false,\n      \"location\": {\n        \"name\": \"string\",\n        \"distance\": \"string\",\n        \"postalCode\": \"string\",\n        \"city\": \"string\",\n        \"coordinates\": {\n          \"lat\": 55.00000451403298,\n          \"lng\": -45.43375465260081\n        }\n      },\n      \"price\": {\n        \"currency\": \"string\",\n        \"daily\": 7928.503173018939,\n        \"total\": 4711.793810083496,\n        \"nights\": 3724,\n        \"discountAmount\": 9628.03317429864,\n        \"discountPercentage\": 1035.3126996893081,\n        \"totalBeforeDiscount\": 8159.56274524884,\n        \"dailyBeforeDiscount\": 4987.818524314528\n      },\n      \"cancellationPolicy\": {\n        \"type\": \"FREE_CANCELLATION\"\n      },\n      \"rating\": {\n        \"value\": 7.150895482171061,\n        \"count\": 7575\n      },\n      \"licenseId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"photos\": [\n        {\n          \"thumbnail\": \"https://dtKXUwUCF.hihiMAhOgQWpBdIZLjT3JNbUSdF7qI1-M\",\n          \"medium\": \"https://CPnUHYvbqdZJSPaYSsZrODkvamHpDtw.xvYunNV7DdDHzOZ.ihwkjCY1J\",\n          \"large\": \"http://eXoVbTNyvlmIMOgKkCoT.twJJLYdXKf7wCWlWVhmR8JpIGO,4n51E1DftHvwfScaSRiKnqaV2dHZ5bZdQC2mjLfO-6SW\"\n        },\n        {\n          \"thumbnail\": \"https://bkPUXlVcyKabwVBbr.zpuqQM8Ulj.jR0pYLfjAHcKpLlkVak7h1Zxgia9MAnIYk\",\n          \"medium\": \"http://ZqpRJrIoeUXYvyCFUBeijOudb.ybPt46-wX+IJIn8uouHJgEC6Km.Iz7MemQ3\",\n          \"large\": \"http://JqwdXPnJmztr.gomvSjUk,gRXPo9DoCmPmHxYz1YqXebdatmnp4.Nc5c.f9wu,ouRn,swcxytOyzKR\"\n        }\n      ],\n      \"url\": \"string\",\n      \"area\": {\n        \"value\": 7571.537319015864,\n        \"unit\": \"UNIT_SM\"\n      },\n      \"bedroomCount\": 5079,\n      \"bathroomCount\": 8855,\n      \"guestCount\": 2689,\n      \"title\": \"string\",\n      \"propertyType\": {\n        \"id\": \"string\",\n        \"title\": \"st\"\n      },\n      \"facilities\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"group\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"group\": \"string\"\n        }\n      ],\n      \"petsAllowed\": true,\n      \"location\": {\n        \"name\": \"string\",\n        \"distance\": \"string\",\n        \"postalCode\": \"string\",\n        \"city\": \"string\",\n        \"coordinates\": {\n          \"lat\": 46.466656355354786,\n          \"lng\": -130.30149095414146\n        }\n      },\n      \"price\": {\n        \"currency\": \"string\",\n        \"daily\": 5431.020838585498,\n        \"total\": 8377.469674277727,\n        \"nights\": 6170,\n        \"discountAmount\": 6324.047614104772,\n        \"discountPercentage\": 8362.423787241789,\n        \"totalBeforeDiscount\": 8831.256946296837,\n        \"dailyBeforeDiscount\": 4784.050378699789\n      },\n      \"cancellationPolicy\": {\n        \"type\": \"FREE_CANCELLATION\"\n      },\n      \"rating\": {\n        \"value\": 4.189910843456865,\n        \"count\": 2485\n      },\n      \"licenseId\": \"string\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"apartmentId\": \"string\",\n      \"code\": 7695.522563682641,\n      \"message\": \"string\"\n    },\n    {\n      \"apartmentId\": \"string\",\n      \"code\": 2091.0460834889655,\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74f2e117-6827-407a-b729-4a14a739d24a",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"adults\": \"<integer>\",\n  \"children\": \"<integer>\",\n  \"locale\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pageIndex\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"searchTerm\": \"<string>\",\n  \"locationBoundingBox\": {\n    \"neLat\": \"<number>\",\n    \"neLng\": \"<number>\",\n    \"swLat\": \"<number>\",\n    \"swLng\": \"<number>\"\n  },\n  \"checkin\": \"<date>\",\n  \"checkout\": \"<date>\",\n  \"childrenAges\": [\n    \"<integer>\"\n  ],\n  \"bedrooms\": \"<integer>\",\n  \"propertyTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"propertyIds\": [\n    \"<string>\"\n  ],\n  \"facilities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"extras\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"salesChannelId\": \"<string>\",\n  \"domainId\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"issues\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5181b54b-91fb-4fd5-9fd2-b9003d38d644",
+    "name": "Affiliate Apartment Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

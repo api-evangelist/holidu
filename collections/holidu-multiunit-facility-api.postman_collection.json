@@ -1,0 +1,537 @@
+{
+  "item": [
+    {
+      "id": "91aacd7d-47ab-4913-b5eb-e4a8e1b1b50c",
+      "name": "MultiUnit Facility",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e88bd177-761d-462f-9b4c-ff68db7e3068",
+          "name": "Get facilities for a multi-unit",
+          "request": {
+            "name": "Get facilities for a multi-unit",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "multi-unit",
+                "facilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "providerGroupId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a1521cb-b27b-46d3-a98f-1def59dcb950",
+              "name": "Successful retrieval of multi-unit facilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72f5fe36-cc06-41b7-9146-e443cbcdd4a6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be57a4ba-a211-43c2-8614-da0c763ba78e",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "423001c1-9bfa-4ea9-8263-4a708c840f15",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07dfb140-77ba-4e1b-bd3c-fd7cacf714ef",
+          "name": "Update facilities for a multi-unit",
+          "request": {
+            "name": "Update facilities for a multi-unit",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "multi-unit",
+                "facilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "providerGroupId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"maxAmount\": \"<integer>\",\n    \"privateUsage\": \"<boolean>\",\n    \"additionalFeesApply\": \"<boolean>\",\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"<string>\",\n        \"month\": \"<string>\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"<string>\",\n        \"month\": \"<string>\"\n      }\n    },\n    \"location\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"maxAmount\": \"<integer>\",\n    \"privateUsage\": \"<boolean>\",\n    \"additionalFeesApply\": \"<boolean>\",\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"<string>\",\n        \"month\": \"<string>\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"<string>\",\n        \"month\": \"<string>\"\n      }\n    },\n    \"location\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fc0999ab-934f-426c-889c-0a7bbcb2d232",
+              "name": "Successful update of multi-unit facilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ccc9c2e-f237-4b29-b28d-266d91ae6e32",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e475ea1-c74d-44ee-8ed8-854d5ca3017b",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b72b53f6-e8fa-40b9-a470-75784f33a9c2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"POOL\",\n    \"maxAmount\": 1,\n    \"privateUsage\": true,\n    \"additionalFeesApply\": true,\n    \"availableTime\": {\n      \"availableFrom\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      },\n      \"availableTo\": {\n        \"pointInMonth\": \"MIDDLE\",\n        \"month\": \"JANUARY\"\n      }\n    },\n    \"location\": \"NEAR_BY\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "438cfa06-e39a-4f7a-b085-ad97c0c74c42",
+    "name": "Affiliate Apartment MultiUnit Facility API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

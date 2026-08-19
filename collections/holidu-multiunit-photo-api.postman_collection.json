@@ -1,0 +1,537 @@
+{
+  "item": [
+    {
+      "id": "7cc718d6-eef0-4428-b9bc-d262416ec73b",
+      "name": "MultiUnit Photo",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0ab2e7e-0863-479c-85f1-e2657e96c900",
+          "name": "Get photos for a multi-unit",
+          "request": {
+            "name": "Get photos for a multi-unit",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "multi-unit",
+                "photos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "providerGroupId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "798ddf5b-63ef-489d-889b-4389ec652573",
+              "name": "Successful retrieval of multi-unit photos",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": 1556,\n    \"localizations\": [\n      {\n        \"language\": \"st\",\n        \"title\": \"string\"\n      },\n      {\n        \"language\": \"st\",\n        \"title\": \"string\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": 2323,\n    \"localizations\": [\n      {\n        \"language\": \"st\",\n        \"title\": \"string\"\n      },\n      {\n        \"language\": \"st\",\n        \"title\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b83b8871-3035-4c87-a811-06900a93aef2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b3114b3-09bc-4a87-9bf4-df75fc0ed111",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12daf970-8f05-4d02-8967-2434ca8e9635",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6729f598-3b9a-4605-840f-22014aab2e6a",
+          "name": "Update photos for a multi-unit",
+          "request": {
+            "name": "Update photos for a multi-unit",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "multi-unit",
+                "photos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "providerGroupId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"position\": \"<integer>\",\n    \"url\": \"<string>\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": \"<integer>\",\n    \"url\": \"<string>\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad5e16af-86d9-4523-957a-9f5d4e9d0428",
+              "name": "Successful update of multi-unit photos",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "435f1499-6a35-46ad-8819-de7e13bfcb95",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a0e64c0-5b53-43ca-a8c8-36fa0f4ce44c",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b57f53bb-069f-4543-9b1f-bf28f0aca419",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multi-unit",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"position\": 1,\n    \"url\": \"http://r-ec.bstatic.com/images/hotel/max500/149/14959242.jpg\",\n    \"contentLength\": \"<long>\",\n    \"localizations\": [\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      },\n      {\n        \"language\": \"<string>\",\n        \"title\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0ff93683-6fee-4e23-84b7-c0c2bf1cc2a9",
+    "name": "Affiliate Apartment MultiUnit Photo API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -4,11 +4,9 @@ status: candidate
 source:
 - openapi/holidu-affiliate-api.json
 - openapi/holidu-connectivity-api.json
-note: >-
-  No official hosted/remote Holidu MCP server was found. This is a candidate tool
-  list derived from OpenAPI operations for the two production APIs. The Affiliate
-  API (read-oriented: search/details/availability) is the strongest agent-facing
-  surface; the Connectivity API is a write-heavy property-management surface.
+note: 'No official hosted/remote Holidu MCP server was found. This is a candidate tool list derived from
+  OpenAPI operations for the two production APIs. The Affiliate API (read-oriented: search/details/availability)
+  is the strongest agent-facing surface; the Connectivity API is a write-heavy property-management surface.'
 server:
   name: holidu
   transport: http
@@ -37,3 +35,9 @@ tools:
 - name: get_booking_details
   description: Get details for a booking.
   source_operation: openapi/holidu-connectivity-api.json#getBookingDetails
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census

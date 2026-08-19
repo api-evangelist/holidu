@@ -1,0 +1,330 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment Booking Terms API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Booking Terms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get terms and conditions for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/apartments/terms-and-conditions",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get terms and conditions for apartment"
+        },
+        {
+          "info": {
+            "name": "Update terms and conditions for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/v2/apartments/terms-and-conditions",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update terms and conditions for apartment"
+        },
+        {
+          "info": {
+            "name": "Get payment configuration for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/apartments/payment-configuration",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rateId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get payment configuration for apartment"
+        },
+        {
+          "info": {
+            "name": "Update payment configuration for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/v2/apartments/payment-configuration",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces existing payment configurations with new ones for apartment"
+        },
+        {
+          "info": {
+            "name": "Delete payment configuration for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://external-api.holidu.com/v2/apartments/payment-configuration",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rateId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes existing payment configuration for apartment"
+        },
+        {
+          "info": {
+            "name": "Get cancellation conditions for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/apartments/cancellation-policy",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rateId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get cancellation conditions for apartment"
+        },
+        {
+          "info": {
+            "name": "Update cancellation conditions for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/v2/apartments/cancellation-policy",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces any pre-configured cancellation policies with new ones for Apartment"
+        },
+        {
+          "info": {
+            "name": "Delete cancellation policy for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://external-api.holidu.com/v2/apartments/cancellation-policy",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rateId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes existing cancellation policy for apartment"
+        },
+        {
+          "info": {
+            "name": "Get payment configuration rateIds for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/apartments/payment-configuration/rate-ids",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get payment configuration rateIds for apartment"
+        },
+        {
+          "info": {
+            "name": "Get cancellation policy rate Ids for apartment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/apartments/cancellation-policy/rate-ids",
+            "params": [
+              {
+                "name": "providerApartmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "holiduApartmentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get cancellation policy rate Ids for apartment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment MultiUnit Photo API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MultiUnit Photo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get photos for a multi-unit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/v2/multi-unit/photos",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "providerGroupId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get photos for a multi-unit"
+        },
+        {
+          "info": {
+            "name": "Update photos for a multi-unit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://external-api.holidu.com/v2/multi-unit/photos",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "providerGroupId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update photos for a multi-unit"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

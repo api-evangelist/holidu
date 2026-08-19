@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Affiliate Apartment Testa API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Testa",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get access_token using refresh_token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://external-api.holidu.com/testa"
+          },
+          "docs": "Get access_token using refresh_token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

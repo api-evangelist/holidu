@@ -1,0 +1,1766 @@
+{
+  "item": [
+    {
+      "id": "2f2887be-6c63-44ab-ab37-09d36c142119",
+      "name": "Apartment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fd89d8c2-f0bd-4cee-8e39-c9c17fb8698c",
+          "name": "Deactivate apartment for provider",
+          "request": {
+            "name": "Deactivate apartment for provider",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "apartment",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40503cb9-ff4b-4aa2-915f-4b84df51291e",
+              "name": "Deactivate action on apartment succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b9b8838-c0a5-419d-a5c9-42e48f5e8294",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c24b6460-a9c6-4857-8f39-61b5727bc68b",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f765be4-3187-4f11-a2dc-a2177307563d",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52f7809f-5579-4c48-9e56-be09b7dc7a73",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8b6f6d5-32ac-4a10-a08e-499cda0307c8",
+          "name": "Activate apartment for provider",
+          "request": {
+            "name": "Activate apartment for provider",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "apartment",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38e2f8c6-8bd2-4c8b-98ce-461913ab1c68",
+              "name": "Activate action on apartment succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc0f2150-34d6-4663-93b4-20738e401e5c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17a0b215-3e60-411b-9bc2-06397030d3ae",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87e21597-8198-49f4-9628-c6f12f309124",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66111da7-ee0f-4e1c-8b77-3f223f2d0174",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea975ef5-2361-4052-accb-fae7676028d5",
+          "name": "Get an apartment",
+          "request": {
+            "name": "Get an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "apartment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d6a0bb5-4e57-4521-9a78-375ab624c137",
+              "name": "Successful retrieval of an apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apartmentType\": \"VILLA\",\n  \"guestCapacityRules\": {\n    \"standardCapacity\": 1,\n    \"adultsOnly\": false,\n    \"additionalChildren\": 0,\n    \"maxBabies\": 2\n  },\n  \"lat\": 50.9293009,\n  \"lng\": 5.9779776,\n  \"providerApartmentGroupId\": \"house-123\",\n  \"name\": \"Villa Munich Center\",\n  \"apartmentAddress\": {\n    \"street\": \"Karlstrasse 66\",\n    \"zipCode\": \"76133\",\n    \"city\": \"Munich\",\n    \"countryCode\": \"DE\"\n  },\n  \"contactDetails\": {\n    \"contactName\": \"John Doe\",\n    \"contactPhone\": \"+123(4)56789\",\n    \"contactEmail\": \"john@doe.com\"\n  },\n  \"numberOfBedrooms\": 2,\n  \"numberOfLivingrooms\": 1,\n  \"numberOfBathrooms\": 2,\n  \"sizeInSqm\": 100,\n  \"checkInCheckOutTimes\": {\n    \"checkIn\": [\n      {\n        \"checkInFrom\": \"07:45:12.130Z\",\n        \"checkInTo\": \"22:43:40.107Z\"\n      },\n      {\n        \"checkInFrom\": \"07:13:24.321Z\",\n        \"checkInTo\": \"11:36:55.825Z\"\n      }\n    ],\n    \"checkOutUntil\": \"14:30\"\n  },\n  \"floor\": 0,\n  \"sizeOfPlot\": 140.5,\n  \"buildYear\": 2001,\n  \"modernizedYear\": 2007,\n  \"license\": \"1231882\",\n  \"regulatoryInformation\": {\n    \"key_0\": \"string\"\n  },\n  \"isTestApartment\": true,\n  \"onRequestDetails\": {\n    \"bookableOnRequest\": true,\n    \"hostEmailAddress\": \"string\"\n  },\n  \"leadTimeHours\": 5567,\n  \"duplicateFrom\": [\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    },\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    }\n  ],\n  \"active\": false,\n  \"holiduApartmentId\": 8738\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "807fd3f6-eb9f-4d5b-9c28-9e4c794055f7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81dc1f69-69e5-480c-9f6d-a72873e6f39d",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "532856e2-dd19-44e4-a6d3-fddce47a1fc7",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef451a44-97ac-4c18-a805-0e9b296a6bd2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cb37290-ea5b-4d90-b0f9-406db0ebb80f",
+          "name": "Create or update an apartment",
+          "request": {
+            "name": "Create or update an apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "apartment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apartmentType\": \"<string>\",\n  \"guestCapacityRules\": {\n    \"standardCapacity\": \"<integer>\",\n    \"adultsOnly\": \"<boolean>\",\n    \"additionalChildren\": \"<integer>\",\n    \"maxBabies\": \"<integer>\"\n  },\n  \"lat\": \"<number>\",\n  \"lng\": \"<number>\",\n  \"providerApartmentGroupId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"apartmentAddress\": {\n    \"street\": \"<string>\",\n    \"zipCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryCode\": \"<string>\"\n  },\n  \"contactDetails\": {\n    \"contactName\": \"<string>\",\n    \"contactPhone\": \"<string>\",\n    \"contactEmail\": \"<string>\"\n  },\n  \"numberOfBedrooms\": \"<integer>\",\n  \"numberOfLivingrooms\": \"<integer>\",\n  \"numberOfBathrooms\": \"<integer>\",\n  \"sizeInSqm\": \"<number>\",\n  \"checkInCheckOutTimes\": {\n    \"checkIn\": [\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      },\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      }\n    ],\n    \"checkOutUntil\": \"<string>\"\n  },\n  \"floor\": \"<integer>\",\n  \"sizeOfPlot\": \"<number>\",\n  \"buildYear\": \"<integer>\",\n  \"modernizedYear\": \"<integer>\",\n  \"license\": \"<string>\",\n  \"regulatoryInformation\": {\n    \"key_0\": \"<string>\"\n  },\n  \"isTestApartment\": \"<boolean>\",\n  \"onRequestDetails\": {\n    \"bookableOnRequest\": \"<boolean>\",\n    \"hostEmailAddress\": \"<string>\"\n  },\n  \"leadTimeHours\": \"<integer>\",\n  \"duplicateFrom\": [\n    {\n      \"provider\": \"<string>\",\n      \"duplicatedApartmentId\": \"<string>\"\n    },\n    {\n      \"provider\": \"<string>\",\n      \"duplicatedApartmentId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4b0fc83f-ace8-419e-a22c-a760e790944f",
+              "name": "Successful creation or update of an apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apartmentType\": \"VILLA\",\n  \"guestCapacityRules\": {\n    \"standardCapacity\": 1,\n    \"adultsOnly\": false,\n    \"additionalChildren\": 0,\n    \"maxBabies\": 2\n  },\n  \"lat\": 50.9293009,\n  \"lng\": 5.9779776,\n  \"providerApartmentGroupId\": \"house-123\",\n  \"name\": \"Villa Munich Center\",\n  \"apartmentAddress\": {\n    \"street\": \"Karlstrasse 66\",\n    \"zipCode\": \"76133\",\n    \"city\": \"Munich\",\n    \"countryCode\": \"DE\"\n  },\n  \"contactDetails\": {\n    \"contactName\": \"John Doe\",\n    \"contactPhone\": \"+123(4)56789\",\n    \"contactEmail\": \"john@doe.com\"\n  },\n  \"numberOfBedrooms\": 2,\n  \"numberOfLivingrooms\": 1,\n  \"numberOfBathrooms\": 2,\n  \"sizeInSqm\": 100,\n  \"checkInCheckOutTimes\": {\n    \"checkIn\": [\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      },\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      }\n    ],\n    \"checkOutUntil\": \"14:30\"\n  },\n  \"floor\": 0,\n  \"sizeOfPlot\": 140.5,\n  \"buildYear\": 2001,\n  \"modernizedYear\": 2007,\n  \"license\": \"1231882\",\n  \"regulatoryInformation\": {\n    \"key_0\": \"<string>\"\n  },\n  \"isTestApartment\": \"<boolean>\",\n  \"onRequestDetails\": {\n    \"bookableOnRequest\": \"<boolean>\",\n    \"hostEmailAddress\": \"<string>\"\n  },\n  \"leadTimeHours\": \"<integer>\",\n  \"duplicateFrom\": [\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    },\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apartmentType\": \"VILLA\",\n  \"guestCapacityRules\": {\n    \"standardCapacity\": 1,\n    \"adultsOnly\": false,\n    \"additionalChildren\": 0,\n    \"maxBabies\": 2\n  },\n  \"lat\": 50.9293009,\n  \"lng\": 5.9779776,\n  \"providerApartmentGroupId\": \"house-123\",\n  \"name\": \"Villa Munich Center\",\n  \"apartmentAddress\": {\n    \"street\": \"Karlstrasse 66\",\n    \"zipCode\": \"76133\",\n    \"city\": \"Munich\",\n    \"countryCode\": \"DE\"\n  },\n  \"contactDetails\": {\n    \"contactName\": \"John Doe\",\n    \"contactPhone\": \"+123(4)56789\",\n    \"contactEmail\": \"john@doe.com\"\n  },\n  \"numberOfBedrooms\": 2,\n  \"numberOfLivingrooms\": 1,\n  \"numberOfBathrooms\": 2,\n  \"sizeInSqm\": 100,\n  \"checkInCheckOutTimes\": {\n    \"checkIn\": [\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      },\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      }\n    ],\n    \"checkOutUntil\": \"14:30\"\n  },\n  \"floor\": 0,\n  \"sizeOfPlot\": 140.5,\n  \"buildYear\": 2001,\n  \"modernizedYear\": 2007,\n  \"license\": \"1231882\",\n  \"regulatoryInformation\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"isTestApartment\": true,\n  \"onRequestDetails\": {\n    \"bookableOnRequest\": \"<boolean>\",\n    \"hostEmailAddress\": \"<string>\"\n  },\n  \"leadTimeHours\": 6841,\n  \"duplicateFrom\": [\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    },\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    }\n  ],\n  \"active\": true,\n  \"holiduApartmentId\": 2705\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02c72c1a-be5c-42a2-9a22-45c19d1a83b2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apartmentType\": \"VILLA\",\n  \"guestCapacityRules\": {\n    \"standardCapacity\": 1,\n    \"adultsOnly\": false,\n    \"additionalChildren\": 0,\n    \"maxBabies\": 2\n  },\n  \"lat\": 50.9293009,\n  \"lng\": 5.9779776,\n  \"providerApartmentGroupId\": \"house-123\",\n  \"name\": \"Villa Munich Center\",\n  \"apartmentAddress\": {\n    \"street\": \"Karlstrasse 66\",\n    \"zipCode\": \"76133\",\n    \"city\": \"Munich\",\n    \"countryCode\": \"DE\"\n  },\n  \"contactDetails\": {\n    \"contactName\": \"John Doe\",\n    \"contactPhone\": \"+123(4)56789\",\n    \"contactEmail\": \"john@doe.com\"\n  },\n  \"numberOfBedrooms\": 2,\n  \"numberOfLivingrooms\": 1,\n  \"numberOfBathrooms\": 2,\n  \"sizeInSqm\": 100,\n  \"checkInCheckOutTimes\": {\n    \"checkIn\": [\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      },\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      }\n    ],\n    \"checkOutUntil\": \"14:30\"\n  },\n  \"floor\": 0,\n  \"sizeOfPlot\": 140.5,\n  \"buildYear\": 2001,\n  \"modernizedYear\": 2007,\n  \"license\": \"1231882\",\n  \"regulatoryInformation\": {\n    \"key_0\": \"<string>\"\n  },\n  \"isTestApartment\": \"<boolean>\",\n  \"onRequestDetails\": {\n    \"bookableOnRequest\": \"<boolean>\",\n    \"hostEmailAddress\": \"<string>\"\n  },\n  \"leadTimeHours\": \"<integer>\",\n  \"duplicateFrom\": [\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    },\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb1d6e4e-c80b-47d4-928b-d0354dc43ae9",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apartmentType\": \"VILLA\",\n  \"guestCapacityRules\": {\n    \"standardCapacity\": 1,\n    \"adultsOnly\": false,\n    \"additionalChildren\": 0,\n    \"maxBabies\": 2\n  },\n  \"lat\": 50.9293009,\n  \"lng\": 5.9779776,\n  \"providerApartmentGroupId\": \"house-123\",\n  \"name\": \"Villa Munich Center\",\n  \"apartmentAddress\": {\n    \"street\": \"Karlstrasse 66\",\n    \"zipCode\": \"76133\",\n    \"city\": \"Munich\",\n    \"countryCode\": \"DE\"\n  },\n  \"contactDetails\": {\n    \"contactName\": \"John Doe\",\n    \"contactPhone\": \"+123(4)56789\",\n    \"contactEmail\": \"john@doe.com\"\n  },\n  \"numberOfBedrooms\": 2,\n  \"numberOfLivingrooms\": 1,\n  \"numberOfBathrooms\": 2,\n  \"sizeInSqm\": 100,\n  \"checkInCheckOutTimes\": {\n    \"checkIn\": [\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      },\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      }\n    ],\n    \"checkOutUntil\": \"14:30\"\n  },\n  \"floor\": 0,\n  \"sizeOfPlot\": 140.5,\n  \"buildYear\": 2001,\n  \"modernizedYear\": 2007,\n  \"license\": \"1231882\",\n  \"regulatoryInformation\": {\n    \"key_0\": \"<string>\"\n  },\n  \"isTestApartment\": \"<boolean>\",\n  \"onRequestDetails\": {\n    \"bookableOnRequest\": \"<boolean>\",\n    \"hostEmailAddress\": \"<string>\"\n  },\n  \"leadTimeHours\": \"<integer>\",\n  \"duplicateFrom\": [\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    },\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a777f494-e4e1-4e06-b1a1-407ecca46e59",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apartmentType\": \"VILLA\",\n  \"guestCapacityRules\": {\n    \"standardCapacity\": 1,\n    \"adultsOnly\": false,\n    \"additionalChildren\": 0,\n    \"maxBabies\": 2\n  },\n  \"lat\": 50.9293009,\n  \"lng\": 5.9779776,\n  \"providerApartmentGroupId\": \"house-123\",\n  \"name\": \"Villa Munich Center\",\n  \"apartmentAddress\": {\n    \"street\": \"Karlstrasse 66\",\n    \"zipCode\": \"76133\",\n    \"city\": \"Munich\",\n    \"countryCode\": \"DE\"\n  },\n  \"contactDetails\": {\n    \"contactName\": \"John Doe\",\n    \"contactPhone\": \"+123(4)56789\",\n    \"contactEmail\": \"john@doe.com\"\n  },\n  \"numberOfBedrooms\": 2,\n  \"numberOfLivingrooms\": 1,\n  \"numberOfBathrooms\": 2,\n  \"sizeInSqm\": 100,\n  \"checkInCheckOutTimes\": {\n    \"checkIn\": [\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      },\n      {\n        \"checkInFrom\": \"<time>\",\n        \"checkInTo\": \"<time>\"\n      }\n    ],\n    \"checkOutUntil\": \"14:30\"\n  },\n  \"floor\": 0,\n  \"sizeOfPlot\": 140.5,\n  \"buildYear\": 2001,\n  \"modernizedYear\": 2007,\n  \"license\": \"1231882\",\n  \"regulatoryInformation\": {\n    \"key_0\": \"<string>\"\n  },\n  \"isTestApartment\": \"<boolean>\",\n  \"onRequestDetails\": {\n    \"bookableOnRequest\": \"<boolean>\",\n    \"hostEmailAddress\": \"<string>\"\n  },\n  \"leadTimeHours\": \"<integer>\",\n  \"duplicateFrom\": [\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    },\n    {\n      \"provider\": \"HRS\",\n      \"duplicatedApartmentId\": \"123654\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a70d86b-923c-4eca-9c3b-98b46af0d0fd",
+          "name": "Get basic information about all apartments",
+          "request": {
+            "name": "Get basic information about all apartments",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "apartments",
+                "information"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47b7a5b5-283a-4d38-8581-497dc379d555",
+              "name": "A list of basic information about all apartments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalApartments\": 1058,\n  \"page\": 8108,\n  \"size\": 8273,\n  \"apartments\": [\n    {\n      \"providerApartmentId\": \"string\",\n      \"holiduApartmentId\": \"string\",\n      \"active\": true,\n      \"lastUpdate\": \"1995-01-19T05:02:17.199Z\"\n    },\n    {\n      \"providerApartmentId\": \"string\",\n      \"holiduApartmentId\": \"string\",\n      \"active\": true,\n      \"lastUpdate\": \"1972-11-11T00:10:25.392Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0760721e-3607-44eb-a25c-c26d8386ba08",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e619334-2ab9-44d6-9cfc-c96fe1488c94",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartments",
+                    "information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57bccb33-3eec-4871-887e-41acfda47705",
+          "name": "Get validation result of apartment",
+          "request": {
+            "name": "Get validation result of apartment",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "apartment",
+                "validation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerApartmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "holiduApartmentId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6c5c858-e18d-4b64-8fc1-4a67df1e1678",
+              "name": "Successful retrieval of validation result of an apartment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "validation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"holiduApartmentId\": 4451,\n  \"providerApartmentId\": \"string\",\n  \"lastValidatedAt\": \"1983-01-13T12:10:30.051Z\",\n  \"valid\": true,\n  \"validationErrorMessages\": [\n    {\n      \"errorCode\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab4e9912-2adc-4c90-a4ea-60637e0743ca",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "validation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f8fe128-593d-46cc-9ef4-14a1bbd31741",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "validation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c93d7a32-3146-4f32-b0e2-7468799e280f",
+              "name": "Apartment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "validation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2390ad8-35d8-439d-9dac-162c9b12df97",
+              "name": "Requested method is not available in sandbox environment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "validation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "I'm a teapot (RFC 2324)",
+              "code": 418,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7fd1a62-6ec1-4bd0-9e00-bac6aaa264ac",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "apartment",
+                    "validation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerApartmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "holiduApartmentId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid Json: Unexpected character\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://external-api.holidu.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dababd54-5e9d-4364-bea3-c071c2ae6e0c",
+    "name": "Affiliate Apartment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
