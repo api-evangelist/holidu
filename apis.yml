@@ -48,6 +48,17 @@ tags:
 - Booking
 - Channel Manager
 - Connectivity
+- Affiliates
+tags_raw:
+- Company
+- Travel And Leisure
+- Vacation Rentals
+- Short-Term Rentals
+- Hospitality
+- Property Management
+- Booking
+- Channel Manager
+- Connectivity
 - Affiliate
 apis:
 - aid: holidu:holidu-apartment-api
@@ -349,7 +360,8 @@ apis:
   description: The Test API from Holidu — 1 operation(s) for test.
   humanURL: https://developer.holidu.com/reference/intro-1
   baseURL: https://external-api.holidu.com
-  tags:
+  tags: []
+  tags_raw:
   - Test
   properties:
   - type: OpenAPI
