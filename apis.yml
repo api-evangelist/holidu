@@ -403,6 +403,9 @@ maintainers:
   email: info@apis.io
 image: https://www.holidu.com/favicon.ico
 common:
+- type: CapabilityMap
+  url: capabilities/holidu-capability-edges.yml
+  name: Holidu Business Capability Map
 - type: Overlay
   url: overlays/holidu-affiliate-api-overlay.yaml
 - type: Website
