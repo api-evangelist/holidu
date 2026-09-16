@@ -1,19 +1,15 @@
 aid: holidu
 name: Holidu
-description: >-
-  Holidu is a Munich-based vacation-rental search engine and short-term-rental
-  technology company that helps travellers find and book holiday homes and helps
-  property owners and managers distribute their inventory. Holidu exposes a public
-  Developer Hub with two production REST APIs: the Affiliate API, for searching
-  offers, retrieving property details, checking real-time availability and syncing
-  changes; and the Connectivity (provider) API, a v2 property-management surface of
-  ~50 operations covering apartments, multi-unit listings, descriptions, photos,
-  facilities, reviews, rates, length-of-stay pricing, availability, extra costs,
-  discounts, booking terms, payment and cancellation configuration, and bookings.
-  Authentication is via per-partner API keys (with an OAuth 2.0 security service and
-  Bearer-JWT callbacks), sandbox and production hosts are separated, and Holidu runs
-  a HackerOne bug-bounty program. Holidu is backed by EQT Ventures, HV Capital and
-  Northzone.
+description: 'Holidu is a Munich-based vacation-rental search engine and short-term-rental technology
+  company that helps travellers find and book holiday homes and helps property owners and managers distribute
+  their inventory. Holidu exposes a public Developer Hub with two production REST APIs: the Affiliate
+  API, for searching offers, retrieving property details, checking real-time availability and syncing
+  changes; and the Connectivity (provider) API, a v2 property-management surface of ~50 operations covering
+  apartments, multi-unit listings, descriptions, photos, facilities, reviews, rates, length-of-stay pricing,
+  availability, extra costs, discounts, booking terms, payment and cancellation configuration, and bookings.
+  Authentication is via per-partner API keys (with an OAuth 2.0 security service and Bearer-JWT callbacks),
+  sandbox and production hosts are separated, and Holidu runs a HackerOne bug-bounty program. Holidu is
+  backed by EQT Ventures, HV Capital and Northzone.'
 url: https://raw.githubusercontent.com/api-evangelist/holidu/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -49,7 +45,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-09-16'
 tags:
 - Company
 - Travel And Leisure
@@ -242,7 +238,7 @@ apis:
   - type: DataModel
     url: data-model/holidu-data-model.yml
 - aid: holidu:holidu-los-push-api-api
-  name: Holidu LOS Push API API
+  name: Holidu LOS Push API
   description: Length of Stay pricing push operations.
   humanURL: https://developer.holidu.com/reference/intro-1
   baseURL: https://external-api.holidu.com
@@ -460,7 +456,10 @@ common:
   url: conformance/holidu-conformance.yml
 - type: X-MCPServerCandidate
   url: mcp/holidu-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: Webhooks
   url: asyncapi/holidu-webhooks.yml
 - type: WellKnown
