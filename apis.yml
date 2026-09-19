@@ -50,7 +50,7 @@ tags:
 - Company
 - Travel And Leisure
 - Vacation Rentals
-- Short-Term Rentals
+- Short-Term Rental
 - Hospitality
 - Property Management
 - Booking
@@ -75,6 +75,8 @@ apis:
   humanURL: https://developer.holidu.com/reference/intro-1
   baseURL: https://external-api.holidu.com
   tags:
+  - Apartments
+  tags_raw:
   - Apartment
   properties:
   - type: OpenAPI
@@ -131,6 +133,8 @@ apis:
   humanURL: https://developer.holidu.com/reference/intro-1
   baseURL: https://external-api.holidu.com
   tags:
+  - Booking
+  tags_raw:
   - Bookings
   properties:
   - type: OpenAPI
