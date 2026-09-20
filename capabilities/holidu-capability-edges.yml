@@ -11,8 +11,30 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 4
+edge_count: 11
 edges:
+- tag: Apartment
+  spec_file: holidu-apartment-api-openapi.yml
+  capability_id: BC-4000.10
+  capability_id_l1: BC-4000
+  capability_name: Lodging Product Management
+  confidence: 0.85
+  evidence: POST /v2/apartment  upsertApartment  Create or update an apartment; schemas CompleteApartmentDto,
+    GuestCapacityRules, CheckInCheckOutTimes
+  reason: Operations create, update, activate and validate the bookable accommodation unit with its address,
+    guest-capacity rules and check-in/out times. This is master definition of the lodging product.
+  recovered_from: vertical-travel-hospitality-edges.json
+- tag: Bookings
+  spec_file: holidu-bookings-api-openapi.yml
+  capability_id: BC-4020.20
+  capability_id_l1: BC-4020
+  capability_name: Booking Modification & Cancellation
+  confidence: 0.85
+  evidence: PUT /v2/bookings  updateBooking  Update booking details; POST /v2/bookings/cancel  cancelBooking  Cancel
+    a booking; schemas CancellationFee, BookingDetails
+  reason: Operations retrieve, modify and cancel reservations including cancellation fees, which is squarely
+    booking modification and cancellation within reservation lifecycle management.
+  recovered_from: vertical-travel-hospitality-edges.json
 - tag: Discounts
   spec_file: holidu-discounts-api-openapi.yml
   capability_id: BC-440.30
@@ -23,6 +45,37 @@ edges:
     DiscountDto, DiscountConditions, SeasonApplicable
   reason: CRUD over discounts and their conditions/seasonal applicability for a listing — directly discount
     and promotion management.
+- tag: MultiUnit Photo
+  spec_file: holidu-multiunit-photo-api-openapi.yml
+  capability_id: BC-4000.70
+  capability_id_l1: BC-4000
+  capability_name: Travel Content & Imagery Management
+  confidence: 0.85
+  evidence: '''Get photos for a multi-unit'', ''Update photos for a multi-unit''; schemas PhotoDto, PhotoLocalizationDto'
+  reason: Management of imagery assets for the accommodation product, plainly travel content and imagery
+    management.
+  recovered_from: vertical-travel-hospitality-edges.json
+- tag: Photos
+  spec_file: holidu-photos-api-openapi.yml
+  capability_id: BC-4000.70
+  capability_id_l1: BC-4000
+  capability_name: Travel Content & Imagery Management
+  confidence: 0.85
+  evidence: '''Get photos for an apartment'', ''Update photos for an apartment''; schemas PhotoDto, PhotoLocalizationDto'
+  reason: Management of property imagery and its localisation — travel content and imagery management
+    for the lodging product.
+  recovered_from: vertical-travel-hospitality-edges.json
+- tag: Descriptions
+  spec_file: holidu-descriptions-api-openapi.yml
+  capability_id: BC-4000.70
+  capability_id_l1: BC-4000
+  capability_name: Travel Content & Imagery Management
+  confidence: 0.8
+  evidence: POST /v2/description  upsertApartmentDescriptions  Create or update descriptions for an apartment;
+    schema ApartmentDescription
+  reason: Authoring and retrieval of descriptive content for a lodging product maps to travel content
+    management.
+  recovered_from: vertical-travel-hospitality-edges.json
 - tag: Rates
   spec_file: holidu-rates-api-openapi.yml
   capability_id: BC-440.20
@@ -33,6 +86,28 @@ edges:
     DailyRate, ApartmentRates, RatePlan
   reason: Creation and maintenance of rate plans and daily rates for a property is straightforwardly price
     list / rate maintenance under cross-industry Pricing Management.
+- tag: MultiUnit Localization
+  spec_file: holidu-multiunit-localization-api-openapi.yml
+  capability_id: BC-4000.70
+  capability_id_l1: BC-4000
+  capability_name: Travel Content & Imagery Management
+  confidence: 0.72
+  evidence: '''Get descriptions for a multi-unit'', ''Update descriptions for a multi-unit''; schema MultiUnitDescriptionDto'
+  reason: Authoring and maintenance of localised descriptive text for a lodging product — descriptive
+    travel content management.
+  recovered_from: vertical-travel-hospitality-edges.json
+- tag: LOS
+  spec_file: holidu-los-api-openapi.yml
+  capability_id: BC-4030.20
+  capability_id_l1: BC-4030
+  capability_name: Pricing & Rate Strategy Management
+  confidence: 0.7
+  evidence: '''Get LOS for an apartment'', ''Create or update LOS for an apartment'', ''Get LOS rate Ids
+    for an apartment''; schemas LosDto, LosItemDto'
+  reason: Length-of-stay rate data keyed to rate IDs is rate/price setting for the accommodation product
+    (the sibling Push spec describes it as 'Length of Stay pricing'), which maps to pricing and rate strategy
+    rather than distribution wiring.
+  recovered_from: vertical-travel-hospitality-edges.json
 - tag: LOS Push API
   spec_file: holidu-los-push-api-api-openapi.yml
   capability_id: BC-440.20
