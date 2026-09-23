@@ -1,9 +1,30 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affiliate Apartment Descriptions API
-  version: 1.1.0
+  title: Connectivity Descriptions API
+  description: 'Please read the API Guide that will help you for your integration to Holidu.
+
+    You''ll find there the steps you''ll go through, tips and frequently asked questions.
+
+
+    If you need any support, please contact us at partnersupport@holidu.com.'
+  termsOfService: https://www.holidu.com/gtc
+  contact:
+    name: Holidu
+    url: https://www.holidu.com
+    email: partnersupport@holidu.com
+  license:
+    name: Apache License Version 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: '2.0'
 servers:
-- url: https://external-api.holidu.com
+- url: https://provider-api-sandbox.holidu.com
+  description: Sandbox Environment
+- url: https://provider-api.holidu.com
+  description: Holidu Production API
+security:
+- api-key:
+  - read
+  - write
 tags:
 - name: Descriptions
 paths:
@@ -128,13 +149,6 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
     ApartmentDescription:
       required:
       - description
@@ -159,13 +173,15 @@ components:
           type: string
           description: Description of the outside of apartment like location, surroundings
           example: The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
   securitySchemes:
-    ApiKeyAuth:
+    api-key:
       type: apiKey
+      name: api-key
       in: header
-      name: x-api-key
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

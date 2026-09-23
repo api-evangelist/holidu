@@ -1,9 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affiliate Apartment Test API
-  version: 1.1.0
+  title: hapi-with-oauth20 Test API
+  version: '2.0'
 servers:
-- url: https://external-api.holidu.com
+- url: http://test.teset
+security:
+- sec0: []
 tags:
 - name: Test
 paths:
@@ -38,12 +40,11 @@ paths:
       - Test
 components:
   securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: x-api-key
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.
+    sec0:
+      type: oauth2
+      flows: {}
+x-readme:
+  headers: []
+  explorer-enabled: true
+  proxy-enabled: true
+x-readme-fauxas: true

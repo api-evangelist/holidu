@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affiliate Apartment Availabilities API
+  title: Affiliate Availabilities API
   version: 1.1.0
 servers:
 - url: https://external-api.holidu.com
@@ -114,7 +114,9 @@ paths:
                         isAvailable:
                           type: boolean
                         price:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             currency:
                               type: string
@@ -126,19 +128,23 @@ paths:
                             nights:
                               type: integer
                             discountAmount:
-                              type: number
+                              type:
+                              - number
+                              - 'null'
                               minimum: 0
-                              nullable: true
                               description: Absolute discount amount in given currency
                             discountPercentage:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                             totalBeforeDiscount:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                             dailyBeforeDiscount:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                           required:
                           - currency
                           - daily
@@ -150,9 +156,10 @@ paths:
                           - dailyBeforeDiscount
                           additionalProperties: false
                           description: Price for the given dates. Null if property is not available for the given dates.
-                          nullable: true
                         cancellationPolicy:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             cancellationFees:
                               type: array
@@ -160,23 +167,27 @@ paths:
                                 type: object
                                 properties:
                                   daysBeforeArrival:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: Number of days before arrival from which this fee applies
                                   free:
                                     type: boolean
                                     description: Whether cancellation is free under this fee rule
                                   percentage:
-                                    type: number
-                                    nullable: true
+                                    type:
+                                    - number
+                                    - 'null'
                                     description: Percentage of the total price charged as a cancellation fee
                                   amount:
-                                    type: number
-                                    nullable: true
+                                    type:
+                                    - number
+                                    - 'null'
                                     description: Fixed amount charged as a cancellation fee
                                   currency:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: Currency code for the fixed cancellation fee amount
                                 required:
                                 - free
@@ -184,7 +195,6 @@ paths:
                           required:
                           - cancellationFees
                           additionalProperties: false
-                          nullable: true
                           description: Cancellation policy for the property. Null if not available.
                       required:
                       - propertyId

@@ -1,9 +1,30 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affiliate Apartment Rates API
-  version: 1.1.0
+  title: Connectivity Rates API
+  description: 'Please read the API Guide that will help you for your integration to Holidu.
+
+    You''ll find there the steps you''ll go through, tips and frequently asked questions.
+
+
+    If you need any support, please contact us at partnersupport@holidu.com.'
+  termsOfService: https://www.holidu.com/gtc
+  contact:
+    name: Holidu
+    url: https://www.holidu.com
+    email: partnersupport@holidu.com
+  license:
+    name: Apache License Version 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: '2.0'
 servers:
-- url: https://external-api.holidu.com
+- url: https://provider-api-sandbox.holidu.com
+  description: Sandbox Environment
+- url: https://provider-api.holidu.com
+  description: Holidu Production API
+security:
+- api-key:
+  - read
+  - write
 tags:
 - name: Rates
 paths:
@@ -124,44 +145,6 @@ paths:
       deprecated: true
 components:
   schemas:
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
-    DailyRate:
-      title: Daily Rate
-      required:
-      - checkinAllowed
-      - checkoutAllowed
-      - date
-      - price
-      type: object
-      properties:
-        date:
-          type: string
-          description: Date
-          format: date
-          example: '2023-05-01'
-        price:
-          type: number
-          description: Daily price
-          example: 95
-        priceForExtraPerson:
-          type: number
-          description: Additional cost per extra person
-          example: 20
-        checkinAllowed:
-          type: boolean
-          description: Check in is possible on this day
-          example: true
-        checkoutAllowed:
-          type: boolean
-          description: Check out is possible on this day
-          example: false
-      description: List of daily rates
     RatePlan:
       title: Rate Plan
       required:
@@ -201,6 +184,44 @@ components:
           description: List of daily rates
           items:
             $ref: '#/components/schemas/DailyRate'
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    DailyRate:
+      title: Daily Rate
+      required:
+      - checkinAllowed
+      - checkoutAllowed
+      - date
+      - price
+      type: object
+      properties:
+        date:
+          type: string
+          description: Date
+          format: date
+          example: '2023-05-01'
+        price:
+          type: number
+          description: Daily price
+          example: 95
+        priceForExtraPerson:
+          type: number
+          description: Additional cost per extra person
+          example: 20
+        checkinAllowed:
+          type: boolean
+          description: Check in is possible on this day
+          example: true
+        checkoutAllowed:
+          type: boolean
+          description: Check out is possible on this day
+          example: false
+      description: List of daily rates
     ApartmentRates:
       title: Apartment Rates
       required:
@@ -212,12 +233,7 @@ components:
           items:
             $ref: '#/components/schemas/RatePlan'
   securitySchemes:
-    ApiKeyAuth:
+    api-key:
       type: apiKey
+      name: api-key
       in: header
-      name: x-api-key
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

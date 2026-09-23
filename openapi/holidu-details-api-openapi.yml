@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affiliate Apartment Details API
+  title: Affiliate Details API
   version: 1.1.0
 servers:
 - url: https://external-api.holidu.com
@@ -79,11 +79,14 @@ paths:
                           type: string
                           minLength: 1
                         description:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Short text description of the offer
                         photos:
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: object
                             properties:
@@ -101,12 +104,13 @@ paths:
                             - medium
                             - large
                             additionalProperties: false
-                          nullable: true
                         urlTemplate:
                           type: string
                           description: RFC 6570 URI template to generate checkout page link with check-in, check-out and guest information. Date placeholders must be in ISO 8601 format.
                         area:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             value:
                               type: number
@@ -121,13 +125,14 @@ paths:
                           - value
                           - unit
                           additionalProperties: false
-                          nullable: true
                         bedrooms:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                         bathrooms:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                         guests:
                           type: integer
                           minimum: 1
@@ -141,15 +146,18 @@ paths:
                             id:
                               type: string
                             title:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               maxLength: 250
-                              nullable: true
                           required:
                           - id
                           - title
                           additionalProperties: false
                         facilities:
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: object
                             properties:
@@ -166,9 +174,10 @@ paths:
                             - title
                             - group
                             additionalProperties: false
-                          nullable: true
                         guestCardsAndCertificates:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             items:
                               type: array
@@ -186,24 +195,28 @@ paths:
                           required:
                           - items
                           additionalProperties: false
-                          nullable: true
                         petsAllowed:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                         location:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             name:
                               type: string
                               minLength: 1
                               maxLength: 350
                             postalCode:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Postal code, can be null if not shared by the provider
                             city:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: City name, can be null if not shared by the provider
                             coordinates:
                               type: object
@@ -226,9 +239,10 @@ paths:
                           - city
                           - coordinates
                           additionalProperties: false
-                          nullable: true
                         cancellationPolicy:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             type:
                               type: string
@@ -238,9 +252,10 @@ paths:
                           required:
                           - type
                           additionalProperties: false
-                          nullable: true
                         rating:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             value:
                               type: number
@@ -253,9 +268,10 @@ paths:
                           - value
                           - count
                           additionalProperties: false
-                          nullable: true
                         rooms:
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: object
                             properties:
@@ -269,19 +285,18 @@ paths:
                             required:
                             - type
                             additionalProperties: false
-                          nullable: true
                         rules:
                           enum:
                           - 'null'
-                          nullable: true
                           description: 'TODO: implement rules schema'
                         pois:
                           enum:
                           - 'null'
-                          nullable: true
                           description: 'TODO: implement pois schema'
                         reviews:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             averageRatings:
                               type: array
@@ -316,7 +331,6 @@ paths:
                           - averageRatings
                           - reviewDetails
                           additionalProperties: false
-                          nullable: true
                         price:
                           type: object
                           properties:

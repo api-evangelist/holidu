@@ -1,9 +1,30 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affiliate Apartment Extra Costs API
-  version: 1.1.0
+  title: Connectivity Extra Costs API
+  description: 'Please read the API Guide that will help you for your integration to Holidu.
+
+    You''ll find there the steps you''ll go through, tips and frequently asked questions.
+
+
+    If you need any support, please contact us at partnersupport@holidu.com.'
+  termsOfService: https://www.holidu.com/gtc
+  contact:
+    name: Holidu
+    url: https://www.holidu.com
+    email: partnersupport@holidu.com
+  license:
+    name: Apache License Version 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: '2.0'
 servers:
-- url: https://external-api.holidu.com
+- url: https://provider-api-sandbox.holidu.com
+  description: Sandbox Environment
+- url: https://provider-api.holidu.com
+  description: Holidu Production API
+security:
+- api-key:
+  - read
+  - write
 tags:
 - name: Extra Costs
 paths:
@@ -116,20 +137,35 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
-    LengthOfStay:
+    HoliduErrorResponse:
       type: object
       properties:
-        fromStayLengthInNights:
-          type: integer
-          description: Based on the length of stay, applicable from night
-          format: int32
-          example: 1
-        toStayLengthInNights:
-          type: integer
-          description: Based on the length of stay, applicable until night
-          format: int32
-          example: 7
-      description: Extra cost only applicable if lengthOfStay shorter than
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    ExtraCostCondition:
+      type: object
+      properties:
+        seasonApplicable:
+          $ref: '#/components/schemas/SeasonApplicable'
+        numberOfNights:
+          $ref: '#/components/schemas/LengthOfStay'
+      description: Conditions applicable for extra cost
+    SeasonApplicable:
+      type: object
+      properties:
+        onlyApplicableFrom:
+          type: string
+          description: Only applicable from date
+          format: date
+          example: '2020-08-01'
+        onlyApplicableUntil:
+          type: string
+          description: Only applicable until date
+          format: date
+          example: '2021-04-30'
+      description: Season for which extra cost is applicable
     ExtraCostPrice:
       required:
       - amount
@@ -151,13 +187,6 @@ components:
           description: Currency
           example: EUR
       description: Price configuration for extra cost
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
     ApartmentExtraCost:
       required:
       - basisOfCalculation
@@ -250,35 +279,22 @@ components:
           $ref: '#/components/schemas/ExtraCostPrice'
         condition:
           $ref: '#/components/schemas/ExtraCostCondition'
-    ExtraCostCondition:
+    LengthOfStay:
       type: object
       properties:
-        seasonApplicable:
-          $ref: '#/components/schemas/SeasonApplicable'
-        numberOfNights:
-          $ref: '#/components/schemas/LengthOfStay'
-      description: Conditions applicable for extra cost
-    SeasonApplicable:
-      type: object
-      properties:
-        onlyApplicableFrom:
-          type: string
-          description: Only applicable from date
-          format: date
-          example: '2020-08-01'
-        onlyApplicableUntil:
-          type: string
-          description: Only applicable until date
-          format: date
-          example: '2021-04-30'
-      description: Season for which extra cost is applicable
+        fromStayLengthInNights:
+          type: integer
+          description: Based on the length of stay, applicable from night
+          format: int32
+          example: 1
+        toStayLengthInNights:
+          type: integer
+          description: Based on the length of stay, applicable until night
+          format: int32
+          example: 7
+      description: Extra cost only applicable if lengthOfStay shorter than
   securitySchemes:
-    ApiKeyAuth:
+    api-key:
       type: apiKey
+      name: api-key
       in: header
-      name: x-api-key
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)). Token exchange details are agreed upon during onboarding.

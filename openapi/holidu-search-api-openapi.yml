@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affiliate Apartment Search API
+  title: Affiliate Search API
   version: 1.1.0
 servers:
 - url: https://external-api.holidu.com
@@ -171,11 +171,14 @@ paths:
                           type: string
                           minLength: 1
                         description:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Short text description of the offer
                         photos:
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: object
                             properties:
@@ -193,11 +196,12 @@ paths:
                             - medium
                             - large
                             additionalProperties: false
-                          nullable: true
                         url:
                           type: string
                         area:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             value:
                               type: number
@@ -212,13 +216,14 @@ paths:
                           - value
                           - unit
                           additionalProperties: false
-                          nullable: true
                         bedroomCount:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                         bathroomCount:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                         guestCount:
                           type: integer
                           description: Number of guests the offer can accommodate
@@ -238,7 +243,9 @@ paths:
                           - title
                           additionalProperties: false
                         facilities:
-                          type: array
+                          type:
+                          - array
+                          - 'null'
                           items:
                             type: object
                             properties:
@@ -255,27 +262,31 @@ paths:
                             - title
                             - group
                             additionalProperties: false
-                          nullable: true
                         petsAllowed:
                           type: boolean
                         location:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             name:
                               type: string
                               minLength: 1
                               maxLength: 350
                             distance:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Distance in meters to the center of search region if specified, otherwise null
                             postalCode:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Postal code, can be null if not shared by the provider
                             city:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: City name, can be null if not shared by the provider
                             coordinates:
                               type: object
@@ -299,7 +310,6 @@ paths:
                           - city
                           - coordinates
                           additionalProperties: false
-                          nullable: true
                         price:
                           anyOf:
                           - type: object
@@ -314,19 +324,23 @@ paths:
                               nights:
                                 type: integer
                               discountAmount:
-                                type: number
+                                type:
+                                - number
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                                 description: Absolute discount amount in given currency
                               discountPercentage:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                               totalBeforeDiscount:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                               dailyBeforeDiscount:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                             required:
                             - currency
                             - daily
@@ -352,7 +366,9 @@ paths:
                             description: Minimal daily price for a property, doesn't depend on travel dates
                           description: Price information for the offer, either for a given travel dates or as a starting price
                         cancellationPolicy:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             type:
                               type: string
@@ -362,9 +378,10 @@ paths:
                           required:
                           - type
                           additionalProperties: false
-                          nullable: true
                         rating:
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                           properties:
                             value:
                               type: number
@@ -377,10 +394,10 @@ paths:
                           - value
                           - count
                           additionalProperties: false
-                          nullable: true
                         licenseId:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                       required:
                       - id
                       - description

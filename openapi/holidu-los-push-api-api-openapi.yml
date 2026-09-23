@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Affiliate Apartment LOS Push API API
+  title: Affiliate LOS Push API
   version: 1.1.0
   description: Length of Stay pricing push operations.
 servers:
@@ -24,7 +24,102 @@ paths:
           affiliateHost:
             default: api.affiliate-example.com
             description: The affiliate's API hostname.
-      description: "Holidu calls this endpoint to push the complete LOS data for an apartment to the affiliate.\n\nThis is an idempotent upsert ([RFC 9110 §9.3.4](https://www.rfc-editor.org/rfc/rfc9110#section-9.3.4)):\n- If the affiliate does not yet have LOS data for this apartment, it should store the payload and respond with `201 Created`.\n- If LOS data already exists, the affiliate should **fully replace** it with the provided payload and respond with `204 No Content`.\n\nThe request body always contains the **complete** LOS dataset for the apartment. Any check-in dates the affiliate previously stored but that are absent from this payload are no longer valid and must be removed.\n\nAn empty `los` map (`{}`) means no pricing is available for the apartment — the affiliate should remove all stored LOS data for it.\n\n## Authentication\n\nHolidu authenticates to the affiliate using an OAuth 2.0 Bearer Token ([RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)).\n\n| Property | Value |\n|----------|-------|\n| **Type** | `http` |\n| **Scheme** | `bearer` |\n| **Bearer format** | `JWT` |\n\nToken exchange details are agreed upon during onboarding.\n\n## Request body examples\n\n**Multiple check-in dates with tiered pricing:**\n```json\n{\n  \"los\": {\n    \"2024-06-01\": [\n      { \"currency\": \"EUR\", \"guests\": 2, \"price\": [0, 0, 300.00, 400.00, 500.00] },\n      { \"currency\": \"EUR\", \"guests\": 4, \"price\": [0, 0, 350.00, 460.00, 580.00] }\n    ],\n    \"2024-06-02\": [\n      { \"currency\": \"EUR\", \"guests\": 2, \"price\": [0, 150.00, 280.00] }\n    ]\n  }\n}\n```\n\n**Single check-in date with one pricing tier:**\n```json\n{\n  \"los\": {\n    \"2024-06-01\": [\n      { \"currency\": \"EUR\", \"guests\": 2, \"price\": [0, 0, 300.00, 400.00, 500.00] }\n    ]\n  }\n}\n```\n\n**Empty LOS (no pricing available / fully booked):**\n```json\n{ \"los\": {} }\n```"
+      description: 'Holidu calls this endpoint to push the complete LOS data for an apartment to the affiliate.
+
+
+        This is an idempotent upsert (RFC 9110 §9.3.4):
+
+        - If the affiliate does not yet have LOS data for this apartment, it should store the payload and respond with `201 Created`.
+
+        - If LOS data already exists, the affiliate should **fully replace** it with the provided payload and respond with `204 No Content`.
+
+
+        The request body always contains the **complete** LOS dataset for the apartment. Any check-in dates the affiliate previously stored but that are absent from this payload are no longer valid and must be removed.
+
+
+        An empty `los` map (`{}`) means no pricing is available for the apartment — the affiliate should remove all stored LOS data for it.
+
+
+        ## Authentication
+
+
+        Holidu authenticates to the affiliate using an OAuth 2.0 Bearer Token (RFC 6750).
+
+
+        | Property | Value |
+
+        |----------|-------|
+
+        | **Type** | `http` |
+
+        | **Scheme** | `bearer` |
+
+        | **Bearer format** | `JWT` |
+
+
+        Token exchange details are agreed upon during onboarding.
+
+
+        ## Request body examples
+
+
+        **Multiple check-in dates with tiered pricing:**
+
+        ```json
+
+        {
+
+        "los": {
+
+        "2024-06-01": [
+
+        { "currency": "EUR", "guests": 2, "price": [0, 0, 300.00, 400.00, 500.00] },
+
+        { "currency": "EUR", "guests": 4, "price": [0, 0, 350.00, 460.00, 580.00] }
+
+        ],
+
+        "2024-06-02": [
+
+        { "currency": "EUR", "guests": 2, "price": [0, 150.00, 280.00] }
+
+        ]
+
+        }
+
+        }
+
+        ```
+
+
+        **Single check-in date with one pricing tier:**
+
+        ```json
+
+        {
+
+        "los": {
+
+        "2024-06-01": [
+
+        { "currency": "EUR", "guests": 2, "price": [0, 0, 300.00, 400.00, 500.00] }
+
+        ]
+
+        }
+
+        }
+
+        ```
+
+
+        **Empty LOS (no pricing available / fully booked):**
+
+        ```json
+
+        { "los": {} }
+
+        ```'
       security:
       - BearerAuth: []
       requestBody:
@@ -104,6 +199,36 @@ components:
           - 300
           - 400
           - 500
+    ProblemDetail:
+      type: object
+      description: Error response following [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457) Problem Details for HTTP APIs. Affiliates are encouraged to use this format for error responses to aid Holidu in debugging push failures.
+      required:
+      - type
+      - status
+      - title
+      properties:
+        type:
+          type: string
+          format: uri
+          description: A URI reference that identifies the problem type ([RFC 9457 §3.1.1](https://www.rfc-editor.org/rfc/rfc9457#section-3.1.1)).
+          example: https://api.affiliate-example.com/problems/validation-error
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type.
+          example: Validation Error
+        status:
+          type: integer
+          description: The HTTP status code.
+          example: 400
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+          example: Request body is not valid JSON.
+        instance:
+          type: string
+          format: uri
+          description: A URI reference that identifies the specific occurrence of the problem.
+          example: /apt-12345/los
     LosDto:
       type: object
       description: The Length of Stay (LOS) represents accumulated prices per check-in date and length of stay. If the map is empty, no pricing is available for the apartment.
@@ -142,54 +267,7 @@ components:
               - 0
               - 150
               - 280
-    ProblemDetail:
-      type: object
-      description: Error response following [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457) Problem Details for HTTP APIs. Affiliates are encouraged to use this format for error responses to aid Holidu in debugging push failures.
-      required:
-      - type
-      - status
-      - title
-      properties:
-        type:
-          type: string
-          format: uri
-          description: A URI reference that identifies the problem type ([RFC 9457 §3.1.1](https://www.rfc-editor.org/rfc/rfc9457#section-3.1.1)).
-          example: https://api.affiliate-example.com/problems/validation-error
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type.
-          example: Validation Error
-        status:
-          type: integer
-          description: The HTTP status code.
-          example: 400
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-          example: Request body is not valid JSON.
-        instance:
-          type: string
-          format: uri
-          description: A URI reference that identifies the specific occurrence of the problem.
-          example: /apt-12345/los
   examples:
-    LosEmpty:
-      summary: Empty LOS (no pricing available)
-      value:
-        los: {}
-    LosSingleDate:
-      summary: Single check-in date with one pricing tier
-      value:
-        los:
-          '2024-06-01':
-          - currency: EUR
-            guests: 2
-            price:
-            - 0
-            - 0
-            - 300
-            - 400
-            - 500
     LosMultiDate:
       summary: Multiple check-in dates with tiered pricing
       value:
@@ -218,18 +296,24 @@ components:
             - 0
             - 150
             - 280
+    LosSingleDate:
+      summary: Single check-in date with one pricing tier
+      value:
+        los:
+          '2024-06-01':
+          - currency: EUR
+            guests: 2
+            price:
+            - 0
+            - 0
+            - 300
+            - 400
+            - 500
+    LosEmpty:
+      summary: Empty LOS (no pricing available)
+      value:
+        los: {}
   responses:
-    PayloadTooLarge:
-      description: The request body exceeds the affiliate's maximum accepted size ([RFC 9110 §15.5.14](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.14)).
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/payload-too-large
-            title: Payload Too Large
-            status: 413
-            detail: The LOS payload exceeds the maximum allowed size of 5 MB.
     Unauthorized:
       description: Authentication credentials are missing or invalid ([RFC 9110 §15.5.2](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.2)). The affiliate should return a `WWW-Authenticate` header indicating the expected scheme ([RFC 9110 §11.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-11.6.1)).
       headers:
@@ -247,17 +331,6 @@ components:
             title: Unauthorized
             status: 401
             detail: Bearer token is expired or invalid.
-    BadRequest:
-      description: The request is syntactically invalid (malformed JSON, wrong types, etc.) ([RFC 9110 §15.5.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.1)).
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/bad-request
-            title: Bad Request
-            status: 400
-            detail: Request body is not valid JSON.
     NotFound:
       description: The affiliate does not recognise the apartment ID ([RFC 9110 §15.5.5](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.5)). This may indicate a mapping or onboarding issue that Holidu should investigate.
       content:
@@ -269,6 +342,28 @@ components:
             title: Not Found
             status: 404
             detail: Apartment 'apt-99999' is not known to this affiliate.
+    InternalServerError:
+      description: An unexpected error on the affiliate's side ([RFC 9110 §15.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.6.1)).
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/internal-error
+            title: Internal Server Error
+            status: 500
+            detail: An unexpected error occurred.
+    BadRequest:
+      description: The request is syntactically invalid (malformed JSON, wrong types, etc.) ([RFC 9110 §15.5.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.1)).
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/bad-request
+            title: Bad Request
+            status: 400
+            detail: Request body is not valid JSON.
     TooManyRequests:
       description: The affiliate is rate-limiting Holidu ([RFC 6585 §4](https://www.rfc-editor.org/rfc/rfc6585#section-4)). Holidu will respect the `Retry-After` header before retrying.
       headers:
@@ -283,17 +378,17 @@ components:
             title: Too Many Requests
             status: 429
             detail: Rate limit exceeded. Retry after 60 seconds.
-    InternalServerError:
-      description: An unexpected error on the affiliate's side ([RFC 9110 §15.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.6.1)).
+    PayloadTooLarge:
+      description: The request body exceeds the affiliate's maximum accepted size ([RFC 9110 §15.5.14](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.14)).
       content:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/ProblemDetail'
           example:
-            type: https://api.affiliate-example.com/problems/internal-error
-            title: Internal Server Error
-            status: 500
-            detail: An unexpected error occurred.
+            type: https://api.affiliate-example.com/problems/payload-too-large
+            title: Payload Too Large
+            status: 413
+            detail: The LOS payload exceeds the maximum allowed size of 5 MB.
   parameters:
     ApartmentId:
       name: apartmentId
