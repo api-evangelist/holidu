@@ -125,13 +125,13 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
-    FacilityAvailabilityData:
+    HoliduErrorResponse:
       type: object
       properties:
-        availableFrom:
-          $ref: '#/components/schemas/AvailableTime'
-        availableTo:
-          $ref: '#/components/schemas/AvailableTime'
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
     MultiUnitFacility:
       type: object
       properties:
@@ -802,13 +802,13 @@ components:
           - UNDEFINED
           - NEAR_BY
           - IN_APARTMENT
-    HoliduErrorResponse:
+    FacilityAvailabilityData:
       type: object
       properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
+        availableFrom:
+          $ref: '#/components/schemas/AvailableTime'
+        availableTo:
+          $ref: '#/components/schemas/AvailableTime'
     AvailableTime:
       type: object
       properties:

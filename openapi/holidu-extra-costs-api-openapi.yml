@@ -137,6 +137,20 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
+    LengthOfStay:
+      type: object
+      properties:
+        fromStayLengthInNights:
+          type: integer
+          description: Based on the length of stay, applicable from night
+          format: int32
+          example: 1
+        toStayLengthInNights:
+          type: integer
+          description: Based on the length of stay, applicable until night
+          format: int32
+          example: 7
+      description: Extra cost only applicable if lengthOfStay shorter than
     HoliduErrorResponse:
       type: object
       properties:
@@ -144,28 +158,6 @@ components:
           type: string
           description: Error Text
           example: 'Invalid Json: Unexpected character'
-    ExtraCostCondition:
-      type: object
-      properties:
-        seasonApplicable:
-          $ref: '#/components/schemas/SeasonApplicable'
-        numberOfNights:
-          $ref: '#/components/schemas/LengthOfStay'
-      description: Conditions applicable for extra cost
-    SeasonApplicable:
-      type: object
-      properties:
-        onlyApplicableFrom:
-          type: string
-          description: Only applicable from date
-          format: date
-          example: '2020-08-01'
-        onlyApplicableUntil:
-          type: string
-          description: Only applicable until date
-          format: date
-          example: '2021-04-30'
-      description: Season for which extra cost is applicable
     ExtraCostPrice:
       required:
       - amount
@@ -187,6 +179,28 @@ components:
           description: Currency
           example: EUR
       description: Price configuration for extra cost
+    SeasonApplicable:
+      type: object
+      properties:
+        onlyApplicableFrom:
+          type: string
+          description: Only applicable from date
+          format: date
+          example: '2020-08-01'
+        onlyApplicableUntil:
+          type: string
+          description: Only applicable until date
+          format: date
+          example: '2021-04-30'
+      description: Season for which extra cost is applicable
+    ExtraCostCondition:
+      type: object
+      properties:
+        seasonApplicable:
+          $ref: '#/components/schemas/SeasonApplicable'
+        numberOfNights:
+          $ref: '#/components/schemas/LengthOfStay'
+      description: Conditions applicable for extra cost
     ApartmentExtraCost:
       required:
       - basisOfCalculation
@@ -279,20 +293,6 @@ components:
           $ref: '#/components/schemas/ExtraCostPrice'
         condition:
           $ref: '#/components/schemas/ExtraCostCondition'
-    LengthOfStay:
-      type: object
-      properties:
-        fromStayLengthInNights:
-          type: integer
-          description: Based on the length of stay, applicable from night
-          format: int32
-          example: 1
-        toStayLengthInNights:
-          type: integer
-          description: Based on the length of stay, applicable until night
-          format: int32
-          example: 7
-      description: Extra cost only applicable if lengthOfStay shorter than
   securitySchemes:
     api-key:
       type: apiKey

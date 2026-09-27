@@ -258,62 +258,6 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
-    LosItemDto:
-      title: LOS Item
-      required:
-      - currency
-      - guests
-      - price
-      type: object
-      properties:
-        currency:
-          type: string
-          example: EUR
-        guests:
-          type: integer
-          description: Number of guests
-          format: int32
-          example: 2
-        price:
-          type: array
-          description: List of prices
-          example:
-          - 100
-          - 200
-          - 300
-          - 400
-          - 500
-          - 600
-          - 700
-          items:
-            type: number
-            description: List of prices
-      description: Length of Stay
-      format: date
-      example:
-        '2019-05-13':
-        - currency: EUR
-          guests: 2
-          price:
-          - 100
-          - 200
-        - currency: EUR
-          guests: 3
-          price:
-          - 150
-          - 250
-        '2019-05-14':
-          currency: EUR
-          guests: 2
-          price:
-          - 300
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
     LosDto:
       title: LOS
       required:
@@ -370,6 +314,62 @@ components:
           description: Rate identifier
           format: string
           example: NON_REFUNDABLE
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    LosItemDto:
+      title: LOS Item
+      required:
+      - currency
+      - guests
+      - price
+      type: object
+      properties:
+        currency:
+          type: string
+          example: EUR
+        guests:
+          type: integer
+          description: Number of guests
+          format: int32
+          example: 2
+        price:
+          type: array
+          description: List of prices
+          example:
+          - 100
+          - 200
+          - 300
+          - 400
+          - 500
+          - 600
+          - 700
+          items:
+            type: number
+            description: List of prices
+      description: Length of Stay
+      format: date
+      example:
+        '2019-05-13':
+        - currency: EUR
+          guests: 2
+          price:
+          - 100
+          - 200
+        - currency: EUR
+          guests: 3
+          price:
+          - 150
+          - 250
+        '2019-05-14':
+          currency: EUR
+          guests: 2
+          price:
+          - 300
   securitySchemes:
     api-key:
       type: apiKey

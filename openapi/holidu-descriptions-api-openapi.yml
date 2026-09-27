@@ -149,6 +149,13 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
     ApartmentDescription:
       required:
       - description
@@ -173,13 +180,6 @@ components:
           type: string
           description: Description of the outside of apartment like location, surroundings
           example: The apartment is located at 730 m above sea level and just 300 m from Lake Bajer.
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
   securitySchemes:
     api-key:
       type: apiKey

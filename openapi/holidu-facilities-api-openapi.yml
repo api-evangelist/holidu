@@ -864,13 +864,23 @@ components:
           type: string
           description: Error Text
           example: 'Invalid Json: Unexpected character'
-    FacilityAvailabilityData:
+    Room:
       type: object
       properties:
-        availableFrom:
-          $ref: '#/components/schemas/AvailableTime'
-        availableTo:
-          $ref: '#/components/schemas/AvailableTime'
+        roomId:
+          type: string
+          description: A unique identifier for the room
+          example: '123'
+        roomType:
+          type: string
+          description: Room type
+          example: BED_ROOM
+          enum:
+          - BED_ROOM
+          - LIVING_ROOM
+          - BATH_ROOM
+          - KITCHEN
+      description: Room
     ApartmentFacility:
       type: object
       properties:
@@ -1543,23 +1553,13 @@ components:
           - UNDEFINED
           - NEAR_BY
           - IN_APARTMENT
-    Room:
+    FacilityAvailabilityData:
       type: object
       properties:
-        roomId:
-          type: string
-          description: A unique identifier for the room
-          example: '123'
-        roomType:
-          type: string
-          description: Room type
-          example: BED_ROOM
-          enum:
-          - BED_ROOM
-          - LIVING_ROOM
-          - BATH_ROOM
-          - KITCHEN
-      description: Room
+        availableFrom:
+          $ref: '#/components/schemas/AvailableTime'
+        availableTo:
+          $ref: '#/components/schemas/AvailableTime'
     AvailableTime:
       type: object
       properties:

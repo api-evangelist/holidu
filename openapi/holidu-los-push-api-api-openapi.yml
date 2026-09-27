@@ -199,36 +199,6 @@ components:
           - 300
           - 400
           - 500
-    ProblemDetail:
-      type: object
-      description: Error response following [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457) Problem Details for HTTP APIs. Affiliates are encouraged to use this format for error responses to aid Holidu in debugging push failures.
-      required:
-      - type
-      - status
-      - title
-      properties:
-        type:
-          type: string
-          format: uri
-          description: A URI reference that identifies the problem type ([RFC 9457 §3.1.1](https://www.rfc-editor.org/rfc/rfc9457#section-3.1.1)).
-          example: https://api.affiliate-example.com/problems/validation-error
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type.
-          example: Validation Error
-        status:
-          type: integer
-          description: The HTTP status code.
-          example: 400
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-          example: Request body is not valid JSON.
-        instance:
-          type: string
-          format: uri
-          description: A URI reference that identifies the specific occurrence of the problem.
-          example: /apt-12345/los
     LosDto:
       type: object
       description: The Length of Stay (LOS) represents accumulated prices per check-in date and length of stay. If the map is empty, no pricing is available for the apartment.
@@ -267,6 +237,36 @@ components:
               - 0
               - 150
               - 280
+    ProblemDetail:
+      type: object
+      description: Error response following [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457) Problem Details for HTTP APIs. Affiliates are encouraged to use this format for error responses to aid Holidu in debugging push failures.
+      required:
+      - type
+      - status
+      - title
+      properties:
+        type:
+          type: string
+          format: uri
+          description: A URI reference that identifies the problem type ([RFC 9457 §3.1.1](https://www.rfc-editor.org/rfc/rfc9457#section-3.1.1)).
+          example: https://api.affiliate-example.com/problems/validation-error
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type.
+          example: Validation Error
+        status:
+          type: integer
+          description: The HTTP status code.
+          example: 400
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+          example: Request body is not valid JSON.
+        instance:
+          type: string
+          format: uri
+          description: A URI reference that identifies the specific occurrence of the problem.
+          example: /apt-12345/los
   examples:
     LosMultiDate:
       summary: Multiple check-in dates with tiered pricing
@@ -314,34 +314,6 @@ components:
       value:
         los: {}
   responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid ([RFC 9110 §15.5.2](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.2)). The affiliate should return a `WWW-Authenticate` header indicating the expected scheme ([RFC 9110 §11.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-11.6.1)).
-      headers:
-        WWW-Authenticate:
-          description: Authentication scheme expected by the affiliate.
-          schema:
-            type: string
-          example: Bearer realm="affiliate-api"
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/unauthorized
-            title: Unauthorized
-            status: 401
-            detail: Bearer token is expired or invalid.
-    NotFound:
-      description: The affiliate does not recognise the apartment ID ([RFC 9110 §15.5.5](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.5)). This may indicate a mapping or onboarding issue that Holidu should investigate.
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/not-found
-            title: Not Found
-            status: 404
-            detail: Apartment 'apt-99999' is not known to this affiliate.
     InternalServerError:
       description: An unexpected error on the affiliate's side ([RFC 9110 §15.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.6.1)).
       content:
@@ -364,6 +336,45 @@ components:
             title: Bad Request
             status: 400
             detail: Request body is not valid JSON.
+    NotFound:
+      description: The affiliate does not recognise the apartment ID ([RFC 9110 §15.5.5](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.5)). This may indicate a mapping or onboarding issue that Holidu should investigate.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/not-found
+            title: Not Found
+            status: 404
+            detail: Apartment 'apt-99999' is not known to this affiliate.
+    Unauthorized:
+      description: Authentication credentials are missing or invalid ([RFC 9110 §15.5.2](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.2)). The affiliate should return a `WWW-Authenticate` header indicating the expected scheme ([RFC 9110 §11.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-11.6.1)).
+      headers:
+        WWW-Authenticate:
+          description: Authentication scheme expected by the affiliate.
+          schema:
+            type: string
+          example: Bearer realm="affiliate-api"
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/unauthorized
+            title: Unauthorized
+            status: 401
+            detail: Bearer token is expired or invalid.
+    PayloadTooLarge:
+      description: The request body exceeds the affiliate's maximum accepted size ([RFC 9110 §15.5.14](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.14)).
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/payload-too-large
+            title: Payload Too Large
+            status: 413
+            detail: The LOS payload exceeds the maximum allowed size of 5 MB.
     TooManyRequests:
       description: The affiliate is rate-limiting Holidu ([RFC 6585 §4](https://www.rfc-editor.org/rfc/rfc6585#section-4)). Holidu will respect the `Retry-After` header before retrying.
       headers:
@@ -378,17 +389,6 @@ components:
             title: Too Many Requests
             status: 429
             detail: Rate limit exceeded. Retry after 60 seconds.
-    PayloadTooLarge:
-      description: The request body exceeds the affiliate's maximum accepted size ([RFC 9110 §15.5.14](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.14)).
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/payload-too-large
-            title: Payload Too Large
-            status: 413
-            detail: The LOS payload exceeds the maximum allowed size of 5 MB.
   parameters:
     ApartmentId:
       name: apartmentId

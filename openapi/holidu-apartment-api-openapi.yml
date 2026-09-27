@@ -350,6 +350,178 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
+    ApartmentInformationPage:
+      type: object
+      properties:
+        totalApartments:
+          type: integer
+          format: int64
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        apartments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApartmentInformation'
+    ApartmentAddress:
+      type: object
+      properties:
+        street:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: Street
+          example: Karlstrasse 66
+        zipCode:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ZIP Code (max 20 chars)
+          example: '76133'
+        city:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: City
+          example: Munich
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: Country code represented in standard ISO 3166-1 ALPHA-2 format
+          example: DE
+      description: Address of the rental property
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    CheckInDuration:
+      required:
+      - checkInFrom
+      - checkInTo
+      type: object
+      properties:
+        checkInFrom:
+          type: string
+          description: Check in from (24h format)
+          format: time
+          example: '12:00'
+        checkInTo:
+          type: string
+          description: Check in to (24h format)
+          format: time
+          example: '21:00'
+      description: List of possible check in times
+    ApartmentValidation:
+      type: object
+      properties:
+        holiduApartmentId:
+          type: integer
+          description: Holidu Apartment Id
+          format: int64
+        providerApartmentId:
+          type: string
+          description: Provider Apartment Id
+        lastValidatedAt:
+          type: string
+          description: Last time validation ran for apartment
+          format: date-time
+        valid:
+          type: boolean
+          description: Is apartment valid
+        validationErrorMessages:
+          type: array
+          description: Validation Error Messages
+          items:
+            $ref: '#/components/schemas/ValidationErrorMessage'
+    ApartmentInformation:
+      type: object
+      properties:
+        providerApartmentId:
+          type: string
+        holiduApartmentId:
+          type: string
+        active:
+          type: boolean
+        lastUpdate:
+          type: string
+          format: date-time
+    ContactDetails:
+      type: object
+      properties:
+        contactName:
+          type: string
+          description: Contact person for this apartment
+          example: John Doe
+        contactPhone:
+          type: string
+          description: Phone number of contact person
+          example: +123(4)56789
+        contactEmail:
+          type: string
+          description: Email of contact person
+          example: john@doe.com
+      description: Contact details
+    OnRequestDetails:
+      type: object
+      properties:
+        bookableOnRequest:
+          type: boolean
+          description: is the apartment bookable on request only (not instant bookable)?
+        hostEmailAddress:
+          type: string
+          description: the email address of the host when guest sends request to the host
+      description: Used only for on request apartments
+    CheckInCheckOutTimes:
+      required:
+      - checkIn
+      - checkOutUntil
+      type: object
+      properties:
+        checkIn:
+          type: array
+          description: List of possible check in times
+          items:
+            $ref: '#/components/schemas/CheckInDuration'
+        checkOutUntil:
+          type: string
+          description: Check out time (24h format)
+          example: '14:30'
+      description: Check-ins and check-outs details
+    GuestCapacityRules:
+      required:
+      - standardCapacity
+      type: object
+      properties:
+        standardCapacity:
+          minimum: 1
+          type: integer
+          description: The standard capacity of guests allowed. This includes a minimum of 1 adult and excludes babies.
+          format: int32
+          example: 1
+        adultsOnly:
+          type: boolean
+          description: Does apartment permit only adults
+          example: false
+        additionalChildren:
+          minimum: 0
+          type: integer
+          description: Additional number of children.
+          format: int32
+          example: 0
+        maxBabies:
+          minimum: 0
+          type: integer
+          description: Maximum number of babies allowed.
+          format: int32
+          example: 2
+      description: Guest capacity rules applicable to apartment
     BasicApartmentDto:
       required:
       - apartmentType
@@ -510,69 +682,6 @@ components:
           description: Use this object if other Holidu partners also have this property in their system. Please contact us before using this.
           items:
             $ref: '#/components/schemas/DuplicateFrom'
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
-    DuplicateFrom:
-      type: object
-      properties:
-        provider:
-          type: string
-          description: Name of this provider as in our system (please ask us the right name first)
-          example: HRS
-        duplicatedApartmentId:
-          type: string
-          description: Id of the duplicate apartment in the other partner system.
-          example: '123654'
-      description: Use this object if other Holidu partners also have this property in their system. Please contact us before using this.
-    ApartmentValidation:
-      type: object
-      properties:
-        holiduApartmentId:
-          type: integer
-          description: Holidu Apartment Id
-          format: int64
-        providerApartmentId:
-          type: string
-          description: Provider Apartment Id
-        lastValidatedAt:
-          type: string
-          description: Last time validation ran for apartment
-          format: date-time
-        valid:
-          type: boolean
-          description: Is apartment valid
-        validationErrorMessages:
-          type: array
-          description: Validation Error Messages
-          items:
-            $ref: '#/components/schemas/ValidationErrorMessage'
-    OnRequestDetails:
-      type: object
-      properties:
-        bookableOnRequest:
-          type: boolean
-          description: is the apartment bookable on request only (not instant bookable)?
-        hostEmailAddress:
-          type: string
-          description: the email address of the host when guest sends request to the host
-      description: Used only for on request apartments
-    ApartmentInformation:
-      type: object
-      properties:
-        providerApartmentId:
-          type: string
-        holiduApartmentId:
-          type: string
-        active:
-          type: boolean
-        lastUpdate:
-          type: string
-          format: date-time
     ValidationErrorMessage:
       type: object
       properties:
@@ -583,111 +692,6 @@ components:
           type: string
           description: Message for which validation failed
       description: Validation Error Messages
-    CheckInDuration:
-      required:
-      - checkInFrom
-      - checkInTo
-      type: object
-      properties:
-        checkInFrom:
-          type: string
-          description: Check in from (24h format)
-          format: time
-          example: '12:00'
-        checkInTo:
-          type: string
-          description: Check in to (24h format)
-          format: time
-          example: '21:00'
-      description: List of possible check in times
-    ApartmentAddress:
-      type: object
-      properties:
-        street:
-          maxLength: 128
-          minLength: 0
-          type: string
-          description: Street
-          example: Karlstrasse 66
-        zipCode:
-          maxLength: 20
-          minLength: 0
-          type: string
-          description: ZIP Code (max 20 chars)
-          example: '76133'
-        city:
-          maxLength: 128
-          minLength: 0
-          type: string
-          description: City
-          example: Munich
-        countryCode:
-          maxLength: 2
-          minLength: 2
-          type: string
-          description: Country code represented in standard ISO 3166-1 ALPHA-2 format
-          example: DE
-      description: Address of the rental property
-    CheckInCheckOutTimes:
-      required:
-      - checkIn
-      - checkOutUntil
-      type: object
-      properties:
-        checkIn:
-          type: array
-          description: List of possible check in times
-          items:
-            $ref: '#/components/schemas/CheckInDuration'
-        checkOutUntil:
-          type: string
-          description: Check out time (24h format)
-          example: '14:30'
-      description: Check-ins and check-outs details
-    ApartmentInformationPage:
-      type: object
-      properties:
-        totalApartments:
-          type: integer
-          format: int64
-        page:
-          type: integer
-          format: int32
-        size:
-          type: integer
-          format: int32
-        apartments:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApartmentInformation'
-    GuestCapacityRules:
-      required:
-      - standardCapacity
-      type: object
-      properties:
-        standardCapacity:
-          minimum: 1
-          type: integer
-          description: The standard capacity of guests allowed. This includes a minimum of 1 adult and excludes babies.
-          format: int32
-          example: 1
-        adultsOnly:
-          type: boolean
-          description: Does apartment permit only adults
-          example: false
-        additionalChildren:
-          minimum: 0
-          type: integer
-          description: Additional number of children.
-          format: int32
-          example: 0
-        maxBabies:
-          minimum: 0
-          type: integer
-          description: Maximum number of babies allowed.
-          format: int32
-          example: 2
-      description: Guest capacity rules applicable to apartment
     CompleteApartmentDto:
       required:
       - apartmentType
@@ -855,22 +859,18 @@ components:
           type: integer
           description: Holidu Apartment Id
           format: int64
-    ContactDetails:
+    DuplicateFrom:
       type: object
       properties:
-        contactName:
+        provider:
           type: string
-          description: Contact person for this apartment
-          example: John Doe
-        contactPhone:
+          description: Name of this provider as in our system (please ask us the right name first)
+          example: HRS
+        duplicatedApartmentId:
           type: string
-          description: Phone number of contact person
-          example: +123(4)56789
-        contactEmail:
-          type: string
-          description: Email of contact person
-          example: john@doe.com
-      description: Contact details
+          description: Id of the duplicate apartment in the other partner system.
+          example: '123654'
+      description: Use this object if other Holidu partners also have this property in their system. Please contact us before using this.
   securitySchemes:
     api-key:
       type: apiKey

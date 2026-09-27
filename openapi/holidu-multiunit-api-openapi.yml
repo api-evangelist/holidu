@@ -125,6 +125,13 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
     MultiUnitDto:
       type: object
       properties:
@@ -183,13 +190,6 @@ components:
           - VILLA
           - YACHT
           - YURT
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
   securitySchemes:
     api-key:
       type: apiKey
