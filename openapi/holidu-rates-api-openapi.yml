@@ -145,45 +145,6 @@ paths:
       deprecated: true
 components:
   schemas:
-    RatePlan:
-      title: Rate Plan
-      required:
-      - currency
-      - dailyRates
-      - guests
-      - minimumStay
-      - ratePlanId
-      type: object
-      properties:
-        ratePlanId:
-          type: string
-          description: Unique identifier for this rate plan
-          example: SHORT_STAY_RATE
-        guests:
-          maximum: 100
-          minimum: 1
-          type: integer
-          description: Number of guests. Allowed number of guests must be between 1 and 100
-          format: int32
-          example: 2
-        currency:
-          type: string
-          example: EUR
-        minimumStay:
-          type: integer
-          description: Minimum Stay (days)
-          format: int32
-          example: 1
-        maximumStay:
-          type: integer
-          description: Maximum Stay (days)
-          format: int32
-          example: 30
-        dailyRates:
-          type: array
-          description: List of daily rates
-          items:
-            $ref: '#/components/schemas/DailyRate'
     HoliduErrorResponse:
       type: object
       properties:
@@ -232,6 +193,45 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RatePlan'
+    RatePlan:
+      title: Rate Plan
+      required:
+      - currency
+      - dailyRates
+      - guests
+      - minimumStay
+      - ratePlanId
+      type: object
+      properties:
+        ratePlanId:
+          type: string
+          description: Unique identifier for this rate plan
+          example: SHORT_STAY_RATE
+        guests:
+          maximum: 100
+          minimum: 1
+          type: integer
+          description: Number of guests. Allowed number of guests must be between 1 and 100
+          format: int32
+          example: 2
+        currency:
+          type: string
+          example: EUR
+        minimumStay:
+          type: integer
+          description: Minimum Stay (days)
+          format: int32
+          example: 1
+        maximumStay:
+          type: integer
+          description: Maximum Stay (days)
+          format: int32
+          example: 30
+        dailyRates:
+          type: array
+          description: List of daily rates
+          items:
+            $ref: '#/components/schemas/DailyRate'
   securitySchemes:
     api-key:
       type: apiKey

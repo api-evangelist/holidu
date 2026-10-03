@@ -857,6 +857,13 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
+    FacilityAvailabilityData:
+      type: object
+      properties:
+        availableFrom:
+          $ref: '#/components/schemas/AvailableTime'
+        availableTo:
+          $ref: '#/components/schemas/AvailableTime'
     HoliduErrorResponse:
       type: object
       properties:
@@ -1553,13 +1560,6 @@ components:
           - UNDEFINED
           - NEAR_BY
           - IN_APARTMENT
-    FacilityAvailabilityData:
-      type: object
-      properties:
-        availableFrom:
-          $ref: '#/components/schemas/AvailableTime'
-        availableTo:
-          $ref: '#/components/schemas/AvailableTime'
     AvailableTime:
       type: object
       properties:

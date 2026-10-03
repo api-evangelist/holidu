@@ -255,53 +255,6 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
-    PaymentRate:
-      type: object
-      properties:
-        dueDate:
-          type: string
-          format: date-time
-        value:
-          $ref: '#/components/schemas/PriceDto'
-    Receipt:
-      type: object
-      properties:
-        costs:
-          type: array
-          items:
-            $ref: '#/components/schemas/BookingExtraCost'
-        discount:
-          $ref: '#/components/schemas/BookingDiscount'
-        bareRentalPrice:
-          $ref: '#/components/schemas/PriceDto'
-    Commission:
-      type: object
-      properties:
-        percentage:
-          type: number
-          description: Holidu percentage commission for this booking, if percentage deal
-        commissionToHolidu:
-          $ref: '#/components/schemas/PriceDto'
-    BookingExtraCost:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        basisOfCalculation:
-          type: string
-        paymentTime:
-          type: string
-        type:
-          type: string
-        pricePerUnit:
-          $ref: '#/components/schemas/PriceDto'
-        unitsSelected:
-          type: integer
-          format: int32
-        totalPrice:
-          $ref: '#/components/schemas/PriceDto'
     PriceDto:
       type: object
       properties:
@@ -309,6 +262,74 @@ components:
           type: number
         currency:
           type: string
+    Guest:
+      type: object
+      properties:
+        age:
+          type: integer
+          description: Age of the guest, can be null if it is not required by capacity rules or provider config
+          format: int32
+    BookingDiscount:
+      type: object
+      properties:
+        discountId:
+          type: integer
+          format: int64
+        providerDiscountId:
+          type: string
+        name:
+          type: string
+        percentage:
+          type: number
+        amount:
+          $ref: '#/components/schemas/PriceDto'
+    BookingCancellationResponse:
+      type: object
+      properties:
+        cancellationStatus:
+          type: string
+          description: Status of the cancellation request
+          example: CANCELLATION_SUCCESSFUL
+          enum:
+          - ALREADY_CANCELLED
+          - CANCELLATION_SUCCESSFUL
+          - BOOKING_DELETED
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    CustomerDetails:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+          enum:
+          - MALE
+          - FEMALE
+        zip:
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        country:
+          type: string
+          description: Country code represented in standard ISO 3166-1 ALPHA-2 format
+          example: DE
+        phone:
+          type: string
+        language:
+          type: string
+      description: Model of the Customer.
     BookingUpsert:
       required:
       - arrival
@@ -351,6 +372,26 @@ components:
           type: string
           description: Rate identifier
           example: DEFAULT
+    Payment:
+      type: object
+      properties:
+        paymentWithBooking:
+          $ref: '#/components/schemas/PaymentWithBooking'
+        paymentOnsite:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceDto'
+    Receipt:
+      type: object
+      properties:
+        costs:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingExtraCost'
+        discount:
+          $ref: '#/components/schemas/BookingDiscount'
+        bareRentalPrice:
+          $ref: '#/components/schemas/PriceDto'
     Price:
       required:
       - amount
@@ -366,27 +407,84 @@ components:
           description: Price currency
           example: EUR
       description: Price with amount and currency
-    HoliduErrorResponse:
+    BookingDetails:
       type: object
       properties:
-        error:
+        providerApartmentId:
           type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
-    BookingDiscount:
+        arrival:
+          type: string
+          format: date
+        departure:
+          type: string
+          format: date
+        guests:
+          type: array
+          items:
+            $ref: '#/components/schemas/Guest'
+        customer:
+          $ref: '#/components/schemas/CustomerDetails'
+        specialCustomerRequest:
+          type: string
+        guestReceipt:
+          $ref: '#/components/schemas/Receipt'
+        paymentProcessing:
+          $ref: '#/components/schemas/Payment'
+        cancellationFees:
+          type: array
+          items:
+            $ref: '#/components/schemas/CancellationFee'
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        rateId:
+          type: string
+    BookingExtraCost:
       type: object
       properties:
-        discountId:
-          type: integer
-          format: int64
-        providerDiscountId:
+        id:
           type: string
         name:
           type: string
-        percentage:
-          type: number
-        amount:
+        basisOfCalculation:
+          type: string
+        paymentTime:
+          type: string
+        type:
+          type: string
+        pricePerUnit:
           $ref: '#/components/schemas/PriceDto'
+        unitsSelected:
+          type: integer
+          format: int32
+        totalPrice:
+          $ref: '#/components/schemas/PriceDto'
+    MetaData:
+      type: object
+      properties:
+        bookedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - PENDING
+          - CONFIRMED
+          - CANCELLED
+          - DELETED
+        cancelledAt:
+          type: string
+          format: date-time
+        holiduBookingId:
+          type: integer
+          format: int64
+        commission:
+          $ref: '#/components/schemas/Commission'
     PaymentWithBooking:
       type: object
       properties:
@@ -402,6 +500,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PaymentRate'
+    Commission:
+      type: object
+      properties:
+        percentage:
+          type: number
+          description: Holidu percentage commission for this booking, if percentage deal
+        commissionToHolidu:
+          $ref: '#/components/schemas/PriceDto'
     BookingUpsertExtraCost:
       required:
       - name
@@ -461,80 +567,6 @@ components:
         totalPrice:
           $ref: '#/components/schemas/Price'
       description: Breakdown of extra costs for the booking.
-    Payment:
-      type: object
-      properties:
-        paymentWithBooking:
-          $ref: '#/components/schemas/PaymentWithBooking'
-        paymentOnsite:
-          type: array
-          items:
-            $ref: '#/components/schemas/PriceDto'
-    MetaData:
-      type: object
-      properties:
-        bookedAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        status:
-          type: string
-          enum:
-          - PENDING
-          - CONFIRMED
-          - CANCELLED
-          - DELETED
-        cancelledAt:
-          type: string
-          format: date-time
-        holiduBookingId:
-          type: integer
-          format: int64
-        commission:
-          $ref: '#/components/schemas/Commission'
-    BookingDetails:
-      type: object
-      properties:
-        providerApartmentId:
-          type: string
-        arrival:
-          type: string
-          format: date
-        departure:
-          type: string
-          format: date
-        guests:
-          type: array
-          items:
-            $ref: '#/components/schemas/Guest'
-        customer:
-          $ref: '#/components/schemas/CustomerDetails'
-        specialCustomerRequest:
-          type: string
-        guestReceipt:
-          $ref: '#/components/schemas/Receipt'
-        paymentProcessing:
-          $ref: '#/components/schemas/Payment'
-        cancellationFees:
-          type: array
-          items:
-            $ref: '#/components/schemas/CancellationFee'
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-        rateId:
-          type: string
-    Guest:
-      type: object
-      properties:
-        age:
-          type: integer
-          description: Age of the guest, can be null if it is not required by capacity rules or provider config
-          format: int32
     CancellationFee:
       type: object
       properties:
@@ -543,46 +575,14 @@ components:
           format: date-time
         feeInPercentage:
           type: number
-    BookingCancellationResponse:
+    PaymentRate:
       type: object
       properties:
-        cancellationStatus:
+        dueDate:
           type: string
-          description: Status of the cancellation request
-          example: CANCELLATION_SUCCESSFUL
-          enum:
-          - ALREADY_CANCELLED
-          - CANCELLATION_SUCCESSFUL
-          - BOOKING_DELETED
-    CustomerDetails:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-        gender:
-          type: string
-          enum:
-          - MALE
-          - FEMALE
-        zip:
-          type: string
-        city:
-          type: string
-        street:
-          type: string
-        country:
-          type: string
-          description: Country code represented in standard ISO 3166-1 ALPHA-2 format
-          example: DE
-        phone:
-          type: string
-        language:
-          type: string
-      description: Model of the Customer.
+          format: date-time
+        value:
+          $ref: '#/components/schemas/PriceDto'
   securitySchemes:
     api-key:
       type: apiKey

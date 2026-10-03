@@ -613,6 +613,20 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
+    PaymentRates:
+      type: object
+      properties:
+        ratePaidOnBookingInPercentage:
+          maximum: 100
+          minimum: 0
+          type: number
+          description: Rate paid on booking in percentage
+          example: 30
+        ratesPerDate:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentRatePerDate'
+      description: Payment schedule for the booking
     HoliduErrorResponse:
       type: object
       properties:
@@ -620,6 +634,65 @@ components:
           type: string
           description: Error Text
           example: 'Invalid Json: Unexpected character'
+    ApartmentCancellationPolicy:
+      required:
+      - cancellationFeeInPercent
+      - daysBeforeArrival
+      type: object
+      properties:
+        daysBeforeArrival:
+          minimum: 0
+          type: integer
+          description: Number of days before arrival for which this cancellation policy is valid
+          format: int32
+          example: 10
+        cancellationFeeInPercent:
+          maximum: 100
+          minimum: 0
+          type: number
+          description: Booking percentage which is non-refundable
+          example: 30
+        rateId:
+          pattern: DEFAULT|REFUNDABLE|NON_REFUNDABLE
+          type: string
+          description: Rate identifier
+          format: string
+          example: NON_REFUNDABLE
+    ApartmentTermsAndConditions:
+      required:
+      - url
+      type: object
+      properties:
+        countries:
+          type: array
+          description: List of country codes represented in standard ISO 3166-1 ALPHA-2 format.  If empty then applies to none.
+          items:
+            maxLength: 2
+            minLength: 2
+            type: string
+            description: List of country codes represented in standard ISO 3166-1 ALPHA-2 format.  If empty then applies to none.
+        url:
+          type: string
+          description: Url to terms and conditions
+          example: https://www.abc.org/xyz
+      description: Terms and conditions which apply on booking for the given countries
+    PaymentRatePerDate:
+      required:
+      - daysBeforeArrival
+      - rateAmountInPercentage
+      type: object
+      properties:
+        daysBeforeArrival:
+          type: integer
+          description: 'Limit of days before arrival until when the rate should be paid, for example: Until 10 days before arrival 50% should be paid'
+          format: int32
+          example: 10
+        rateAmountInPercentage:
+          maximum: 100
+          minimum: 0
+          type: number
+          description: Value in percentage of booking that should be paid (not accumulative)
+          example: 70
     ApartmentPaymentConfiguration:
       required:
       - paymentMethods
@@ -647,79 +720,6 @@ components:
           format: string
           example: NON_REFUNDABLE
       description: Payment configuration (payment methods and rates) applicable on booking
-    ApartmentCancellationPolicy:
-      required:
-      - cancellationFeeInPercent
-      - daysBeforeArrival
-      type: object
-      properties:
-        daysBeforeArrival:
-          minimum: 0
-          type: integer
-          description: Number of days before arrival for which this cancellation policy is valid
-          format: int32
-          example: 10
-        cancellationFeeInPercent:
-          maximum: 100
-          minimum: 0
-          type: number
-          description: Booking percentage which is non-refundable
-          example: 30
-        rateId:
-          pattern: DEFAULT|REFUNDABLE|NON_REFUNDABLE
-          type: string
-          description: Rate identifier
-          format: string
-          example: NON_REFUNDABLE
-    PaymentRates:
-      type: object
-      properties:
-        ratePaidOnBookingInPercentage:
-          maximum: 100
-          minimum: 0
-          type: number
-          description: Rate paid on booking in percentage
-          example: 30
-        ratesPerDate:
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentRatePerDate'
-      description: Payment schedule for the booking
-    PaymentRatePerDate:
-      required:
-      - daysBeforeArrival
-      - rateAmountInPercentage
-      type: object
-      properties:
-        daysBeforeArrival:
-          type: integer
-          description: 'Limit of days before arrival until when the rate should be paid, for example: Until 10 days before arrival 50% should be paid'
-          format: int32
-          example: 10
-        rateAmountInPercentage:
-          maximum: 100
-          minimum: 0
-          type: number
-          description: Value in percentage of booking that should be paid (not accumulative)
-          example: 70
-    ApartmentTermsAndConditions:
-      required:
-      - url
-      type: object
-      properties:
-        countries:
-          type: array
-          description: List of country codes represented in standard ISO 3166-1 ALPHA-2 format.  If empty then applies to none.
-          items:
-            maxLength: 2
-            minLength: 2
-            type: string
-            description: List of country codes represented in standard ISO 3166-1 ALPHA-2 format.  If empty then applies to none.
-        url:
-          type: string
-          description: Url to terms and conditions
-          example: https://www.abc.org/xyz
-      description: Terms and conditions which apply on booking for the given countries
   securitySchemes:
     api-key:
       type: apiKey
