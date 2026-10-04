@@ -156,65 +156,19 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  headers:
+    RetryAfter:
+      description: Indicates how long Holidu should wait before retrying ([RFC 9110 §10.2.3](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.3)). Value is either a number of seconds or an HTTP-date.
+      schema:
+        type: string
+      example: '60'
+    Location:
+      description: URI of the newly created resource ([RFC 9110 §10.2.2](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.2)).
+      schema:
+        type: string
+        format: uri
+      example: /apt-12345/los
   responses:
-    PayloadTooLarge:
-      description: The request body exceeds the affiliate's maximum accepted size ([RFC 9110 §15.5.14](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.14)).
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/payload-too-large
-            title: Payload Too Large
-            status: 413
-            detail: The LOS payload exceeds the maximum allowed size of 5 MB.
-    InternalServerError:
-      description: An unexpected error on the affiliate's side ([RFC 9110 §15.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.6.1)).
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/internal-error
-            title: Internal Server Error
-            status: 500
-            detail: An unexpected error occurred.
-    NotFound:
-      description: The affiliate does not recognise the apartment ID ([RFC 9110 §15.5.5](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.5)). This may indicate a mapping or onboarding issue that Holidu should investigate.
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/not-found
-            title: Not Found
-            status: 404
-            detail: Apartment 'apt-99999' is not known to this affiliate.
-    TooManyRequests:
-      description: The affiliate is rate-limiting Holidu ([RFC 6585 §4](https://www.rfc-editor.org/rfc/rfc6585#section-4)). Holidu will respect the `Retry-After` header before retrying.
-      headers:
-        Retry-After:
-          $ref: '#/components/headers/RetryAfter'
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/too-many-requests
-            title: Too Many Requests
-            status: 429
-            detail: Rate limit exceeded. Retry after 60 seconds.
-    BadRequest:
-      description: The request is syntactically invalid (malformed JSON, wrong types, etc.) ([RFC 9110 §15.5.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.1)).
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
-          example:
-            type: https://api.affiliate-example.com/problems/bad-request
-            title: Bad Request
-            status: 400
-            detail: Request body is not valid JSON.
     Unauthorized:
       description: Authentication credentials are missing or invalid ([RFC 9110 §15.5.2](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.2)). The affiliate should return a `WWW-Authenticate` header indicating the expected scheme ([RFC 9110 §11.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-11.6.1)).
       headers:
@@ -232,6 +186,64 @@ components:
             title: Unauthorized
             status: 401
             detail: Bearer token is expired or invalid.
+    BadRequest:
+      description: The request is syntactically invalid (malformed JSON, wrong types, etc.) ([RFC 9110 §15.5.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.1)).
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/bad-request
+            title: Bad Request
+            status: 400
+            detail: Request body is not valid JSON.
+    NotFound:
+      description: The affiliate does not recognise the apartment ID ([RFC 9110 §15.5.5](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.5)). This may indicate a mapping or onboarding issue that Holidu should investigate.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/not-found
+            title: Not Found
+            status: 404
+            detail: Apartment 'apt-99999' is not known to this affiliate.
+    InternalServerError:
+      description: An unexpected error on the affiliate's side ([RFC 9110 §15.6.1](https://www.rfc-editor.org/rfc/rfc9110#section-15.6.1)).
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/internal-error
+            title: Internal Server Error
+            status: 500
+            detail: An unexpected error occurred.
+    TooManyRequests:
+      description: The affiliate is rate-limiting Holidu ([RFC 6585 §4](https://www.rfc-editor.org/rfc/rfc6585#section-4)). Holidu will respect the `Retry-After` header before retrying.
+      headers:
+        Retry-After:
+          $ref: '#/components/headers/RetryAfter'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/too-many-requests
+            title: Too Many Requests
+            status: 429
+            detail: Rate limit exceeded. Retry after 60 seconds.
+    PayloadTooLarge:
+      description: The request body exceeds the affiliate's maximum accepted size ([RFC 9110 §15.5.14](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.14)).
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+          example:
+            type: https://api.affiliate-example.com/problems/payload-too-large
+            title: Payload Too Large
+            status: 413
+            detail: The LOS payload exceeds the maximum allowed size of 5 MB.
   examples:
     LosEmpty:
       summary: Empty LOS (no pricing available)
@@ -278,7 +290,54 @@ components:
             - 300
             - 400
             - 500
+  parameters:
+    ApartmentId:
+      name: apartmentId
+      in: path
+      required: true
+      description: Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding.
+      schema:
+        type: string
+      example: apt-12345
   schemas:
+    LosDto:
+      type: object
+      description: The Length of Stay (LOS) represents accumulated prices per check-in date and length of stay. If the map is empty, no pricing is available for the apartment.
+      required:
+      - los
+      properties:
+        los:
+          type: object
+          description: The key is an ISO calendar date (YYYY-MM-DD) representing the check-in date. The value is a list of price configurations for that date. A single check-in date may have multiple entries with different guest counts, each representing a separate pricing tier.
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/LosItemDto'
+          example:
+            '2024-06-01':
+            - currency: EUR
+              guests: 2
+              price:
+              - 0
+              - 0
+              - 300
+              - 400
+              - 500
+            - currency: EUR
+              guests: 4
+              price:
+              - 0
+              - 0
+              - 350
+              - 460
+              - 580
+            '2024-06-02':
+            - currency: EUR
+              guests: 2
+              price:
+              - 0
+              - 150
+              - 280
     ProblemDetail:
       type: object
       description: Error response following [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457) Problem Details for HTTP APIs. Affiliates are encouraged to use this format for error responses to aid Holidu in debugging push failures.
@@ -339,65 +398,6 @@ components:
           - 300
           - 400
           - 500
-    LosDto:
-      type: object
-      description: The Length of Stay (LOS) represents accumulated prices per check-in date and length of stay. If the map is empty, no pricing is available for the apartment.
-      required:
-      - los
-      properties:
-        los:
-          type: object
-          description: The key is an ISO calendar date (YYYY-MM-DD) representing the check-in date. The value is a list of price configurations for that date. A single check-in date may have multiple entries with different guest counts, each representing a separate pricing tier.
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/LosItemDto'
-          example:
-            '2024-06-01':
-            - currency: EUR
-              guests: 2
-              price:
-              - 0
-              - 0
-              - 300
-              - 400
-              - 500
-            - currency: EUR
-              guests: 4
-              price:
-              - 0
-              - 0
-              - 350
-              - 460
-              - 580
-            '2024-06-02':
-            - currency: EUR
-              guests: 2
-              price:
-              - 0
-              - 150
-              - 280
-  headers:
-    RetryAfter:
-      description: Indicates how long Holidu should wait before retrying ([RFC 9110 §10.2.3](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.3)). Value is either a number of seconds or an HTTP-date.
-      schema:
-        type: string
-      example: '60'
-    Location:
-      description: URI of the newly created resource ([RFC 9110 §10.2.2](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.2)).
-      schema:
-        type: string
-        format: uri
-      example: /apt-12345/los
-  parameters:
-    ApartmentId:
-      name: apartmentId
-      in: path
-      required: true
-      description: Holidu's unique identifier for the apartment. This ID is stable and assigned during onboarding.
-      schema:
-        type: string
-      example: apt-12345
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

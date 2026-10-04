@@ -167,24 +167,6 @@ components:
           type: string
           description: Error Text
           example: 'Invalid Json: Unexpected character'
-    HostResponseDto:
-      type: object
-      properties:
-        responseText:
-          type: string
-          description: Text of the host's response to the guest review.
-          example: Thank you for your stay!
-        responseLanguage:
-          maxLength: 2
-          minLength: 2
-          type: string
-          description: Language of the response, ISO 639-1 (2 chars). If unknown, providers may send the most probable one based on the review language.
-          example: en
-        responseDateTime:
-          type: string
-          description: Date and time the host posted (or last edited) the response. If unknown, providers may approximate from the record's last update timestamp.
-          example: '2017-08-15 09:00:00'
-      description: Host's response to this review (text, language, timestamp). Optional. Only set when the host has replied to the guest review.
     CustomerReviewDto:
       required:
       - globalRating
@@ -298,6 +280,24 @@ components:
           example: Location far from city center
         hostResponse:
           $ref: '#/components/schemas/HostResponseDto'
+    HostResponseDto:
+      type: object
+      properties:
+        responseText:
+          type: string
+          description: Text of the host's response to the guest review.
+          example: Thank you for your stay!
+        responseLanguage:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: Language of the response, ISO 639-1 (2 chars). If unknown, providers may send the most probable one based on the review language.
+          example: en
+        responseDateTime:
+          type: string
+          description: Date and time the host posted (or last edited) the response. If unknown, providers may approximate from the record's last update timestamp.
+          example: '2017-08-15 09:00:00'
+      description: Host's response to this review (text, language, timestamp). Optional. Only set when the host has replied to the guest review.
   securitySchemes:
     api-key:
       type: apiKey

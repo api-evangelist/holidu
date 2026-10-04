@@ -151,6 +151,13 @@ paths:
       deprecated: true
 components:
   schemas:
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
     ApartmentAvailability:
       type: object
       properties:
@@ -168,13 +175,6 @@ components:
             description: Day already booked
             format: date
             example: '2023-12-30'
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
   securitySchemes:
     api-key:
       type: apiKey

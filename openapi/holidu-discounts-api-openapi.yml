@@ -221,48 +221,6 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
-    DiscountConditions:
-      type: object
-      properties:
-        daysBeforeCheckIn:
-          type: integer
-          description: Number of days before checkin the booking has to be made
-          format: int32
-          example: 60
-        minStay:
-          type: integer
-          description: Minimum Stay (days) if required to get the discount
-          format: int32
-          example: 5
-        bookingSeason:
-          type: array
-          description: Booking date must be in seasons for the discount to apply
-          items:
-            $ref: '#/components/schemas/SeasonApplicable'
-        travelSeason:
-          type: array
-          description: Stay must be within seasons for the discount to apply
-          items:
-            $ref: '#/components/schemas/SeasonApplicable'
-        deviceType:
-          type: string
-          description: If the discount is applicable only for specific device.
-          enum:
-          - MOBILE
-          - DESKTOP
-        userType:
-          type: string
-          description: If discount is applicable based on user type.
-          enum:
-          - USER_AUTHENTICATED
-      description: Conditions for this discount
     DiscountDto:
       required:
       - discountPercent
@@ -309,6 +267,48 @@ components:
           example: 12
         conditions:
           $ref: '#/components/schemas/DiscountConditions'
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    DiscountConditions:
+      type: object
+      properties:
+        daysBeforeCheckIn:
+          type: integer
+          description: Number of days before checkin the booking has to be made
+          format: int32
+          example: 60
+        minStay:
+          type: integer
+          description: Minimum Stay (days) if required to get the discount
+          format: int32
+          example: 5
+        bookingSeason:
+          type: array
+          description: Booking date must be in seasons for the discount to apply
+          items:
+            $ref: '#/components/schemas/SeasonApplicable'
+        travelSeason:
+          type: array
+          description: Stay must be within seasons for the discount to apply
+          items:
+            $ref: '#/components/schemas/SeasonApplicable'
+        deviceType:
+          type: string
+          description: If the discount is applicable only for specific device.
+          enum:
+          - MOBILE
+          - DESKTOP
+        userType:
+          type: string
+          description: If discount is applicable based on user type.
+          enum:
+          - USER_AUTHENTICATED
+      description: Conditions for this discount
     SeasonApplicable:
       type: object
       properties:

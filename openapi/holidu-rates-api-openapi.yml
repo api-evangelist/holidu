@@ -145,13 +145,6 @@ paths:
       deprecated: true
 components:
   schemas:
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
     DailyRate:
       title: Daily Rate
       required:
@@ -183,6 +176,13 @@ components:
           description: Check out is possible on this day
           example: false
       description: List of daily rates
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
     ApartmentRates:
       title: Apartment Rates
       required:

@@ -125,13 +125,6 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
     MultiUnitDescriptionDto:
       required:
       - isoLanguage
@@ -150,6 +143,13 @@ components:
           description: Description of the multi-unit in the specified language
           example: A beautiful resort by the beach
       description: Localization data for a multi-unit
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
   securitySchemes:
     api-key:
       type: apiKey

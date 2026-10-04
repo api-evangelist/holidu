@@ -857,20 +857,35 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
-    FacilityAvailabilityData:
+    AvailableTime:
       type: object
       properties:
-        availableFrom:
-          $ref: '#/components/schemas/AvailableTime'
-        availableTo:
-          $ref: '#/components/schemas/AvailableTime'
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
+        pointInMonth:
           type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
+          description: Point in the month
+          example: MIDDLE
+          enum:
+          - BEGINNING
+          - MIDDLE
+          - END
+        month:
+          type: string
+          description: Month
+          example: JANUARY
+          enum:
+          - JANUARY
+          - FEBRUARY
+          - MARCH
+          - APRIL
+          - MAY
+          - JUNE
+          - JULY
+          - AUGUST
+          - SEPTEMBER
+          - OCTOBER
+          - NOVEMBER
+          - DECEMBER
+      description: Time until facility would be available
     Room:
       type: object
       properties:
@@ -888,6 +903,20 @@ components:
           - BATH_ROOM
           - KITCHEN
       description: Room
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
+    FacilityAvailabilityData:
+      type: object
+      properties:
+        availableFrom:
+          $ref: '#/components/schemas/AvailableTime'
+        availableTo:
+          $ref: '#/components/schemas/AvailableTime'
     ApartmentFacility:
       type: object
       properties:
@@ -1560,35 +1589,6 @@ components:
           - UNDEFINED
           - NEAR_BY
           - IN_APARTMENT
-    AvailableTime:
-      type: object
-      properties:
-        pointInMonth:
-          type: string
-          description: Point in the month
-          example: MIDDLE
-          enum:
-          - BEGINNING
-          - MIDDLE
-          - END
-        month:
-          type: string
-          description: Month
-          example: JANUARY
-          enum:
-          - JANUARY
-          - FEBRUARY
-          - MARCH
-          - APRIL
-          - MAY
-          - JUNE
-          - JULY
-          - AUGUST
-          - SEPTEMBER
-          - OCTOBER
-          - NOVEMBER
-          - DECEMBER
-      description: Time until facility would be available
   securitySchemes:
     api-key:
       type: apiKey
