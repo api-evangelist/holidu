@@ -1,11 +1,13 @@
-generated: '2026-07-19'
-method: derived
-source: openapi/holidu-hapi-with-oauth20.json, openapi/holidu-security-service-with-tokens.json
+generated: '2026-10-14'
+method: none
+source: openapi/holidu-test-api-openapi.yml, openapi/holidu-testa-api-openapi.yml
 schemes:
 - name: sec0
-  source: openapi/holidu-hapi-with-oauth20.json
+  source: openapi/holidu-test-api-openapi.yml
   flows: []
 - name: sec0
-  source: openapi/holidu-security-service-with-tokens.json
+  source: openapi/holidu-testa-api-openapi.yml
   flows: []
 scopes: []
+note: The OAuth2 security scheme(s) in the OpenAPI declare no scopes, and no security requirement
+  references one.
