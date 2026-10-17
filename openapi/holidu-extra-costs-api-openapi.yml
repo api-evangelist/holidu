@@ -250,6 +250,14 @@ components:
           $ref: '#/components/schemas/ExtraCostPrice'
         condition:
           $ref: '#/components/schemas/ExtraCostCondition'
+    ExtraCostCondition:
+      type: object
+      properties:
+        seasonApplicable:
+          $ref: '#/components/schemas/SeasonApplicable'
+        numberOfNights:
+          $ref: '#/components/schemas/LengthOfStay'
+      description: Conditions applicable for extra cost
     SeasonApplicable:
       type: object
       properties:
@@ -264,13 +272,6 @@ components:
           format: date
           example: '2021-04-30'
       description: Season for which extra cost is applicable
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
     LengthOfStay:
       type: object
       properties:
@@ -285,14 +286,13 @@ components:
           format: int32
           example: 7
       description: Extra cost only applicable if lengthOfStay shorter than
-    ExtraCostCondition:
+    HoliduErrorResponse:
       type: object
       properties:
-        seasonApplicable:
-          $ref: '#/components/schemas/SeasonApplicable'
-        numberOfNights:
-          $ref: '#/components/schemas/LengthOfStay'
-      description: Conditions applicable for extra cost
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
   securitySchemes:
     api-key:
       type: apiKey

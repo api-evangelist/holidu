@@ -160,13 +160,6 @@ paths:
                 $ref: '#/components/schemas/HoliduErrorResponse'
 components:
   schemas:
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
     CustomerReviewDto:
       required:
       - globalRating
@@ -298,6 +291,13 @@ components:
           description: Date and time the host posted (or last edited) the response. If unknown, providers may approximate from the record's last update timestamp.
           example: '2017-08-15 09:00:00'
       description: Host's response to this review (text, language, timestamp). Optional. Only set when the host has replied to the guest review.
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
   securitySchemes:
     api-key:
       type: apiKey

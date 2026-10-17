@@ -314,13 +314,6 @@ components:
           description: Rate identifier
           format: string
           example: NON_REFUNDABLE
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
     LosItemDto:
       title: LOS Item
       required:
@@ -370,6 +363,13 @@ components:
           guests: 2
           price:
           - 300
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
   securitySchemes:
     api-key:
       type: apiKey

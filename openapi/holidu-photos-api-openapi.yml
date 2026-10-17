@@ -175,13 +175,6 @@ components:
           description: Photo titles in different languages
           items:
             $ref: '#/components/schemas/PhotoLocalizationDto'
-    HoliduErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error Text
-          example: 'Invalid Json: Unexpected character'
     PhotoLocalizationDto:
       required:
       - language
@@ -197,6 +190,13 @@ components:
           type: string
           description: Photo Title
       description: Photo titles in different languages
+    HoliduErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error Text
+          example: 'Invalid Json: Unexpected character'
   securitySchemes:
     api-key:
       type: apiKey
